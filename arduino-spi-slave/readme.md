@@ -4,7 +4,7 @@ This turns arduino into an spi server responding with the sent messages, `spi_sl
 
 ## Pinout
 
-For Arduino UNO:
+Pinout for Arduino UNO [2]:
 
 | Pin | Purpose |
 | --- | --------|
@@ -16,3 +16,4 @@ For Arduino UNO:
 ## References
 
 [1] <https://arduino.stackexchange.com/questions/89090/how-to-make-an-arduino-act-reliably-as-an-spi-slave>
+[2] <https://www.makerguides.com/master-slave-spi-communication-arduino/>
