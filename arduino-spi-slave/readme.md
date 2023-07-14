@@ -15,5 +15,5 @@ Pinout for Arduino UNO [2]:
 
 ## References
 
-[1] <https://arduino.stackexchange.com/questions/89090/how-to-make-an-arduino-act-reliably-as-an-spi-slave>
-[2] <https://www.makerguides.com/master-slave-spi-communication-arduino/>
+- [1] <https://arduino.stackexchange.com/questions/89090/how-to-make-an-arduino-act-reliably-as-an-spi-slave>
+- [2] <https://www.makerguides.com/master-slave-spi-communication-arduino/>
