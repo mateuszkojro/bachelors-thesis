@@ -1,0 +1,10 @@
+body {
+    text-align: center;
+    font-size: x-large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 1em;
+}
+
+.spacer {
+    min-height: 2em;
+}
