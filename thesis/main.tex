@@ -7,31 +7,17 @@
 \usepackage{biblatex} 
 \addbibresource{assets/references.bib}
 
-
-%\usepackage{pdflscape}
-%\usepackage{afterpage}
-%\usepackage{changepage}
-%\usepackage{caption}
-%\usepackage{rotating} %for sidewisetable
-%\usepackage{makecell}
-%\usepackage{boldline}
-%\usepackage{amsthm}
-%\usepackage{amsopn}
-%\usepackage{wrapfig}
-%\usepackage[table]{xcolor}
-
 \usepackage{framed}
 \usepackage{listings}
 \usepackage[most]{tcolorbox}
 \usepackage{hyphenat}
 
-\hyphenation{pra-cy}
 \begin{document}
 
-\tytul{Tytuł Pracy Dyplomowej}
+\tytul{Wykrywanie zmian stanu skupienia przy użyciu aparatu EEG}
 \autor{Mateusz Kojro}
 \nralbumu{389105}
-\promotor{dr hab. Krzysztof Warda}
+\promotor{dr hab. Krzysztofa Wardy}
 \katedra{Teorii Ciała Stałego}
 \kierunek{informatyka}
 \specjalnosc{informatyka stosowana}
@@ -46,6 +32,16 @@
 
 \chapter{Metody}
 \section{EEG}
+Elektroencefalografia (EEG) to badanie polegające na pomiarze względnych potencjałów elektrycznych na czaszce pacjenta za pomocą różnego rodzaju elektrod. Zebrane w ten sposób informacje pozwalają na określenie względnej aktywności różnych obszarów mózgu w porównaniu do wartości obserwowanych u zdrowej osoby lub w relacji na bodziec (np. zamknięcie oczu).
+
+Elektroencefalografia tradycyjnie wykorzystywana jest między innymi do diagnozowania schorzeń neurologicznych takich jak epilepsja, nowotwory mózgu czy zaburzenia snu. Podczas badania, operator wizualnie analizuje wykresy sygnałów o różnych częstotliwościach w czasie. W związku z relatywnie niskim poziomem sygnału do szumu oraz skomplikowanymi relacjami ukrytymi w wynikach oraz łatwy dostęp do aparatury pomiarowej pozwalający na stosunkowo proste zbieranie znaczących ilości danych rozpoczęto prace nad zastosowaniem algorytmów uczenia maszynowego w celu diagnozy innych jednostek chorobowych takich jak ADHD, dysleksja czy schizofrenia \cite{ahire_comprehensive_2022, joshi_review_2021, clarke_eeg_2002}.
+
+\subsection{Mechanizm Działania}
+% Potencjał czynnościowy (ang. \textit{action potential}) zmienia wewnętrzne napięcie neuronu o $\approx100mV$ na czas około $3ms$, biorąc pod uwagę odległość elektrod od źródła sygnału (natężenie pola elektrycznego spada z kwadratem odległości) oraz właściwości tłumiące tkanek ludzkich, pomiar aktywności pojedynczych neuronów za pomocą elektrod umieszczonych na skórze głowy jest niemożliwe.
+
+Układ nerwowy człowieka przekazuje oraz przetwarza informacje za pomocą impulsów elektrycznych (potencjałów czynnościowych) wytwarzanych w komórkach nerwowych (neuronach), z pomocą mechanizmu xxxxx. Z względu na dużą liczbę neuronów w ludzkim mózgu ($\approx10^9$), ich małe rozmiary (xxxx) małe napięcie impulsu potencjału czynnościowego ($\approx100mV$) oraz krótki czas jego trwania ($\approx2ms$) niemożliwe jest badanie pracy pojedynczych neuronów, a jedynie średnich wartości milionów zsynchronizowanych impulsów na przestrzeni centymetrów (xxxxxx). Ograniczenia te powodują że różne obszary mózgu mogą być badane z różną dokładnością (najlepsze sprawność otrzymuje się w rejonach mózgu znajdujących się blisko powierzchni skóry zawierających dużą liczbę tzw. neuronów piramidowych – kora przedczołowa, część mózgu odpowiedzialna za xxxxx)
+
+\subsection{Metodyka Badania}
 
 \section{Sprzęt}
 
