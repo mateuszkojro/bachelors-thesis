@@ -22,7 +22,7 @@
 \RequirePackage{url}
 \RequirePackage{titlesec}
 \RequirePackage{tocloft}
-\RequirePackage{cite}
+% \RequirePackage{cite}
 \RequirePackage[all,defaultlines=2]{nowidow} % Kontrola  wdów - działa lepiej
 \RequirePackage[polish]{babel}
 % włączenie polskich znaków
@@ -81,7 +81,7 @@
 
 \vspace*{.6cm}
 %logo uniwersytetu
-\includegraphics[width=12cm]{wfiislogoul.jpg}
+\includegraphics[width=12cm]{thesis/assets/logo_wfis.png}
 
 
 \vspace{1.8cm}
@@ -147,16 +147,16 @@ WFiIS~UŁ
 
 
 
-\newbool{firstbib}
-\booltrue{firstbib}
-\newbool{firstspis}
-\booltrue{firstspis}
-%Ustawienie stylu bibliografii i dodanie bibliografi do spisu treści
-\preto{\bibitem}{\ifbool{firstbib}{\thispagestyle{fancy}\addcontentsline{toc}{chapter}{\bibname} \setbool{firstbib}{false}}{}}
-%Ustawienie stylu dla spisów tabel i rysunków
-%Dodanie spisu rysunków so spisu treści
-\preto{\listoffigures}{\ifbool{firstspis}{\clearpage\setbool{firstspis}{false}}{}\addcontentsline{toc}{chapter}{\listfigurename}}
-%Dodanie spisu tabel so spisu treści
-\preto{\listoftables}{\ifbool{firstspis}{\clearpage\setbool{firstspis}{false}}{}\addcontentsline{toc}{chapter}{\listtablename}}
+% \newbool{firstbib}
+% \booltrue{firstbib}
+% \newbool{firstspis}
+% \booltrue{firstspis}
+% %Ustawienie stylu bibliografii i dodanie bibliografi do spisu treści
+% \preto{\bibitem}{\ifbool{firstbib}{\thispagestyle{fancy}\addcontentsline{toc}{chapter}{\bibname} \setbool{firstbib}{false}}{}}
+% %Ustawienie stylu dla spisów tabel i rysunków
+% %Dodanie spisu rysunków so spisu treści
+% \preto{\listoffigures}{\ifbool{firstspis}{\clearpage\setbool{firstspis}{false}}{}\addcontentsline{toc}{chapter}{\listfigurename}}
+% %Dodanie spisu tabel so spisu treści
+% \preto{\listoftables}{\ifbool{firstspis}{\clearpage\setbool{firstspis}{false}}{}\addcontentsline{toc}{chapter}{\listtablename}}
 
 }
