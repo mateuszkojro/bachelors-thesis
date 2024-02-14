@@ -1,3 +1,4 @@
+# Downloaded from: https://github.com/Emotiv/cortex-example/blob/master/python/cortex.py
 import websocket #'pip install websocket-client' for install
 from datetime import datetime
 import json
