@@ -5,45 +5,66 @@
     Ankieta Wejściowa
 </h1>
 <div>
+    <div>
+        <p>
+            Ponizsze badanie ma na celu zebranie danych do przeprowadzenia analizy skupienia, za pomocą
+            elektroencefalografii.
+        </p>
+        <p>
+            Twoim zadaniem jest zaznaczenie czy przedstawione zdanie jest prawdziwe czy nie. Pytania zmieniac beda sie
+            automatycznie po uplywie 30s, a test sklada sie z 30 pytań (łączny czas około 20 minut).
+        </p>
+        <p>
+            Ponizej znajduje sie ankeita majaca na celu zebranie danych pozwalajacych na minimalizacje czynników
+            środowiskowych, wszytskie pytania oprócz adresu email są kompletnie dobrowolne (w razie braku checi
+            udzielenia odpowiedzi na dane pytanie prosze o pozostawienia pustego pola)
+        </p>
+    </div>
     <form method="get" action="{{ url_for('.stimuli') }}">
         <fieldset name="basic">
             <legend>
                 Podstawowe informacje
             </legend>
             <p>
-                <label>
+                <label class="question">
                     Imie i Nazwisko
                     <input type="text" name="name">
                 </label>
             </p>
             <p>
-                <label>
+                <label class="question">
                     Adres Email
                     <input type="email" name="email" required>
                 </label>
             </p>
             <p>
-                <label>
+                <label class="question">
                     Data urodzenia
                     <input type="date" name="birthday">
                 </label>
             </p>
             <p>
-                <div>
-                    Płeć
-                </div>
-                    <label>
-                        Kobieta
-                        <input type="radio" id="female" name="gender" value="female" checked />
-                    </label>
-                    <label>
-                        Mężczyzna
-                        <input type="radio" id="male" name="gender" value="male" />
-                    </label>
-                    <label>
-                        Inna
-                        <input type="radio" id="other" name="gender" value="other" />
-                    </label>
+            <div class="question">
+                Płeć
+            </div>
+            <div>
+                <label>
+                    <input type="radio" id="female" name="gender" value="female" />
+                    Kobieta
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="radio" id="male" name="gender" value="male" />
+                    Mężczyzna
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="radio" id="other" name="gender" value="other" />
+                    Inna
+                </label>
+            </div>
             </p>
         </fieldset>
         <fieldset name="demographic">
@@ -51,25 +72,25 @@
                 Informacje Demograficzne
             </legend>
             <p>
-                <label>
+                <label class="question">
                     Wykształcenie (stopień i dziedzina)
                     <input type="text" name="education">
                 </label>
             </p>
             <p>
-                <label>
+                <label class="question">
                     Wykonywany Zawód
                     <input type="text" name="job">
                 </label>
             </p>
             <p>
-                <label>
+                <label class="question">
                     Średnia ilość godzin spędzonych przy komputerze w ciągu dnia
                     <input type="number" name="hours_in_front_of_computer" min="0" max="24">
                 </label>
             </p>
             <p>
-                <label>
+                <label class="question">
                     Stwierdzone choroby neurologiczne
                     <input type="text" name="neurological_diseses">
                 </label>
@@ -80,33 +101,123 @@
                 Okolicznosci Badania
             </legend>
             <p>
-                <label>
+                <label class="question">
                     Godziny snu poprzedniej nocy
                     <input type="number" name="hours_of_sleep" max="24" min="0">
                 </label>
             </p>
             <p>
+            <div class="question">
+                Jak często wykonujesz obliczenia matematyczne w pamięci
+            </div>
+            <div>
+                <label>
+                    <input type="radio" name="mental_calculations" value="more_than_10_times_a_day" />
+                    Więcej niz 10 razy dziennie
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="radio" name="mental_calculations" value="1_to_10_times_a_day" />
+                    1 do 10 ray dziennie
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="radio" name="mental_calculations" value="few_times_a_week" />
+                    Kilka razy w tygodniu
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="radio" name="mental_calculations" value="almos_never" />
+                    Prawie nigdy
+                </label>
+            </div>
+            </p>
+            <p>
+            <div class="question">
+                Czy odczuwasz aktualnie głód
+            </div>
+            <div>
+                <label>
+                    <input type="radio" name="hunger" value="true" />
+                    Tak
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="radio" name="hunger" value="false" />
+                    Nie
+                </label>
+            </div>
+            </p>
+            <p>
+            <div class="question">
+                Czy odczuwasz aktualnie objawy przeziębienia lub innych chorób
+            </div>
+            <div>
+                <label>
+                    <input type="radio" name="illness" value="true" />
+                    Tak
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="radio" name="illness" value="false" />
+                    Nie
+                </label>
+            </div>
+            </p>
+            <p>
+            <div class="question">
                 Substancje psychoaktywne w ciagu ostatnich 6 godzin
+            </div>
+            <div>
+                <input type="checkbox" id="cofeine" name="psychoactive_substances" value="cofeine" />
+                <label for="cofeine">Kofeina</label>
+                </input>
+                <input type="checkbox" id="alkochol" name="psychoactive_substances" value="alkochol" />
+                <label for="alkochol">Alkochol</label>
+                </input>
+                <input type="checkbox" id="nicotine" name="psychoactive_substances" value="nicotine" />
+                <label for="nicotine">Nikotyna</label>
+                </input>
                 <div>
-                    <input type="checkbox" id="cofeine" name="psychoactive_substances" value="cofeine" />
-                    <label for="cofeine">Kofeina</label>
-                    </input>
-                    <input type="checkbox" id="alkochol" name="psychoactive_substances" value="alkochol" />
-                    <label for="alkochol">Alkochol</label>
-                    </input>
-                    <input type="checkbox" id="nicotine" name="psychoactive_substances" value="nicotine" />
-                    <label for="nicotine">Nikotyna</label>
-                    </input>
                     <label>
-                        Inne
+                        Inne:
                         <input type="text" name="other_substances">
                     </label>
                 </div>
+            </div>
             </p>
             <p>
-                <label>
+                <label class="question">
                     Poziom zmęczenia (1-5 gdzie 5 to maksymalne zmęczenie)
                     <input type="number" min="1" max="5" name="exhaustion_level">
+                </label>
+            </p>
+            <p>
+                <label class="question">
+                    Poziom Stresu (1-5 gdzie 5 to maksymalny stres)
+                    <input type="number" min="1" max="5" name="stress_level">
+                </label>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>
+                Dodatkowe badania
+            </legend>
+            <p>
+                <label class="question">
+                    Ciśnienie
+                    <input type="number" name="blood_preassure">
+                </label>
+            </p>
+            <p>
+                <label class="question">
+                    Tętno
+                    <input type="number" name="blood_preassure">
                 </label>
             </p>
         </fieldset>
@@ -114,11 +225,20 @@
             <legend>
                 Konfiguracja urządzenia pomiarowego
             </legend>
-            <label>
+            <label class="question">
                 Adres urządzenia
                 <input type="text" name="emotiv_adress" value="wss://localhost:6868" required>
             </label>
         </fieldset>
+        <p>
+            Po nacisnieciu przycisku <i>Start</i> badanie rozpocznie się (po 30 sekundowym czasie na przygotowanie), w czasie jego trwania proszę o wykonywanie mozliwie minimalnej ilości ruchów
+        </p>
+        <div style="padding-bottom: 1em;">
+            <label>
+                <input type="checkbox" name="acept_data_processing" required>
+                Wyrazam zgode na przetwarzenie zebranych zanonimizowanych danych na potrzeby badan naukowych.
+            </label>
+        </div>
         <button class="w3-button w3-black">Start</button>
     </form>
 </div>
