@@ -11,6 +11,7 @@
 \usepackage{listings}
 \usepackage[most]{tcolorbox}
 \usepackage{hyphenat}
+\usepackage{amsmath}
 % \usepackage[inkscapeformat=png]{svg}
 \usepackage[inkscapelatex=false]{svg}
 \begin{document}
@@ -66,6 +67,17 @@ Pierwsze modele pracy mozgu stworzone zostaly juz w ... jednak dopiero
 
 Ludzki mózg składa się z miliardów neuronów porozumiewających się między sobą za pomocą tzw. potencjałów czynnościowych – chwilowych impulsów, podczas których komórki znacząco zwiększają swoje wewnętrzne napięcie w celu przekazania sygnału do
 
+Informacje w mózgu przekazywane i przetwarzane są za pomocą tzw. potencjałów czynnościowych – chwilowych impulsów, podczas których napięcie wewnątrz komórki stanowczo wzrasta (xxxx). Impuls taki zostaje wygenerowany gdy czasowo i intensywnosciowo skalowana suma napiec na wejściach komórki (dendrytach) przekroczy pewien poziom (xxxx). W takiej sytuacji generowane jest napięcie, które następnie przekazywane jest za pomocą aksonu do kolejnych komórek (xxxxx)
+
+\begin{equation}
+    \text{Potencjał komórki} \approx 
+    \begin{cases} 
+      70mV & \sum_i d_i(t) > \text{Napięcie progowe}  \\
+      -30mV &  \text{inaczej}
+   \end{cases}
+\end{equation}
+
+- wspomniec huxley model
 - Action potential happens when sum of time and strenght weighted inputs to the dendrites is higher than some treshold
 - When the trigger level is achieved action potential is emited through the axon which is connected do dendrites of other cels - process continues
 - bilions of those interactions form a working brain
@@ -164,6 +176,7 @@ Do wykoniania badan zdecydowano sie na wykorzystanie 14 kanałowego zestawu prod
 
 \section{Architektury algorytmów uczenia maszynowego}
 - sieci neuronowe
+    - rekurencyjne 
 - random forest
 - clustering algorithms
 - svm
@@ -191,6 +204,7 @@ Do wykoniania badan zdecydowano sie na wykorzystanie 14 kanałowego zestawu prod
 - porownac czestotliwosci na poczatku badania i na koncu
 - interesujace korelacje z innymi zmiennymi (maybe macierz korelacji)
 \section{Uczenie maszynowe}\label{uczenie-maszynowe}
+- confusion matrices
 \section{Bias analysys - Shaply values}\label{bias}
 - wiek
 - plec
