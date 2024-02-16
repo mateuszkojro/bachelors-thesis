@@ -73,6 +73,12 @@ Ludzki mózg składa się z miliardów neuronów porozumiewających się między
 
 \section{Metody badania mózgu}
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\columnwidth]{thesis/assets/porownanie_metod_badania_mozgu.png}
+    \caption{Porównanie metod badania działania mózgu ze względu na dokładność czasową i przestrzenną}
+    \label{fig:brain-imaging-comparasion}
+\end{figure}
 
 
 \section{EEG}
@@ -144,9 +150,18 @@ W zależności od wymaganej dokładności przestrzennej wykorzystywana jest ró�
  W celu przeprowadzenia badan przygotowano aplikację webową pozwalającą na wyświetlanie bodźców na ekranie komputera oraz korelowanie ich w czasie z sygnałem EEG mierzonym za pomocą zakupionego urządzenia – \textit{Emotiv EPOCX}
 
 \subsection{Strona internetowa}
+- this should probably be pretty precise zeby nie bylo pytan czy to napewno jest praca inzynierska
 \subsection{Zestaw Emotiv EpocX}\label{emotiv}
 
+Do wykoniania badan zdecydowano sie na wykorzystanie 14 kanałowego zestawu produkowanego przez firmę Emotiv (model EpocX) wykorzytsującego elektordy gąbkowe każdorazowo zamoczone w roztworze soli fizjologicznej o stężeniu $0.9\%$ (zgodnie z zaleceniami producenta \cite{} oraz xxxx). Wybór urządzenia podyktowany został dostępnością bibliotek pozwalających na interakcje w czasie rzeczywistym (wymagane w celu oznaczenia momentu wyświetlenia pytania oraz udzielenia na nie odpowiedzi), dołączone oprogramowanie pozwalające na kalibrację przed, oraz monitorowanie w trakcie badania oraz stosunkowo niski koszt biorąc pod uwagę ilość dostępnych kanałów danych.
+
 \section{Procedura przeprowadzonych badań}\label{procedura-badan}
+- powtarzanie badan kiedy bylo to mozliwe
+- przy powturzeniach inny zestaw danych
+\subsection{Przygotowanie zestawu}
+\subsection{Aniketa wejściowa}
+\subsection{Badanie}
+
 \section{Architektury algorytmów uczenia maszynowego}
 - sieci neuronowe
 - random forest
@@ -154,6 +169,7 @@ W zależności od wymaganej dokładności przestrzennej wykorzystywana jest ró�
 - svm
 
 \chapter{Wyniki}
+- publiczny dostep do zestawu dancyh
 \section{Demografia}
 - Wiek
 - Płeć
@@ -171,8 +187,13 @@ W zależności od wymaganej dokładności przestrzennej wykorzystywana jest ró�
 \section{Standard analysys}\label{analiza-klasyczna}
 \subsection{ANOVA}
 \subsection{Fourier}
+- odseparowac momenty wyswietlenia pytania i udzielenia odpowiedzi i porownac z stanem domyslnym
+- porownac czestotliwosci na poczatku badania i na koncu
+- interesujace korelacje z innymi zmiennymi (maybe macierz korelacji)
 \section{Uczenie maszynowe}\label{uczenie-maszynowe}
 \section{Bias analysys - Shaply values}\label{bias}
+- wiek
+- plec
 
 \chapter{Dyskusja}\label{dyskusja}
 
