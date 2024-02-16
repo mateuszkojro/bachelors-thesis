@@ -1,0 +1,21 @@
+<h1 id="question" style="text-align: center;">
+    {{ question }}
+</h1>
+<fieldset>
+    <legend>Czy powyzsze zdanie jest prawdziwe?</legend>
+    <div>
+        <input type="radio" id="no_answer" name="answer" value="no_answer" checked />
+        <label for="no_answer">Brak odpowiedzi</label>
+    </div>
+    <div>
+        <input type="radio" id="yes" name="answer" value="yes" />
+        <label for="yes">Tak</label>
+    </div>
+    <div>
+        <input type="radio" id="no" name="answer" value="no" />
+        <label for="no">Nie</label>
+    </div>
+</fieldset>
+<a class="w3-button w3-black" href="{{ url_for('.end') }} ">
+    Koniec badania
+</a>

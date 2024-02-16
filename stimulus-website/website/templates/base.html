@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>EEG</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel='stylesheet' href='/static/style.css'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display&display=swap">
+    <script src="https://unpkg.com/htmx.org@1.9.9" crossorigin="anonymous"></script>
+
+    <style>
+        * {
+            font-family: "Inconsolata", sans-serif;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+    <link rel='stylesheet' href='/static/style.css'>
+    <script src="https://unpkg.com/htmx.org@1.9.9" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <style>
+        fieldset {
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+        /* label {
+            font-weight: bold;
+        }
+        input {
+            font-weight: normal;
+        } */
+    </style>
+    <!-- Navbar -->
+    <div class="w3-top">
+        <div class="w3-bar w3-white">
+            <a href="{{ url_for('.home') }}" class="w3-bar-item">EEG</a>
+            <div class="w3-bar-item w3-right"><a href="">Username</a>
+                <img height="20em" referrerpolicy="no-referrer" src="{{ user_photo }}">
+            </div>
+        </div>
+    </div>
+    <!-- Main body -->
+    <div class="w3-content w3-grayscale w3-large w3-padding-32" style="max-width:600px">
+        <div class="w3-container">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    <div>
+</body>
+
+</html>

@@ -2,4 +2,4 @@ dash
 pandas
 dash-latex
 pymongo
-python-decouple
+python-dotenv

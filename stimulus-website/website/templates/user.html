@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 style="font-family: Inconsolata;">
+    Ankieta Wejściowa
+</h1>
+<div>
+    <form method="get" action="{{ url_for('.stimuli') }}">
+        <fieldset name="basic">
+            <legend>
+                Podstawowe informacje
+            </legend>
+            <p>
+                <label>
+                    Imie i Nazwisko
+                    <input type="text" name="name">
+                </label>
+            </p>
+            <p>
+                <label>
+                    Adres Email
+                    <input type="email" name="email" required>
+                </label>
+            </p>
+            <p>
+                <label>
+                    Data urodzenia
+                    <input type="date" name="birthday">
+                </label>
+            </p>
+            <p>
+                <div>
+                    Płeć
+                </div>
+                    <label>
+                        Kobieta
+                        <input type="radio" id="female" name="gender" value="female" checked />
+                    </label>
+                    <label>
+                        Mężczyzna
+                        <input type="radio" id="male" name="gender" value="male" />
+                    </label>
+                    <label>
+                        Inna
+                        <input type="radio" id="other" name="gender" value="other" />
+                    </label>
+            </p>
+        </fieldset>
+        <fieldset name="demographic">
+            <legend>
+                Informacje Demograficzne
+            </legend>
+            <p>
+                <label>
+                    Wykształcenie (stopień i dziedzina)
+                    <input type="text" name="education">
+                </label>
+            </p>
+            <p>
+                <label>
+                    Wykonywany Zawód
+                    <input type="text" name="job">
+                </label>
+            </p>
+            <p>
+                <label>
+                    Średnia ilość godzin spędzonych przy komputerze w ciągu dnia
+                    <input type="number" name="hours_in_front_of_computer" min="0" max="24">
+                </label>
+            </p>
+            <p>
+                <label>
+                    Stwierdzone choroby neurologiczne
+                    <input type="text" name="neurological_diseses">
+                </label>
+            </p>
+        </fieldset>
+        <fieldset name="today">
+            <legend>
+                Okolicznosci Badania
+            </legend>
+            <p>
+                <label>
+                    Godziny snu poprzedniej nocy
+                    <input type="number" name="hours_of_sleep" max="24" min="0">
+                </label>
+            </p>
+            <p>
+                Substancje psychoaktywne w ciagu ostatnich 6 godzin
+                <div>
+                    <input type="checkbox" id="cofeine" name="psychoactive_substances" value="cofeine" />
+                    <label for="cofeine">Kofeina</label>
+                    </input>
+                    <input type="checkbox" id="alkochol" name="psychoactive_substances" value="alkochol" />
+                    <label for="alkochol">Alkochol</label>
+                    </input>
+                    <input type="checkbox" id="nicotine" name="psychoactive_substances" value="nicotine" />
+                    <label for="nicotine">Nikotyna</label>
+                    </input>
+                    <label>
+                        Inne
+                        <input type="text" name="other_substances">
+                    </label>
+                </div>
+            </p>
+            <p>
+                <label>
+                    Poziom zmęczenia (1-5 gdzie 5 to maksymalne zmęczenie)
+                    <input type="number" min="1" max="5" name="exhaustion_level">
+                </label>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>
+                Konfiguracja urządzenia pomiarowego
+            </legend>
+            <label>
+                Adres urządzenia
+                <input type="text" name="emotiv_adress" value="wss://localhost:6868" required>
+            </label>
+        </fieldset>
+        <button class="w3-button w3-black">Start</button>
+    </form>
+</div>
+{% endblock %}
