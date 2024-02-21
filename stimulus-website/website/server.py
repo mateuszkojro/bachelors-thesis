@@ -27,36 +27,6 @@ def save_results(path):
     # this can be inserted into mongo
     pass
 
-@app.post('/recordings')
-def create_recording():
-    # 1. start recording
-    # 2. return recording id
-    global current_device
-    current_device = App(Cortex(
-        client_id=EMOTIV_CLIENT_ID,
-        client_secret=EMOTIV_CLIENT_SECRET,
-        debug_mode=True,
-    ))
-    current_device.start()
-
-@app.get('/recordings')
-def get_recordings():
-    # Export recording to some nice format
-    pass
-
-@app.post('/recordings/<recording_id>/stop')
-def stop(recording_id):
-    global current_device
-    App.stop_recording(current_device)
-    save_results()
-
-@app.post('/markers')
-def create_marker():
-    # 1. Check if the recording id matches current recording
-    # 2. If true inject marker
-    body = dict(request.json)
-    App.injcect_marker(current_device, body.get('value'), body.get('label'))
-
 @app.post('/answers/<id>')
 def create_answer(id):
     # Create answert for a given recording and question
