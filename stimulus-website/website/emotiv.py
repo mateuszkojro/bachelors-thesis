@@ -76,8 +76,6 @@ class App():
 
     def on_export_record_done(self, *args, **kwargs):
         self.c.close()
-        print(args)
-        print(kwargs)
         with open(self.export_folder + "/markers.json", "w") as f:
             f.write(json.dumps(self.markers))
         

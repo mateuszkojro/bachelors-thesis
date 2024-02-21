@@ -316,7 +316,9 @@ class Cortex(Dispatcher):
     def handle_error(self, recv_dic):
         req_id = recv_dic['id']
         print('handle_error: request Id ' + str(req_id))
-        self.emit('inform_error', error_data=recv_dic['error'])
+        error = recv_dic['error']
+        self.error = error 
+        self.emit('inform_error', error_data=error)
     
     def handle_warning(self, warning_dic):
 
