@@ -33,7 +33,12 @@ def create_answer(id):
     print(request.form)
     global question_counters
     global current_device
-    questions = ["2+2=4", "3+3=12"]
+    questions = [
+            {"question": "Siedz w bezruchu", "answerable": False},
+            {"question": "2+2=4", "answerable": True}, 
+            {"question": "3+3=12", "answerable": True},
+            {"question": "Siedz w bezruchu", "answerable": False},
+        ]
 
     if current_device is None:
         return render_template('error.html', error_title="Nie mozna nawiązac polaczenia z zestawem EEG", error_text="Zestaw nie jest połączony"), 286
@@ -48,8 +53,8 @@ def create_answer(id):
         return render_template('bye.html'), 286
 
     next_question = questions[question_counters[id]]
-    App.injcect_marker(current_device.c, id, next_question)
-    return render_template("stimuli_form.html", question=next_question) 
+    App.injcect_marker(current_device.c, id, next_question["question"])
+    return render_template("stimuli_form.html", question=next_question["question"], answerable=next_question["answerable"]) 
 
 @app.get('/devices')
 def get_devices():

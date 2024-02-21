@@ -1,6 +1,7 @@
 <h1 id="question" style="text-align: center;">
     {{ question }}
 </h1>
+{% if answerable == True %}
 <fieldset>
     <legend>Czy powyzsze zdanie jest prawdziwe?</legend>
     <div>
@@ -16,6 +17,7 @@
         <label for="no">Nie</label>
     </div>
 </fieldset>
+{% endif %}
 <a class="w3-button w3-black" href="{{ url_for('.end') }} ">
     Koniec badania
 </a>
