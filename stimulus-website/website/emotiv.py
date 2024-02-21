@@ -2,10 +2,11 @@ import cortex
 import time
 import threading
 import json
+import os
 
 RECORD_TITLE = "Record title"
 RECORD_DESCRIPTION = "Record description"
-EXPORT_FOLDER = '/Users/mkojro/Documents/bachelors-thesis/emotiv-connection/results/'
+EXPORT_FOLDER = './results/'
 EXPORT_DATA = [
         # 'EEG', # Requires PRO license
         'MOTION', 
@@ -24,11 +25,12 @@ class App():
     def stop_recording(c: cortex.Cortex):
         c.stop_record()
 
-    def __init__(self, device: cortex.Cortex, app_function, **kwargs):
+    def __init__(self, device: cortex.Cortex, export_folder=EXPORT_FOLDER, on_export_done=None, **kwargs):
         self.c = device
         self.record_id = None
         self.markers = []
-        self.app_function = app_function
+        self.export_folder = os.path.abspath(export_folder)
+        self.on_export_done = on_export_done
         self.c.bind(create_session_done=self.on_create_session_done)
         self.c.bind(create_record_done=self.on_create_record_done)
         self.c.bind(stop_record_done=self.on_stop_record_done)
@@ -68,14 +70,19 @@ class App():
     def on_warn_cortex_stop_all_sub(self, *args, **kwargs):
         # cortex has closed session. Wait some seconds before exporting record
         time.sleep(3)
-        self.c.export_record(EXPORT_FOLDER, EXPORT_DATA,
+        self.c.export_record(self.export_folder, EXPORT_DATA,
                            EXPORT_FORMAT, [self.record_id], EXPORT_VERSION)
 
 
     def on_export_record_done(self, *args, **kwargs):
         self.c.close()
-        with open(EXPORT_FOLDER + "/markers.json", "w") as f:
+        print(args)
+        print(kwargs)
+        with open(self.export_folder + "/markers.json", "w") as f:
             f.write(json.dumps(self.markers))
+        
+        if self.on_export_done is not None:
+            self.on_export_done()
 
     def on_inform_error(self, *args, **kwargs):
         error_data = kwargs.get('error_data')

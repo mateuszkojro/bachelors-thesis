@@ -5,6 +5,7 @@ import pandas as pd
 from dotenv import load_dotenv
 import os
 import random
+from uuid import uuid4
 from threading import Thread
 from collections import defaultdict
 load_dotenv()
@@ -18,7 +19,6 @@ app = Flask(__name__,
 
 current_device = None
 worker_thread = None
-subject_id = 0
 question_counters = defaultdict(lambda: -1)
 
 def save_results(path):
@@ -102,18 +102,22 @@ def stimuli():
     print(request.args.to_dict())
     global current_device
     global worker_thread
-    global subject_id
     del worker_thread
-    subject_id += 1
-    current_device = App(Cortex(
-        client_id=EMOTIV_CLIENT_ID,
-        client_secret=EMOTIV_CLIENT_SECRET,
-        debug_mode=False,
-        url=request.args.get("emotiv_adress")
-    ), lambda x: None)
+    recording_id = str(uuid4())
+    export_folder = "./results/" + str(recording_id)
+    os.makedirs(export_folder, exist_ok=True)
+    current_device = App(
+        Cortex(
+            client_id=EMOTIV_CLIENT_ID,
+            client_secret=EMOTIV_CLIENT_SECRET,
+            debug_mode=False,
+            url=request.args.get("emotiv_adress")
+        ),
+        export_folder=export_folder
+    )
     worker_thread = Thread(target=current_device.start)
     worker_thread.start()
-    return render_template("stimuli.html", id=subject_id)
+    return render_template("stimuli.html", id=recording_id)
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=9090)
