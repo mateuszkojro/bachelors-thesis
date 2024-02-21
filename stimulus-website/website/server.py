@@ -8,10 +8,12 @@ import random
 from uuid import uuid4
 from threading import Thread
 from collections import defaultdict
+import json
 load_dotenv()
 
 EMOTIV_CLIENT_ID = str(os.getenv("EMOTIV_CLIENT_ID"))
 EMOTIV_CLIENT_SECRET = str(os.getenv("EMOTIV_CLIENT_SECRET"))
+RESULTS_FOLDER = str(os.getenv("RESULTS_FOLDER"))
 
 app = Flask(__name__,
             static_url_path='', 
@@ -26,6 +28,13 @@ def save_results(path):
     records = df.to_dict('records')
     # this can be inserted into mongo
     pass
+
+@app.post('/inject_marker')
+def inject_marker():
+    print("inject_marker_called")
+    global current_device
+    info = request.json
+    App.injcect_marker(current_device.c, info["label"], info["value"])
 
 @app.post('/answers/<id>')
 def create_answer(id):
@@ -73,14 +82,15 @@ def home():
 
 @app.get('/app')
 def stimuli():
-    print(request.form)
-    print(request.args.to_dict())
+    recording_id = str(uuid4())
+    form_values = request.args.to_dict()
     global current_device
     global worker_thread
     del worker_thread
-    recording_id = str(uuid4())
-    export_folder = "./results/" + str(recording_id)
+    export_folder = RESULTS_FOLDER + str(recording_id)
     os.makedirs(export_folder, exist_ok=True)
+    with open(export_folder + "/metadata.json", "w") as f:
+        f.write(json.dumps(form_values))
     current_device = App(
         Cortex(
             client_id=EMOTIV_CLIENT_ID,
