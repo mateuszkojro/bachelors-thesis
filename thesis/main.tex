@@ -30,16 +30,7 @@
 \stronatytulowa
 
 \begin{abstract}
-W związku z ostatnimi postępami na pograniczu dziedzin neurologii i informatyki celem niniejszej pracy jest przygotowanie rozwiązania pozwalającego na wykrywanie zmian w poziomie skupienia badanej osoby za pomocą aparatu EEG (Elektroencefalografia).
 
-W ramach projektu przygotowane zostaną następujące narzędzia pozwalające na przeprowadzenie badań, polegających na mierzeniu zmian potencjałów bioelektrycznych na skórze głowy ochotnika, w reakcji na bodziec wyświetlany na ekranie komputera:
-
-\begin{itemize}
-    \item Sterownik układu EEG, program działający na mikrokomputerze Raspberry PI pozwalający na odczytywanie, interpretowanie oraz zapisywanie informacji zbieranych przez układ czujników.
-    \item Generator bodźca, strona internetowa pozwalająca na wyświetlanie pytań, zapisywanie udzielonych odpowiedzi oraz korelowanie ich w czasie z uzyskanymi pomiarami.
-\end{itemize}
-
-Wyniki przeprowadzonych badań zostaną następnie wykorzystane do przygotowania modelu informatycznego, opierającego się na algorytmach uczenia maszynowego, pozwalającego na wykrywanie zmian w poziomie skupienia.
 \end{abstract}
 
 \chapter{Wstęp}
@@ -50,12 +41,14 @@ Na czele tego niezwykłego wynalazku ewolucji stoi mózg, nierozwiklana zagadka 
 
 Praca przedstawia opracowanie oraz ewaluacje modelu klasyfikującego stan skupienia definiowany jako  xxxxx, za pomocą badania reakcji na bodziec z użyciem elektroencefalografii. 
 
-W ramach projektu przygotowano układ eksperymentalny (sekcja \ref{aparatura-pomiarowa}), przeprowadzono kampanię badawczą na próbce xxxxx osób (sekcja \ref{procedura-badan}) której wyniki zostały następnie poddane analizie tradycyjnymi metodami statysytcznymi (sekcja \ref{analiza-klasyczna}) uwzględniając zmienne zakłucające (sekcja \ref{zmiennne-zaklucajace}) oraz algorytmami uczenia maszynowego (sekcja \ref{uczenie-maszynowe}) kontrolując stronniczośc (ang. bias) opracowanych modeli (sekcja \ref{bias}). Dyskusja wyników zaprezentowana została w rozdziale \ref{dyskusja}.
+W ramach projektu przygotowano układ eksperymentalny (sekcja \ref{aparatura-pomiarowa}), przeprowadzono kampanię badawczą na próbce xxxxx osób (sekcja \ref{procedura-badan}) której wyniki zostały następnie poddane analizie tradycyjnymi metodami statystycznymi (sekcja \ref{analiza-klasyczna}) uwzględniając zmienne zakłócające (sekcja \ref{zmiennne-zaklucajace}) oraz algorytmami uczenia maszynowego (sekcja \ref{uczenie-maszynowe}) kontrolując stronniczość (ang. bias) opracowanych modeli (sekcja \ref{bias}). Dyskusja wyników zaprezentowana została w rozdziale \ref{dyskusja}.
 
-\section{Basic opis - cel}
+\section{Motywacja}
+- Bo trwaja badania nad diagnozowaniem ADHD schizofremi itd, dodanie ML might be interesting
+
 \section{Other Work}
 
-Możliwość wykorzystania badania EEG w celu analizy stanu mentalnego pacjenta zaprezentowana została między innymi przez Kaushika i in. \cite{kaushik_decoding_2022} dodatkowo Guo i in. \cite{guo_detection_2018} pokazali że możliwe jest klasyfikowanie stanu skupienia kierowcy w symulowanych warunkach. Wysoką skuteczność algorytmów uczenia maszynowego takich jak maszyny wektorów nośnych czy uczenie głębokie do analizy wyników elektroencefalografii udowodnili de Taillez i in. \cite{de_taillez_machine_2020}.
+Możliwość wykorzystania badania EEG w celu analizy stanu mentalnego pacjenta zaprezentowana została między innymi przez Kaushika i in. \cite{kaushik_decoding_2022} dodatkowo Guo i in. \cite{guo_detection_2018} pokazali, że możliwe jest klasyfikowanie stanu skupienia kierowcy w symulowanych warunkach. Wysoką skuteczność algorytmów uczenia maszynowego takich jak maszyny wektorów nośnych czy uczenie głębokie do analizy wyników elektroencefalografii udowodnili de Taillez i in. \cite{de_taillez_machine_2020}. 
 
 Sprawnosc urzadzenia pomiarowego potwiedzili 
 
@@ -67,8 +60,7 @@ Pierwsze modele pracy mozgu stworzone zostaly juz w ... jednak dopiero
 
 Ludzki mózg składa się z miliardów neuronów porozumiewających się między sobą za pomocą tzw. potencjałów czynnościowych – chwilowych impulsów, podczas których komórki znacząco zwiększają swoje wewnętrzne napięcie w celu przekazania sygnału do
 
-Informacje w mózgu przekazywane i przetwarzane są za pomocą tzw. potencjałów czynnościowych – chwilowych impulsów, podczas których napięcie wewnątrz komórki stanowczo wzrasta (xxxx). Impuls taki zostaje wygenerowany gdy czasowo i intensywnosciowo skalowana suma napiec na wejściach komórki (dendrytach) przekroczy pewien poziom (xxxx). W takiej sytuacji generowane jest napięcie, które następnie przekazywane jest za pomocą aksonu do kolejnych komórek (xxxxx)
-
+Informacje w mózgu przekazywane i przetwarzane są za pomocą tzw. potencjałów czynnościowych – chwilowych impulsów, podczas których napięcie wewnątrz komórki stanowczo wzrasta (xxxx). Impuls taki zostaje wygenerowany gdy czasowo skalowana (xxxx) suma napiec na "wejściach" komórki (dendrytach) przekroczy pewien poziom (xxxx). W takiej sytuacji generowane jest napięcie, które następnie przekazywane jest za pomocą aksonu do kolejnych komórek (xxxxx)
 \begin{equation}
     \text{Potencjał komórki} \approx 
     \begin{cases} 
@@ -76,8 +68,10 @@ Informacje w mózgu przekazywane i przetwarzane są za pomocą tzw. potencjałó
       -30mV &  \text{inaczej}
    \end{cases}
 \end{equation}
+gdzie $d_i(t)$ to napiecie na dendrycie $i$ w czasie $t$
 
 - wspomniec huxley model
+- Wspomniec ze it is all very variable
 - Action potential happens when sum of time and strenght weighted inputs to the dendrites is higher than some treshold
 - When the trigger level is achieved action potential is emited through the axon which is connected do dendrites of other cels - process continues
 - bilions of those interactions form a working brain
@@ -85,19 +79,19 @@ Informacje w mózgu przekazywane i przetwarzane są za pomocą tzw. potencjałó
 
 \section{Metody badania mózgu}
 
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\columnwidth]{thesis/assets/porownanie_metod_badania_mozgu.png}
-    \caption{Porównanie metod badania działania mózgu ze względu na dokładność czasową i przestrzenną}
+    \caption{Porównanie metod badania mózgu ze względu na dokładność czasową i przestrzenną}
     \label{fig:brain-imaging-comparasion}
 \end{figure}
 
 
 \section{EEG}
-Elektroencefalografia (EEG) to badanie polegające na pomiarze względnych potencjałów elektrycznych na czaszce pacjenta za pomocą różnego rodzaju elektrod. Zebrane w ten sposób informacje pozwalają na określenie względnej aktywności różnych obszarów mózgu w porównaniu do wartości obserwowanych u zdrowej osoby lub w relacji na bodziec (np. zamknięcie oczu).
+Elektroencefalografia (EEG) to badanie polegające na pomiarze potencjałów elektrycznych w różnych punktach na powierzchni głowy pacjenta. Zebrane w ten sposób informacje pozwalają na określenie względnej aktywności różnych obszarów mózgu.
 
-Elektroencefalografia tradycyjnie wykorzystywana jest między innymi do diagnozowania schorzeń neurologicznych takich jak epilepsja, nowotwory mózgu czy zaburzenia snu. Podczas badania, operator wizualnie analizuje wykresy sygnałów o różnych częstotliwościach w czasie. W związku z relatywnie niskim poziomem sygnału do szumu oraz skomplikowanymi relacjami ukrytymi w wynikach oraz łatwy dostęp do aparatury pomiarowej pozwalający na stosunkowo proste zbieranie znaczących ilości danych rozpoczęto prace nad zastosowaniem algorytmów uczenia maszynowego w celu diagnozy innych jednostek chorobowych takich jak ADHD, dysleksja czy schizofrenia \cite{ahire_comprehensive_2022, joshi_review_2021, clarke_eeg_2002}.
-
+Elektroencefalografia tradycyjnie wykorzystywana jest do diagnozowania schorzeń neurologicznych takich jak epilepsja, nowotwory mózgu czy zaburzenia snu. Podczas badania, operator wizualnie analizuje wykresy sygnałów o różnych częstotliwościach w czasie. W związku z relatywnie niskim poziomem sygnału do szumu oraz skomplikowanymi relacjami ukrytymi w wynikach oraz łatwy dostęp do aparatury pomiarowej pozwalający na stosunkowo proste zbieranie znaczących ilości danych rozpoczęto prace nad zastosowaniem algorytmów uczenia maszynowego w celu diagnozy innych jednostek chorobowych takich jak ADHD, dysleksja czy schizofrenia \cite{ahire_comprehensive_2022, joshi_review_2021, clarke_eeg_2002}.
 \subsection{Mechanizm Działania}
 % Potencjał czynnościowy (ang. \textit{action potential}) zmienia wewnętrzne napięcie neuronu o $\approx100mV$ na czas około $3ms$, biorąc pod uwagę odległość elektrod od źródła sygnału (natężenie pola elektrycznego spada z kwadratem odległości) oraz właściwości tłumiące tkanek ludzkich, pomiar aktywności pojedynczych neuronów za pomocą elektrod umieszczonych na skórze głowy jest niemożliwe.
 
@@ -107,7 +101,7 @@ Układ nerwowy człowieka przekazuje oraz przetwarza informacje za pomocą impul
 
 W zależności od specyfiki badania ważny jest dobór następujących parametrów:
 
-\subsubsection{Rozmieszczenie elektrod}
+\subsubsection{Rozmieszczenie oraz liczba elektrod}
 Ogólnoprzyjętymi standardami pozycjonowania są tzw. międzynarodowe systemy $10$-$10$ i $10$-$20$ (przedstawiono na rysunku \ref{fig:10-20-system}), stosowanie tych metod pozwala na stosunkowo łatwe powielanie i porównywanie wyników badań przeprowadzonych w różnych placówkach. Alternatywnie 
 % (nazewnictwo wywodzi się od procentowych podziałów czaszki – elektroda znajduje się co $10\%$ obwodu czaszki na osi przód – tył i co $20\%$ na osi prawo – lewo)
 
@@ -150,29 +144,51 @@ Podczas badania EEG montażem nazywa się konfiguracje punktów odniesienia dla 
     \caption{Typowe oznaczenia częstotliwości podczas badania EEG}
     \label{tab:freqs}
 \end{table}
-
-\subsubsection{Liczba elektrod}
-
-W zależności od wymaganej dokładności przestrzennej wykorzystywana jest różna ilość elektrod pomiarowych,
-
 \chapter{Metody}
 
-
 \section{Aparatura Pomiarowa}\label{aparatura-pomiarowa}
- W celu przeprowadzenia badan przygotowano aplikację webową pozwalającą na wyświetlanie bodźców na ekranie komputera oraz korelowanie ich w czasie z sygnałem EEG mierzonym za pomocą zakupionego urządzenia – \textit{Emotiv EPOCX}
 
-\subsection{Strona internetowa}
-- this should probably be pretty precise zeby nie bylo pytan czy to napewno jest praca inzynierska
-\subsection{Zestaw Emotiv EpocX}\label{emotiv}
+- w projekekcie napisalem ze to bedzie sterownik so i should make that clear
 
-Do wykoniania badan zdecydowano sie na wykorzystanie 14 kanałowego zestawu produkowanego przez firmę Emotiv (model EpocX) wykorzytsującego elektordy gąbkowe każdorazowo zamoczone w roztworze soli fizjologicznej o stężeniu $0.9\%$ (zgodnie z zaleceniami producenta \cite{} oraz xxxx). Wybór urządzenia podyktowany został dostępnością bibliotek pozwalających na interakcje w czasie rzeczywistym (wymagane w celu oznaczenia momentu wyświetlenia pytania oraz udzielenia na nie odpowiedzi), dołączone oprogramowanie pozwalające na kalibrację przed, oraz monitorowanie w trakcie badania oraz stosunkowo niski koszt biorąc pod uwagę ilość dostępnych kanałów danych.
+W celu przeprowadzenia badan aplikację webową pozwalającą na wyświetlanie bodźców na ekranie komputera (np. zadań matematycznych) oraz oprogramowanie serwerowe odpowiedzialne za sterowanie urządzeniem pomiarowym (Emotiv EPOCX), zbieranie informacji na temat odpowiedzi użytkownika, oraz korelowanie ich w czasie z mierzonym sygnałem EEG.
+
+\subsection{Oprogramowanie}
+- this should probably be pretty precise zeby nie bylo pytan czy to napewno jest praca inżynierska
+- info o tym gdzie i jak zapisujemy wyniki
+- info o konifguracji
+ 
+Aplikacja stworzona na potrzeby badania składa się z 2 komponentów formularza zbierajacego infromacje na temat uczestnika oraz okoliczności, w jakich był on badany (\autoref{formularz-dla-osoby-badanej}) oraz modułu pozwalającego na wyświetlanie pytań w określonym interwale oraz zbieraniu na nie odpowiedzi. Na rysunku \ref{fig:app-flow} przedstawiono diagram typowego procesu działania aplikacji.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\columnwidth]{thesis/assets/app_flow_diagram.png}
+    \caption{Typowy proces działania aplikacji}
+    \label{fig:app-flow}
+\end{figure}
+
+Do wykonania oprogramowania wykorzystano
+
+Oprogramowanie serwerowe jest niezależne od interfejsu graficznego aplikacji pozwalając na wykorzystanie przygotowanego REST API (dokumentacja znajduje się w załączniku \ref{api}) do implementacji innych eksperymentów wykorzystujących badanie EEG (w tym wykorzystanie wielu urządzeń jednocześnie).
+
+Załącznik \ref{instrukcja} zawiera wymagania systemowe, opis pliku konfiguracyjnego oraz instrukcję instalacji i obsługi oprogramowania do zbierania danych.
+
+\subsection{Urządzenie pomiarowe}\label{emotiv}
+Do wykonania badan zdecydowano się na wykorzystanie 14 kanałowego (14 elektrod gąbkowych)  zestawu produkowanego przez firmę Emotiv (model EpocX). Wybór urządzenia podyktowany został dostępnością bibliotek pozwalających na interakcje z urządzeniem w czasie rzeczywistym (funkcjonalność wymagana w celu oznaczenia momentu wyświetlenia pytania oraz udzielenia na nie odpowiedzi) oraz obecnością wbudowanych czujników położenia i przyspieszenia (wymaganych w celu wyeliminowania zakłóceń związanych z ruchami głowy osoby badanej). Dodatkowo dołączone oprogramowanie pozwala na kalibrację przed, oraz monitorowanie w trakcie badania, jakości połączenia pomiędzy elektrodami a skórą pacjenta co pozwala na zmniejszenie ilości pomiarów zakończonych niepowodzeniem ze względów technicznych.
 
 \section{Procedura przeprowadzonych badań}\label{procedura-badan}
 - powtarzanie badan kiedy bylo to mozliwe
-- przy powturzeniach inny zestaw danych
+- przy powtórzeniach inny zestaw danych
+\subsection{Ankieta wejściowa}
+Przed przystąpieniem do badania ochotnikowi prezentowana jest ankieta wejściowa zawierająca informacje na temat badania (\autoref{opis-badania}), pytania na temat okoliczności badania i informacji demograficznych (\autoref{pytania-ankiety-wejsciowej}) oraz zgodę na przetwarzanie danych (\autoref{zgoda-na-przetwarzanie-danych}). Do momentu wyrażenia zgody, żadne informacje nie są zapisywane.
+
 \subsection{Przygotowanie zestawu}
-\subsection{Aniketa wejściowa}
+Przed przystąpieniem do badania gąbki znajdujące się na zakończeniach elektrod zamoczone zostały w roztworze soli fizjologicznej, następnie urządzenie umieszczone było na głowie badanej osoby a jakość połączenia sprawdzona za pomocą oprogramowania Emotiv Pro \cite{} jeżeli jakość przychodzących danych znajdowała się na zadowalającym poziomie (xxxx) pacjent proszony był o zamknięcie oczu na czas około 30 sekund w celu potwierdzenia poprawnej biokalibracji (przez weryfikację występowania wzrostu aktywności w zakresie częstotliwości $\alpha$).
+
 \subsection{Badanie}
+Po potwierdzeniu poprawnego działania urządzenia, w celu zapoznania ochotnika z działaniem interfejsu używanego do przeprowadzenia badania prezentowane są trzy przykładowe pytania. W razie braku pytań ze strony pacjenta operator opuszcza następnie pomieszczenie, a ochotnik rozpoczyna odpowiadać na pytania.
+
+Badanie polega na serii zadań obliczeń arytmetycznych które ochotnik proszony jest o wykonanie bez wykorzystania żadnych narzędzi pomocniczych. Pytania zmieniane są automatyczne w konfigurowalnym interwale w tej samej kolejności dla każdego pacjenta, a udzielone odpowiedzi zapisywane jednocześnie sygnał EEG oraz informacje o przestrzenny położeniu urządzenia są nagrywane przez cały czas trwania badania, z markerami czasu wstawionymi w momentach wyświetlenia nowego pytania i udzielenia odpowiedzi na dane pytanie. W celu umożliwienia przeprowadzenia więcej niż jednego testu dla ochotnika przygotowano trzy różne zestawy pytań.
+
 
 \section{Architektury algorytmów uczenia maszynowego}
 - sieci neuronowe
@@ -212,15 +228,20 @@ Do wykoniania badan zdecydowano sie na wykorzystanie 14 kanałowego zestawu prod
 \chapter{Dyskusja}\label{dyskusja}
 
 \appendix
-\chapter{Formularze dla osób badanych}
-\section{Zgoda na przetwarzanie danych}
-\section{Pytania ankiety wejściowej}
-\section{Pytania zawarte w badaniu}
-\chapter{Instrukcja uruchomienia i obsługi oprogramowania}
+\chapter{Formularze dla osób badanych}\label{formularz-dla-osoby-badanej}
+\section{Opis badania}\label{opis-badania}
+\section{Zgoda na przetwarzanie danych}\label{zgoda-na-przetwarzanie-danych}
+\section{Pytania ankiety wejściowej}\label{pytania-ankiety-wejsciowej}
+\section{Pytania zawarte w badaniu}\label{pytania-badania}
+\chapter{Instrukcja uruchomienia i obsługi oprogramowania}\label{instrukcja}
 \section{Wymagania systemowe}
 \section{Instalacja}
 \section{Obsługa}
-\chapter{Dokumentacja API}
+\section{Konfiguracja}
+\chapter{Dokumentacja API}\label{api}
+- register questions endpoint
+- register answer
+- mark point
 
 \printbibliography
 
