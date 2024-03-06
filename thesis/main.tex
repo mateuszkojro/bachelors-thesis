@@ -26,7 +26,6 @@
 \typpracy{inżynierska}
 \specjalizacja{Algorytmy i Programowanie}
 
-
 \stronatytulowa
 
 \begin{abstract}
@@ -34,34 +33,24 @@
 \end{abstract}
 
 \chapter{Wstęp}
+Ludzki układ nerwowy składa się z miliardów komórek nerwowych połączonych w gęstą siatkę pokrywającą całą powierzchnię ludzkiego ciała i tworząc niezwykle skomplikowany system odpowiadający za rzeczy od tak prostych jak poruszanie pojedynczymi mięśniami przez dekodowanie rzeczywistości z nieskończonego strumienia impulsów dochodzących z wszystkich zmysłów aż po kontrolowanie emocji tak skomplikowanych jak ciekawość.
+Na czele tego niezwykłego wynalazku ewolucji stoi mózg, nierozwikłana zagadka, której naukowcy i filozofowie poświęcali swoje życia od czasów sławnego eksperymentu myślowego Decartesa. Dopiero niedawno opierając się na pracy niezliczonych osób, pracujących w praktycznie wszystkich dziedzinach współczesnej nauki możliwe stało się rozkodowanie części tej niesamowitej tajemnicy. Kontynuując tą ścieżkę niniejsza praca przedstawia opracowanie oraz ewaluacje modelu klasyfikującego stan skupienia definiowany jako  xxxxx, za pomocą badania reakcji na bodziec z użyciem elektroencefalografii. 
 
-Układ nerwowy człowieka składa się z miliardów komórek nerwowych połączonych w gęstą siatkę pokrywającą całą powierzchnię ludzkiego ciała, w pełni kontrolując jego postrzeganie i interakcje z fizycznym światem odpowiada za rzeczy tak proste poruszanie pojedynczymi mięśniami przez dekodowanie rzeczywistości z nieskończonej kalkofoni impulsów dochodzących z wszystkich zmysłów az po kontrolowanie emocji tak skomplikowanych jak ciekawosc, zazdrośc czy miłość.
-
-Na czele tego niezwykłego wynalazku ewolucji stoi mózg, nierozwiklana zagadka ktorej naukowcy i filozofowie poswiecali swoje zycia od czasow slawnego  . Dopiero niedawno opierając się na pracy niezliczonych osób pracujących w praktycznie wszystkich dziedzinach współczesnej nauki możliwe stało się rozkodowanie częsci tej niesamowitej tajemnicy. 
-
-Praca przedstawia opracowanie oraz ewaluacje modelu klasyfikującego stan skupienia definiowany jako  xxxxx, za pomocą badania reakcji na bodziec z użyciem elektroencefalografii. 
-
-W ramach projektu przygotowano układ eksperymentalny (sekcja \ref{aparatura-pomiarowa}), przeprowadzono kampanię badawczą na próbce xxxxx osób (sekcja \ref{procedura-badan}) której wyniki zostały następnie poddane analizie tradycyjnymi metodami statystycznymi (sekcja \ref{analiza-klasyczna}) uwzględniając zmienne zakłócające (sekcja \ref{zmiennne-zaklucajace}) oraz algorytmami uczenia maszynowego (sekcja \ref{uczenie-maszynowe}) kontrolując stronniczość (ang. bias) opracowanych modeli (sekcja \ref{bias}). Dyskusja wyników zaprezentowana została w rozdziale \ref{dyskusja}.
+W ramach projektu przygotowano układ eksperymentalny (sekcja \ref{aparatura-pomiarowa}), przeprowadzono kampanię badawczą na próbce xxxxx osób (sekcja \ref{procedura-badan}), której wyniki zostały następnie poddane analizie tradycyjnymi metodami statystycznymi (sekcja \ref{analiza-klasyczna}), uwzględniając zmienne zakłócające (sekcja \ref{zmiennne-zaklucajace}) oraz algorytmami uczenia maszynowego (sekcja \ref{uczenie-maszynowe}) kontrolując stronniczość (ang. bias) opracowanych modeli (sekcja \ref{bias}). Dyskusja wyników zaprezentowana została w rozdziale \ref{dyskusja}.
 
 \section{Motywacja}
-- Bo trwaja badania nad diagnozowaniem ADHD schizofremi itd, dodanie ML might be interesting
+Uczenie maszynowe pozwala rozwiązywać problemy w których relacja pomiędzy wejściami i wyjściami algorytmu jest zbyt skomplikowana aby w praktyczny sposób przedstawić ja jako serie klasycznych warunków “if, else”. Nie dziwnym jest wiec ze znajdują one coraz większe zastosowanie w dziedzinach medycyny, biologii i chemii pozwalając na tak niesamowite osiągnięcia jak diagnozowanie raka <cite xray paper> czy zwijanie białek <cite alpha fold>. Jednocześnie mimo wczesnych sukcesów <cite some comparasion> proby <przymitonik rozrozniajacy badania takie jak formualrze od np. tomografii> diagnozy chorób psychologicznych są na stosunkowo niskim poziomie rozwoju <cite badania adhd i podobne>. Jako krok w drodze do tego celu, niniejsza praca ma na celu porównanie skuteczności wybranych metod badawczych na prostszym problemie badania uwagi człowieka. Decyzja o wykorzystaniu Elektroencefalografii podyktowana została przez łatwy dostęp do aparatury pomiarowej pozwalający na stosunkowo proste zbieranie znaczących oraz brak konieczności wykonywania badan w środowisku laboratoryjnym.
 
 \section{Other Work}
+Możliwość wykorzystania badania EEG w celu analizy stanu mentalnego pacjenta zaprezentowana została między innymi przez Kaushika i in. \cite{kaushik_decoding_2022} dodatkowo Guo i in. \cite{guo_detection_2018} pokazali, że możliwe jest klasyfikowanie stanu skupienia kierowcy w symulowanych warunkach. Wysoką skuteczność algorytmów uczenia maszynowego takich jak maszyny wektorów nośnych czy uczenie głębokie do analizy wyników elektroencefalografii udowodnili de Taillez i in. \cite{de_taillez_machine_2020}. Rozpoczęto również prace nad zastosowaniem algorytmów uczenia maszynowego w celu diagnozy innych jednostek chorobowych takich jak ADHD, dysleksja czy schizofrenia \cite{ahire_comprehensive_2022, joshi_review_2021, clarke_eeg_2002}.
 
-Możliwość wykorzystania badania EEG w celu analizy stanu mentalnego pacjenta zaprezentowana została między innymi przez Kaushika i in. \cite{kaushik_decoding_2022} dodatkowo Guo i in. \cite{guo_detection_2018} pokazali, że możliwe jest klasyfikowanie stanu skupienia kierowcy w symulowanych warunkach. Wysoką skuteczność algorytmów uczenia maszynowego takich jak maszyny wektorów nośnych czy uczenie głębokie do analizy wyników elektroencefalografii udowodnili de Taillez i in. \cite{de_taillez_machine_2020}. 
-
-Sprawnosc urzadzenia pomiarowego potwiedzili 
-
-- Sekcja informujaca o rzeczach ktorych nie zrobili
 
 \chapter{Podstawy teoretyczne}
-\section{Model działania mózgu}
-Pierwsze modele pracy mozgu stworzone zostaly juz w ... jednak dopiero
+% \section{Model działania mózgu}
+% Pierwsze modele pracy mozgu stworzone zostaly juz w ... jednak dopiero
 
-Ludzki mózg składa się z miliardów neuronów porozumiewających się między sobą za pomocą tzw. potencjałów czynnościowych – chwilowych impulsów, podczas których komórki znacząco zwiększają swoje wewnętrzne napięcie w celu przekazania sygnału do
-
-Informacje w mózgu przekazywane i przetwarzane są za pomocą tzw. potencjałów czynnościowych – chwilowych impulsów, podczas których napięcie wewnątrz komórki stanowczo wzrasta (xxxx). Impuls taki zostaje wygenerowany gdy czasowo skalowana (xxxx) suma napiec na "wejściach" komórki (dendrytach) przekroczy pewien poziom (xxxx). W takiej sytuacji generowane jest napięcie, które następnie przekazywane jest za pomocą aksonu do kolejnych komórek (xxxxx)
-\begin{equation}
+Informacje w mózgu przekazywane i przetwarzane są za pomocą tzw. potencjałów czynnościowych – chwilowych impulsów, podczas których napięcie wewnątrz komórki stanowczo wzrasta (xxxx). Impuls taki zostaje wygenerowany gdy czasowo skalowana suma napiec na ''wejściach'' komórki (dendrytach) przekroczy pewien poziom (xxxx). W takiej sytuacji generowane jest napięcie, które następnie przekazywane jest za pomocą aksonu do kolejnych komórek (xxxxx). W dużym uproszczeniu potencjał komórki można więc zapisać równaniem \ref{eq:napiecie-komorki}.
+\begin{equation}\label{eq:napiecie-komorki}
     \text{Potencjał komórki} \approx 
     \begin{cases} 
       70mV & \sum_i d_i(t) > \text{Napięcie progowe}  \\
@@ -71,14 +60,17 @@ Informacje w mózgu przekazywane i przetwarzane są za pomocą tzw. potencjałó
 gdzie $d_i(t)$ to napiecie na dendrycie $i$ w czasie $t$
 
 - wspomniec huxley model
-- Wspomniec ze it is all very variable
-- Action potential happens when sum of time and strenght weighted inputs to the dendrites is higher than some treshold
-- When the trigger level is achieved action potential is emited through the axon which is connected do dendrites of other cels - process continues
 - bilions of those interactions form a working brain
-- action potential is a high momentray increase in voltage in the neuron (i want the plot of the potential)
+- i want the plot of the cell potential
 
 \section{Metody badania mózgu}
+W 1884 włoski psycholog Angelo Mosso wygłosił wykład <cite> w którym przedstawił swój nowy wynalazek, stół pozwalający na balansowanie dorosłego męszczyzny na pojedynczym punkcie podparcia w celu obserwacji przepływu krwi w ludzkim ciele. 
 
+Pacjent leżąc na plecach w stanie równowagi poddawany zostawał dzianiu bodźca mającego na celu pobudzenie działania mózgu (z początku był to dźwięk <cite>, później tekst gazety czy podręcznika do matematyki) co miało spowodować napływ większej ilości krwi do mózgu, a przez to pochylenie urządzenia w stronę głowy badanego. Była to pierwsza udokumentowana próba naukowego mierzenia aktywności mózgu\footnote{Wyniki jego badan zostały poddane poważnej wątpliwości w pracy opublikowanej przez <imie> Lowe <cite> w 1936 roku – według niego wykrywane zmiany fizjologiczne nie mogą być jednoznacznie powiązane z aktywnością mózgu}.
+
+Mimo końcowego niepowodzenia, fascynująca jest ilość podobieństw pomiędzy eksperymentami przeprowadzonymi przez Mosso, a badaniami prowadzonymi przez współczesnych naukowców. Od metodologii badania aktywności mózgu opierające się na tym samym fenomenie zwiększonego ciśnienia krwi co PET (ang. \textit{positron emission tomography}) czy fMRI (ang. \textit{functional magnetic resonance imaging}) po ilość czasu spędzoną na eliminowaniu zmiennych zakłócających takich jak bicie serca podczas elektroencefalografii i wdechy i wydechy podczas badania Mossa.
+
+Aktualnie wykorzystywane metody badania aktywności mózgu podzielić można z względu na wykorzystywane metody podzielić można z względu fenomen – badanie przebiegu krwi lub pól elektromagnetycznych generowanych przez oddziaływania neuronów. Do pierwszej kategorii należą badania takie jak PET (przepływ krwi mierzony jest za pomocą obserwowania promieniowania wydzielanego przez radioaktywny izotop podany dożylnie) i fMRI wykorzystujące różnice w właściwościach magnetycznych hemoglobiny związanymi z jej utlenieniem. Największą zaletą tych metod jest wysoka dokładność przestrzenna pozwalająca na tworzenie trójwymiarowych obrazów mózgu z dokładnością poniżej $1mm$. Po drugiej stronie  spektrum znajdują się natomiast badania wykorzystujące zjawiska elektromagnetyczne występujące w mózgu. Najpopularniejsze z nich to magnetoencefalografia (MEG) – badająca zmiany w polu magnetycznym i elektroencefalografia (EEG) – badanie zmian napięcia. 
 
 \begin{figure}[h]
     \centering
@@ -87,23 +79,21 @@ gdzie $d_i(t)$ to napiecie na dendrycie $i$ w czasie $t$
     \label{fig:brain-imaging-comparasion}
 \end{figure}
 
-
 \section{EEG}
-Elektroencefalografia (EEG) to badanie polegające na pomiarze potencjałów elektrycznych w różnych punktach na powierzchni głowy pacjenta. Zebrane w ten sposób informacje pozwalają na określenie względnej aktywności różnych obszarów mózgu.
+Elektroencefalografia (EEG) to badanie polegające na pomiarze potencjałów elektrycznych w różnych punktach na powierzchni czaszki pacjenta. Zebrane w ten sposób informacje pozwalają na określenie względnej aktywności różnych obszarów mózgu. Tradycyjnie wykorzystywana jest do diagnozowania schorzeń neurologicznych takich jak epilepsja, nowotwory mózgu czy zaburzenia snu. Podczas badania operator obserwuje napięcie mierzone pomiędzy rożnymi punktami na czaszce. 
 
-Elektroencefalografia tradycyjnie wykorzystywana jest do diagnozowania schorzeń neurologicznych takich jak epilepsja, nowotwory mózgu czy zaburzenia snu. Podczas badania, operator wizualnie analizuje wykresy sygnałów o różnych częstotliwościach w czasie. W związku z relatywnie niskim poziomem sygnału do szumu oraz skomplikowanymi relacjami ukrytymi w wynikach oraz łatwy dostęp do aparatury pomiarowej pozwalający na stosunkowo proste zbieranie znaczących ilości danych rozpoczęto prace nad zastosowaniem algorytmów uczenia maszynowego w celu diagnozy innych jednostek chorobowych takich jak ADHD, dysleksja czy schizofrenia \cite{ahire_comprehensive_2022, joshi_review_2021, clarke_eeg_2002}.
 \subsection{Mechanizm Działania}
-% Potencjał czynnościowy (ang. \textit{action potential}) zmienia wewnętrzne napięcie neuronu o $\approx100mV$ na czas około $3ms$, biorąc pod uwagę odległość elektrod od źródła sygnału (natężenie pola elektrycznego spada z kwadratem odległości) oraz właściwości tłumiące tkanek ludzkich, pomiar aktywności pojedynczych neuronów za pomocą elektrod umieszczonych na skórze głowy jest niemożliwe.
-
 Układ nerwowy człowieka przekazuje oraz przetwarza informacje za pomocą impulsów elektrycznych (potencjałów czynnościowych) wytwarzanych w komórkach nerwowych (neuronach), z pomocą mechanizmu xxxxx. Ze względu na dużą liczbę neuronów w ludzkim mózgu ($\approx10^9$\cite{herculano-houzel_human_2009}), ich małe rozmiary (xxxx) małe napięcie impulsu potencjału czynnościowego ($\approx100mV$\cite{biga_anatomy_2019}) oraz krótki czas jego trwania ($\approx2ms$\cite{biga_anatomy_2019}) niemożliwe jest badanie pracy pojedynczych neuronów, a jedynie średnich wartości milionów zsynchronizowanych impulsów na przestrzeni centymetrów (xxxxxx). Ograniczenia te powodują, że różne obszary mózgu mogą być badane z różną dokładnością (najlepszą sprawność otrzymuje się w rejonach mózgu znajdujących się blisko powierzchni skóry zawierających dużą liczbę tzw. neuronów piramidowych – np. kora przedczołowa).
 
 \subsection{Metodyka Badania}
-
 W zależności od specyfiki badania ważny jest dobór następujących parametrów:
 
 \subsubsection{Rozmieszczenie oraz liczba elektrod}
-Ogólnoprzyjętymi standardami pozycjonowania są tzw. międzynarodowe systemy $10$-$10$ i $10$-$20$ (przedstawiono na rysunku \ref{fig:10-20-system}), stosowanie tych metod pozwala na stosunkowo łatwe powielanie i porównywanie wyników badań przeprowadzonych w różnych placówkach. Alternatywnie 
-% (nazewnictwo wywodzi się od procentowych podziałów czaszki – elektroda znajduje się co $10\%$ obwodu czaszki na osi przód – tył i co $20\%$ na osi prawo – lewo)
+Najbardziej popularnymi standardami pozycjonowania elektrod są tzw. międzynarodowe systemy $10$-$10$ i $10$-$20$\footnote{Wartosci liczbowe w nazwie wywodzą sie wywodzi się z procentowego podziału czaszki – elektroda znajduje się co $10\%$ obwodu czaszki na osi przód – tył i co $20\%$ na osi prawo – lewo} <cite> (przedstawiony na rysunku \ref{fig:10-20-system}), stosowanie tych metod pozwala na stosunkowo łatwe powielanie i porównywanie wyników badań przeprowadzonych w różnych placówkach i sa najczesciej stosowanymi w środowisku akademickim. 
+
+Alternatywne metody rozmieszczenia elektrod stosowane sa czasami w produktach komercjalnych z kategorii BCI (ang. brain computer interface) 
+
+
 
 \begin{figure}[h]
     \centering
@@ -123,7 +113,12 @@ Ze względu na jakość wyników, długość trwania badania oraz okoliczności 
 
 \subsubsection{Montaż}
 Podczas badania EEG montażem nazywa się konfiguracje punktów odniesienia dla poszczególnych elektrod. Najbardziej popularnymi metodami montażu są:
-% Some info in the summary of the book: https://docs.google.com/document/d/1bB9OZkO2m4fax8v3bGp_QZP7pAD-WryXQr4PxMppVp8/edit
+\begin{itemize}
+    \item \textbf{Montaż sekwencyjny} - kanał danych jest definiowany przez różnicę potencjałów pomiędzy dwoma sąsiednimi elektrodami
+    \item \textbf{Montaż referencyjny} - wartość każdego kanału jest równa różnicy napięć pomiędzy dana elektroda i elektroda referencyjna
+    \item \textbf{Montaż średnio-referencyjny} - każdy kanał to różnica pomiędzy wartością danej elektrody i średniej wartości pozostałych elektrod 
+    \item \textbf{Montaż Laplace’a} -  kanał danych jest definiowany jako różnica między wartością kanału i średniej ważonej sąsiednich elektrod
+\end{itemize}
 
 
 \subsubsection{Badane częstotliwości}
@@ -157,7 +152,7 @@ W celu przeprowadzenia badan aplikację webową pozwalającą na wyświetlanie b
 - info o tym gdzie i jak zapisujemy wyniki
 - info o konifguracji
  
-Aplikacja stworzona na potrzeby badania składa się z 2 komponentów formularza zbierajacego infromacje na temat uczestnika oraz okoliczności, w jakich był on badany (\autoref{formularz-dla-osoby-badanej}) oraz modułu pozwalającego na wyświetlanie pytań w określonym interwale oraz zbieraniu na nie odpowiedzi. Na rysunku \ref{fig:app-flow} przedstawiono diagram typowego procesu działania aplikacji.
+Aplikacja stworzona na potrzeby badania składa się z 2 komponentów formularza zbierającego informacje na temat uczestnika oraz okoliczności, w jakich był on badany (\autoref{formularz-dla-osoby-badanej}) oraz modułu pozwalającego na wyświetlanie pytań w określonym interwale oraz zbieraniu na nie odpowiedzi. Na rysunku \ref{fig:app-flow} przedstawiono diagram typowego procesu działania aplikacji.
 
 \begin{figure}[h!]
     \centering
@@ -173,11 +168,10 @@ Oprogramowanie serwerowe jest niezależne od interfejsu graficznego aplikacji po
 Załącznik \ref{instrukcja} zawiera wymagania systemowe, opis pliku konfiguracyjnego oraz instrukcję instalacji i obsługi oprogramowania do zbierania danych.
 
 \subsection{Urządzenie pomiarowe}\label{emotiv}
+- paper potwierdzajacy dzialanie urzadzenia?
 Do wykonania badan zdecydowano się na wykorzystanie 14 kanałowego (14 elektrod gąbkowych)  zestawu produkowanego przez firmę Emotiv (model EpocX). Wybór urządzenia podyktowany został dostępnością bibliotek pozwalających na interakcje z urządzeniem w czasie rzeczywistym (funkcjonalność wymagana w celu oznaczenia momentu wyświetlenia pytania oraz udzielenia na nie odpowiedzi) oraz obecnością wbudowanych czujników położenia i przyspieszenia (wymaganych w celu wyeliminowania zakłóceń związanych z ruchami głowy osoby badanej). Dodatkowo dołączone oprogramowanie pozwala na kalibrację przed, oraz monitorowanie w trakcie badania, jakości połączenia pomiędzy elektrodami a skórą pacjenta co pozwala na zmniejszenie ilości pomiarów zakończonych niepowodzeniem ze względów technicznych.
 
 \section{Procedura przeprowadzonych badań}\label{procedura-badan}
-- powtarzanie badan kiedy bylo to mozliwe
-- przy powtórzeniach inny zestaw danych
 \subsection{Ankieta wejściowa}
 Przed przystąpieniem do badania ochotnikowi prezentowana jest ankieta wejściowa zawierająca informacje na temat badania (\autoref{opis-badania}), pytania na temat okoliczności badania i informacji demograficznych (\autoref{pytania-ankiety-wejsciowej}) oraz zgodę na przetwarzanie danych (\autoref{zgoda-na-przetwarzanie-danych}). Do momentu wyrażenia zgody, żadne informacje nie są zapisywane.
 
@@ -192,14 +186,15 @@ Badanie polega na serii zadań obliczeń arytmetycznych które ochotnik proszony
 
 \section{Architektury algorytmów uczenia maszynowego}
 - sieci neuronowe
-    - rekurencyjne 
-- random forest
-- clustering algorithms
-- svm
+    - rekurencyjne - motywacja stocs
+- random forest - inni ludzie
+- clustering algorithms - jako meta rozwiazanie
+- svm - inni ludzie
 
 \chapter{Wyniki}
 - publiczny dostep do zestawu dancyh
 \section{Demografia}
+Sprawdzanie tezy ze kazda z tych zmiennych opisuje wyniki
 - Wiek
 - Płeć
 - Wykształcenie

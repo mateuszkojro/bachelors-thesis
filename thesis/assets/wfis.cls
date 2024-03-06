@@ -11,7 +11,7 @@
 \ProvidesClass{wfiisul}
 \DeclareOption{pdflatex}{\pdflatextrue}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
-\ProcessOptions\LoadClass[10pt, a4paper,twoside,openright]{report}
+\ProcessOptions\LoadClass[11pt, a4paper,twoside,openright]{report}
 
 \RequirePackage{times}
 \RequirePackage[T1]{polski}
