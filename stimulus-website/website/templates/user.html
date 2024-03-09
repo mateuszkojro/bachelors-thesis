@@ -7,17 +7,16 @@
 <div>
     <div>
         <p>
-            Ponizsze badanie ma na celu zebranie danych do przeprowadzenia analizy skupienia, za pomocą
-            elektroencefalografii.
+            Poniższe badanie ma na celu zebranie danych do przeprowadzenia analizy skupienia, za pomocą elektroencefalografii.
         </p>
         <p>
-            Twoim zadaniem jest zaznaczenie czy przedstawione zdanie jest prawdziwe czy nie. Pytania zmieniac beda sie
-            automatycznie po uplywie 30s, a test sklada sie z 30 pytań (łączny czas około 20 minut).
+            Twoim zadaniem jest zaznaczenie czy przedstawione zdania są prawdziwe czy nie. Pytania zmieniać bedą się
+            automatycznie po upływie 30s. Test składa sie z 30 pytań (łączny czas około 20 minut).
         </p>
         <p>
-            Ponizej znajduje sie ankeita majaca na celu zebranie danych pozwalajacych na minimalizacje czynników
-            środowiskowych, wszytskie pytania oprócz adresu email są kompletnie dobrowolne (w razie braku checi
-            udzielenia odpowiedzi na dane pytanie prosze o pozostawienia pustego pola)
+            Poniżej znajduje się ankieta mająca na celu zebranie danych pozwalających na minimalizację czynników
+            środowiskowych. Wszystkie pytania, oprócz adresu email, są kompletnie dobrowolne (w razie braku chęci
+            udzielenia odpowiedzi na dane pytanie proszę o pozostawienia pustego pola)
         </p>
     </div>
     <form method="get" action="{{ url_for('.stimuli') }}">
@@ -98,7 +97,7 @@
         </fieldset>
         <fieldset name="today">
             <legend>
-                Okolicznosci Badania
+                Okoliczności Badania
             </legend>
             <p>
                 <label class="question">
@@ -119,7 +118,7 @@
             <div>
                 <label>
                     <input type="radio" name="mental_calculations" value="1_to_10_times_a_day" />
-                    1 do 10 ray dziennie
+                    1 do 10 razy dziennie
                 </label>
             </div>
             <div>
@@ -171,14 +170,14 @@
             </p>
             <p>
             <div class="question">
-                Substancje psychoaktywne w ciagu ostatnich 6 godzin
+                Substancje psychoaktywne w ciągu ostatnich 6 godzin
             </div>
             <div>
                 <input type="checkbox" id="cofeine" name="psychoactive_substances" value="cofeine" />
                 <label for="cofeine">Kofeina</label>
                 </input>
                 <input type="checkbox" id="alkochol" name="psychoactive_substances" value="alkochol" />
-                <label for="alkochol">Alkochol</label>
+                <label for="alkochol">Alkohol</label>
                 </input>
                 <input type="checkbox" id="nicotine" name="psychoactive_substances" value="nicotine" />
                 <label for="nicotine">Nikotyna</label>
@@ -242,12 +241,13 @@
             </p>
         </fieldset>
         <p>
-            Po nacisnieciu przycisku <i>Start</i> badanie rozpocznie się (po 30 sekundowym czasie na przygotowanie), w czasie jego trwania proszę o wykonywanie mozliwie minimalnej ilości ruchów
+            Twoim zadaniem jest zaznaczenie czy przedstawione zdania są prawdziwe czy nie. Pytania zmieniać bedą się
+            Po naciśnięciu przycisku <i>Start</i> rozpocznie się badanie. Pierwsze 30 sekund to czas na przygotowanie się. W czasie trwania całego badania proszę o wykonywanie możliwie minimalnej ilości ruchów.
         </p>
         <div style="padding-bottom: 1em;">
             <label>
                 <input type="checkbox" name="acept_data_processing" required>
-                Wyrazam zgode na przetwarzenie zebranych zanonimizowanych danych na potrzeby badan naukowych.
+                Wyrażam zgodę na przetwarzenie zebranych danych na potrzeby badań naukowych.
             </label>
         </div>
         <button class="w3-button w3-black">Start</button>
