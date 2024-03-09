@@ -217,18 +217,29 @@
             <p>
                 <label class="question">
                     Tętno
-                    <input type="number" name="heartrate">
+                    <input type="number" min="0" max="300" name="heartrate">
                 </label>
             </p>
         </fieldset>
         <fieldset>
             <legend>
-                Konfiguracja urządzenia pomiarowego
+                Konfiguracja badania
             </legend>
-            <label class="question">
-                Adres urządzenia
-                <input type="text" name="emotiv_adress" value="wss://localhost:6868" required>
-            </label>
+            <p>
+                <label class="question">
+                    Adres urządzenia
+                    <input type="url" name="emotiv_adress" value="wss://localhost:6868" required>
+                </label>
+            </p>
+            <p>`
+                <label class="question">
+                    Zestaw pytań
+                    <select name="question_set" id="cars">
+                        <option value="test_questions.json">Pytania Próbne</option>
+                        <option value="standard_question_set_1.json">Standardowy Zestaw 1</option>
+                      </select>
+                </label>
+            </p>
         </fieldset>
         <p>
             Po nacisnieciu przycisku <i>Start</i> badanie rozpocznie się (po 30 sekundowym czasie na przygotowanie), w czasie jego trwania proszę o wykonywanie mozliwie minimalnej ilości ruchów
