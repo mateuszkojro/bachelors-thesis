@@ -67,7 +67,7 @@
 \chapter{Wstęp}
 Ludzki układ nerwowy składa się z miliardów komórek nerwowych, połączonych w gęstą siatkę pokrywającą całą powierzchnię ludzkiego ciała tworząc niezwykle skomplikowany system odpowiadający za różnorodne aspekty naszego życia: od tak prostych jak poruszanie pojedynczymi mięśniami, przez dekodowanie rzeczywistości z nieskończonego strumienia impulsów dochodzących z wszystkich zmysłów, aż po kontrolowanie uczuć tak skomplikowanych jak ciekawość. Na czele tego niezwykłego wynalazku ewolucji stoi mózg, zagadka, której naukowcy i filozofowie poświęcali swoje życia od czasów sławnego eksperymentu myślowego Decartesa. Dopiero niedawno, opierając się na pracy wielu osób w niezliczonych dziedzinach współczesnej nauki, możliwe stało się rozwikłanie części tej niesamowitej tajemnicy. Kontynuując tę ścieżkę, poniższa praca przedstawia opracowanie oraz ewaluacje modelu klasyfikującego stan skupienia, za pomocą badania reakcji na bodziec z użyciem elektroencefalografii. 
 
-W ramach projektu przygotowano układ eksperymentalny (sekcja \ref{aparatura-pomiarowa}), przeprowadzono kampanię badawczą na próbce xxxxx osób (sekcja \ref{procedura-badan}), której wyniki zostały następnie poddane analizie tradycyjnymi metodami statystycznymi (sekcja \ref{analiza-klasyczna}), uwzględniając zmienne zakłócające (sekcja \ref{zmiennne-zaklucajace}) oraz algorytmami uczenia maszynowego (sekcja \ref{uczenie-maszynowe}) kontrolując stronniczość (ang. bias) opracowanych modeli (sekcja \ref{bias}). Dyskusję wyników zaprezentowano w rozdziale \ref{dyskusja}.
+W ramach projektu przygotowano układ eksperymentalny (sekcja \ref{aparatura-pomiarowa}), przeprowadzono kampanię badawczą na próbce 19 osób (sekcja \ref{procedura-badan}), której wyniki zostały następnie poddane analizie tradycyjnymi metodami statystycznymi (sekcja \ref{analiza-klasyczna}), uwzględniając zmienne zakłócające (sekcja \ref{zmiennne-zaklucajace}) oraz algorytmami uczenia maszynowego (sekcja \ref{uczenie-maszynowe}) kontrolując stronniczość (ang. bias) opracowanych modeli (sekcja \ref{bias}). Dyskusję wyników zaprezentowano w rozdziale \ref{dyskusja}.
 
 \section{Motywacja}
 Uczenie maszynowe pozwala rozwiązywać problemy, w których relacja pomiędzy wejściami i wyjściami algorytmu jest zbyt skomplikowana, aby w praktyczny sposób przedstawić ją jako serie klasycznych warunków “if, else”. Nie dziwnym jest więc, że znajdują one coraz większe zastosowanie w dziedzinach medycyny, biologii i chemii, pozwalając na tak niesamowite osiągnięcia jak np. diagnozowanie raka płuc \cite{li_machine_2022} czy zwijanie białek (ang. \textit{protein folding}) \cite{jumper_highly_2021}. Jednocześnie mimo wczesnych sukcesów \cite{some comparasion}, próby diagnozy chorób psychologicznych za pomocą badań obrazowych są na stosunkowo niskim poziomie rozwoju \cite{badania adhd i podobne}. Jako krok w drodze do opracowania tego typu metod, niniejsza praca zawiera porównanie skuteczności wybranych metod badawczych na prostszym problemie oceny uwagi człowieka. Decyzja o wykorzystaniu elektroencefalografii podyktowana została łatwym dostępem do aparatury pomiarowej, możliwością stosunkowo prostego zbierania znaczących ilości danych oraz brakiem konieczności wykonywania badań w środowisku laboratoryjnym.
@@ -129,7 +129,7 @@ Najbardziej popularnymi standardami pozycjonowania elektrod są tzw. międzynaro
     \label{fig:10-20-system}
 \end{figure}
 
-Alternatywne metody rozmieszczenia elektrod stosowane są czasami w produktach komercjalnych z kategorii BCI (ang. \textit{brain computer interface}). Narzędzia te często ignorują standardy rozmieszczenia elektrod, i skupiają je na korze przedczołowej w celu optymalizacji stosunku kosztów do jakości zebranych danych. Przykładem urządzenia stosującego ten zabieg jest wykorzystany na potrzeby pracy zestaw Emotiv EPOC X \cite{emotiv_inc_epoc_nodate}. 
+Alternatywne metody rozmieszczenia elektrod stosowane są czasami w produktach komercjalnych z kategorii BCI (ang. \textit{brain computer interface}). Narzędzia te często ignorują standardy pozycjonowania elektrod i skupiają je na korze przedczołowej w celu optymalizacji stosunku kosztów do jakości zebranych danych. Przykładem urządzenia stosującego ten zabieg jest wykorzystany na potrzeby pracy zestaw Emotiv EPOC X \cite{emotiv_inc_epoc_nodate}. 
 
 
 \subsubsection{Rodzaj elektrod}
@@ -174,7 +174,7 @@ Podczas badania EEG montażem nazywa się konfigurację punktów odniesienia dla
 \section{Aparatura Pomiarowa}\label{aparatura-pomiarowa}
 % - w projekekcie napisalem ze to bedzie sterownik so i should make that clear
 
-W celu przeprowadzenia badań opracowano aplikację webową pozwalającą na wyświetlanie bodźców na ekranie komputera (np. zadań matematycznych) oraz oprogramowanie serwerowe odpowiedzialne za sterowanie urządzeniem pomiarowym (Emotiv EPOCX), zbieranie informacji na temat odpowiedzi użytkownika, oraz korelowanie ich w czasie z mierzonym sygnałem EEG.
+W celu przeprowadzenia badań opracowano aplikację webową pozwalającą na wyświetlanie bodźców na ekranie komputera (np. zadań matematycznych) oraz oprogramowanie serwerowe odpowiedzialne za sterowanie urządzeniem pomiarowym (Emotiv EPOCX), zbieranie informacji na temat odpowiedzi użytkownika, oraz korelowanie ich w czasie ze mierzonym sygnałem EEG.
 
 \subsection{Oprogramowanie}
 % - this should probably be pretty precise zeby nie bylo pytan czy to napewno jest praca inżynierska
@@ -197,7 +197,7 @@ Oprogramowanie serwerowe jest niezależne od interfejsu graficznego aplikacji, p
 Załącznik \ref{instrukcja} zawiera wymagania systemowe, opis pliku konfiguracyjnego oraz instrukcję instalacji i obsługi oprogramowania do zbierania danych.
 
 \subsection{Urządzenie pomiarowe}\label{emotiv}
-Do wykonania badan zdecydowano się na wykorzystanie 14 kanałowego (14 elektrod gąbkowych w konfiguracji przedstawionej na rysunku \ref{fig:emotiv-electrode-locations}) zestawu produkowanego przez firmę Emotiv (model EpocX\cite{emotiv_inc_epoc_nodate}). Wybór urządzenia podyktowany został dostępnością bibliotek pozwalających na interakcję z urządzeniem w czasie rzeczywistym\cite{emotiv_inc_emotiv_nodate-1} (funkcjonalność wymagana w celu oznaczenia momentu wyświetlenia pytania oraz udzielenia na nie odpowiedzi) oraz obecnością wbudowanych czujników położenia i przyspieszenia (wymaganych w celu wyeliminowania zakłóceń związanych z ruchami głowy osoby badanej). Dodatkowo dołączone oprogramowanie pozwala na kalibrację przed, oraz monitorowanie w trakcie badania, jakości połączenia pomiędzy elektrodami a skórą pacjenta co pozwala na zmniejszenie ilości pomiarów zakończonych niepowodzeniem ze względów technicznych.
+Do wykonania badań zdecydowano się na wykorzystanie 14 kanałowego (14 elektrod gąbkowych w konfiguracji przedstawionej na rysunku \ref{fig:emotiv-electrode-locations}) zestawu, produkowanego przez firmę Emotiv (model EpocX\cite{emotiv_inc_epoc_nodate}). Wybór urządzenia podyktowany został dostępnością bibliotek pozwalających na interakcję z urządzeniem w czasie rzeczywistym\cite{emotiv_inc_emotiv_nodate-1} (funkcjonalność wymagana w celu oznaczenia momentu wyświetlenia pytania oraz udzielenia na nie odpowiedzi) oraz obecnością wbudowanych czujników położenia i przyspieszenia (wymaganych w celu wyeliminowania zakłóceń związanych z ruchami głowy osoby badanej). Dodatkowo dołączone oprogramowanie pozwala na kalibrację przed, oraz monitorowanie w trakcie badania, jakości połączenia pomiędzy elektrodami a skórą pacjenta co pozwala na zmniejszenie ilości pomiarów zakończonych niepowodzeniem ze względów technicznych.
 
 \begin{figure}[h!]
     \centering
@@ -210,10 +210,10 @@ Do wykonania badan zdecydowano się na wykorzystanie 14 kanałowego (14 elektrod
 \section{Procedura przeprowadzonych badań}\label{procedura-badan}
 % - jaki montaz
 \subsection{Ankieta wejściowa}
-Przed rozpoczęciem badania uczestnikowi prezentowana jest ankieta wejściowa. Zawiera ona informacje na temat badania (\autoref{opis-badania}), pytania na temat okoliczności , w których ono przebiega i informacji demograficznych (\autoref{pytania-ankiety-wejsciowej}) oraz zgodę na przetwarzanie danych (\autoref{zgoda-na-przetwarzanie-danych}). Do momentu wyrażenia zgody, żadne informacje nie są zapisywane.
+Przed rozpoczęciem badania uczestnikowi prezentowana jest ankieta wejściowa. Zawiera ona informacje na temat badania (\autoref{opis-badania}), pytania na temat okoliczności, w których ono przebiega i informacji demograficznych (\autoref{pytania-ankiety-wejsciowej}) oraz zgodę na przetwarzanie danych (\autoref{zgoda-na-przetwarzanie-danych}). Do momentu wyrażenia zgody, żadne informacje nie są zapisywane.
 
 \subsection{Przygotowanie zestawu}
-Przed przystąpieniem do badania, gąbki montowane na zakończeniach elektrod zamaczane są w roztworze soli fizjologicznej, a urządzenie umieszczone zostaje na głowie badanej osoby. Następnie jakość zbieranych danych sprawdzana jest za pomocą oprogramowania Emotiv Pro\cite{emotiv_inc_epoc_nodate}. Po uzyskaniu zadowalającego poziomu pacjent proszony jest o zamknięcie oczu na czas około 30 sekund w celu potwierdzenia poprawnej biokalibracji (przez weryfikację występowania wzrostu aktywności w zakresie częstotliwości $\alpha$ \cite{britton_electroencephalography_2016}).
+Przed przystąpieniem do badania, gąbki montowane na zakończeniach elektrod zamaczane są w roztworze soli fizjologicznej, a urządzenie umieszczone zostaje na głowie badanej osoby. Następnie w celu potwierdzenia jego poprawnego działania jakość połączenia sprawdzana jest za pomocą oprogramowania Emotiv Pro\cite{emotiv_inc_epoc_nodate}. Po uzyskaniu zadowalającego poziomu pacjent proszony jest o zamknięcie oczu na czas około 30 sekund w celu potwierdzenia poprawnej biokalibracji (przez weryfikację występowania wzrostu aktywności w zakresie częstotliwości $\alpha$ \cite{britton_electroencephalography_2016}).
 
 \subsection{Badanie}
 Po potwierdzeniu poprawnego działania urządzenia, ochotnik zostaje zapoznany z interfejsem używanym do przeprowadzenia badania. Na ekranie komputera lub tabletu prezentowane są trzy przykładowe pytania. Po upewnieniu się, że cała procedura jest zrozumiała dla pacjenta, operator opuszcza pomieszczenie, a ochotnik rozpoczyna udzielanie odpowiedzi.
@@ -231,7 +231,7 @@ Badanie polega na wyświetlaniu na ekranie  serii 10 zadań arytmetycznych. Ocho
 \chapter{Wyniki}
 % - publiczny dostep do zestawu dancyh
 \section{Demografia}
-Badaniu poddanych zostało XXXX ochotników, spośród których zdecydowana większość uczestników klasowała się w przedziale od 50 do 60 ($XX\%$) lub od 20 do 30 ($XX\%$) lat (\autoref{fig:age}). W zbiorze zachowano balans pomiędzy ilością mężczyzn ($XX\%$) i kobiet ($XX\%$) (\autoref{fig:gender}). Większość osób badanych posiada wykształcenie wyższe ($XX\%$ – rysunek \ref{fig:education}) oraz wykonuje pracę biurową ($XX\%$ – rysunek \ref{fig:jobs}). Tylko jedna z badanych osób cierpi na schorzenie neurologiczne (epilepsje) w związku z czym wykonane na niej pomiary  wyeliminowane zostały z zbioru danych
+Badaniu poddanych zostało 19 ochotników, spośród których zdecydowana większość uczestników klasowała się w przedziale od 50 do 60 ($47\%$) lub od 20 do 30 ($21\%$) lat (\autoref{fig:age}). W zbiorze zachowano balans pomiędzy ilością mężczyzn i kobiet (odpowiednio $47\%$ i $53\%$) (\autoref{fig:gender}). Większość osób badanych posiada wykształcenie wyższe ($73\%$ – rysunek \ref{fig:education}) oraz wykonuje pracę biurową ($63\%$ – rysunek \ref{fig:jobs}). Tylko jedna z badanych osób cierpi na schorzenie neurologiczne (epilepsje) w związku z czym wykonane na niej pomiary  wyeliminowane zostały ze zbioru danych.
 
 \begin{figure}[h!]
 \begin{subfigure}[b]{0.45\textwidth}
@@ -284,7 +284,7 @@ Badaniu poddanych zostało XXXX ochotników, spośród których zdecydowana wię
 % - Stopien zaznajomienia z komputerami
 
 \section{Analiza statystyczna}\label{analiza-klasyczna}
-W celu eliminacji obserwacji odstających wykorzystano tzw. standaryzację Z zaaplikowaną do średniego potencjału zmierzonego na każdej z elektrod (\autoref{lst:z-score-calculation} zawiera implementację tej operacji z wykorzystaniem bibliotek NumPy \cite{harris_array_2020} i SciPy \cite{virtanen_scipy_2020}), ustalając poziom odrzucenia na $3\sigma$. Dzięki temu odrzucono jedną ze zbadanych osób (\autoref{fig:zscore}).
+W celu eliminacji obserwacji odstających wykorzystano tzw. ,,standaryzację $Z$'' zaaplikowaną do średniego potencjału zmierzonego na każdej z elektrod, (\autoref{lst:z-score-calculation} zawiera implementację tej operacji z wykorzystaniem bibliotek NumPy \cite{harris_array_2020} i SciPy \cite{virtanen_scipy_2020}), ustalając poziom odrzucenia na $3\sigma$. Dzięki temu wyeliminowano jeden z wykonanych pomiarów – Osoba Q(\autoref{fig:zscore}).
 
 \begin{lstlisting}[caption={Obliczanie standardyzacji Z},label={lst:z-score-calculation}]
 import numpy as np
@@ -303,7 +303,7 @@ zscores = np.abs(zscore(X)).max(axis=1)
 \end{figure}
 
 
-Standardową metodą analizy danych zebranych za pomocą zestawu EEG jest aplikacja dyskretnej transformaty Fouriera w celu względnej siły poszczególnych pasm częstotliwości (\autoref{tab:freqs}). W celu udowodnienia różnicy pomiędzy aktywnością mózgu w czasie skupienia (okres od wyświetlenia pytania do udzielenia odpowiedzi – \autoref{fig:thinking}), a aktywnością w czasie spoczynku (okres po udzieleniu odpowiedzi – \autoref{fig:waiting}) cały czas spędzony w danym stanie połączony zostaje a następnie poddany analizie fourierowskiej w oknach o rozmiarze $128$ próbek urządzenia ($1$ sekundy), implementacja tej operacji przedstawiona została na listingu \ref{lst:moving-to-freq-domain}. Tak przygotowane próbki porównane zostają następnie za pomocą testu Kruskala, wartości $p$ przedstawiono na rysunku \ref{fig:thinking-vs-waiting-pvalue}. Przy założeniu istotności statystycznej na poziomie $0,05$ średnie wartości zmierzone na części kanałów są różne w czasie skupienia.
+Standardową metodą analizy danych zebranych za pomocą zestawu EEG jest aplikacja dyskretnej transformaty Fouriera w celu względnej siły poszczególnych pasm częstotliwości (\autoref{tab:freqs}). W celu udowodnienia różnicy pomiędzy aktywnością mózgu w czasie skupienia (okres od wyświetlenia pytania do udzielenia odpowiedzi – \autoref{fig:thinking}), a aktywnością w czasie spoczynku (okres po udzieleniu odpowiedzi – \autoref{fig:waiting}) cały czas spędzony w danym stanie zostaje zgrupowany, a następnie poddany analizie fourierowskiej w oknach o rozmiarze $128$ próbek urządzenia ($1$ sekundy), implementacja tej operacji przedstawiona została na listingu \ref{lst:moving-to-freq-domain}. Tak przygotowane próbki porównane zostają następnie za pomocą testu Kruskala, wartości $p$ przedstawiono na rysunku \ref{fig:thinking-vs-waiting-pvalue}. Przy założeniu istotności statystycznej na poziomie $0,05$ średnie wartości zmierzone na części kanałów są różne w czasie skupienia.
 
 
 \begin{lstlisting}[caption={Przejście do domeny częstotliwościowej},label={lst:moving-to-freq-domain}]
@@ -336,12 +336,16 @@ betas = np.sum(freq_domain[:, :, 14:25], axis=-1)
     \caption{Aktywność mózgu w czasie oczekiwania}
     \label{fig:waiting}
 \end{subfigure}
+
+
 \begin{subfigure}[b]{\textwidth}
     \centering
     \includegraphics[width=\columnwidth]{thesis/assets/thinking.png}
     \caption{Aktywność mózgu w czasie myślenia}
     \label{fig:thinking}
 \end{subfigure}
+
+
 \begin{subfigure}[b]{\textwidth}
     \centering
     \includegraphics[width=\columnwidth]{thesis/assets/diff.png}
@@ -354,7 +358,7 @@ betas = np.sum(freq_domain[:, :, 14:25], axis=-1)
 \end{figure}
 
 \section{Zmienne zakłócające}\label{zmiennne-zaklucajace}
-Ankieta wstępna wypełniania przez pacjentów zawierała pytania mające na celu ocenę czynników które mogły by wpłynąć na wyniki badania, takich jak ilosc czasu spedzonego przy komuterze (\autoref{fig:computer-time}) godziny snu poprzedniej nocy (\autoref{fig:sleep-time}) i poziom zmęczenia (\autoref{fig:tired}), przyjmowane substacnje psychoaktywne (\autoref{fig:psychoactive-substances} oraz czestosc wykonywania mentalnych obliczeń arytmetycznych (\autoref{fig:arithmetic}).
+Ankieta wstępna wypełniania przez pacjentów zawierała pytania mające na celu ocenę czynników, które mogłyby wpłynąć na wyniki badania, takich jak ilość czasu spędzonego przy komputerze (\autoref{fig:computer-time}), godziny snu poprzedniej nocy (\autoref{fig:sleep-time}), poziom zmęczenia (\autoref{fig:tired}), przyjmowane substancje psychoaktywne (\autoref{fig:psychoactive-substances} oraz częstotliwość wykonywania mentalnych obliczeń arytmetycznych (\autoref{fig:arithmetic}).
 
 \begin{figure}[h!]
 \begin{subfigure}[b]{0.45\textwidth}
@@ -373,7 +377,7 @@ Ankieta wstępna wypełniania przez pacjentów zawierała pytania mające na cel
 \begin{subfigure}[b]{0.45\textwidth}
     \centering
     \includegraphics[width=\columnwidth]{thesis/assets/computer_time.png}
-    \caption{Czas spędzony przy komputerze w ciągu dnia}
+    \caption{Czas spędzany przy komputerze w ciągu dnia}
     \label{fig:computer-time}
 \end{subfigure}   
 \hfill
@@ -392,15 +396,15 @@ Ankieta wstępna wypełniania przez pacjentów zawierała pytania mające na cel
 \caption{Histogramy dla zmiennych zakłócających}
 \end{figure}
 
-Po aplikacji transformacji opisanej na listingu \ref{lst:moving-to-freq-domain}, w celu określenia czy któraś z badanych zmiennych zakłócających ma wpływ na wykonywane pomiary (przyjęto poziom istotności wysokości $0,5$) zastosowano jednoczynnikową analizę wariacji (ang \textit{one-way ANOVA}), a wyniki przedstawiono w tabeli \ref{tab:confunding-variables-statistical-tests} 
+Po aplikacji transformacji opisanej na listingu \ref{lst:moving-to-freq-domain}, w celu określenia wpływu  badanych zmiennych zakłócających ma na wykonywane pomiary (przyjęto poziom istotności wysokości $0,5$) zastosowano jednoczynnikową analizę wariacji (ang \textit{one-way ANOVA}), a wyniki przedstawiono w tabeli \ref{tab:confunding-variables-statistical-tests} 
 
 \begin{table}[h!]
     \centering
     \begin{tabular}{|c|c|c|}
         \hline
-          Zmienna zakłócająca & Wartośc $p$\\
+          Zmienna zakłócająca & Wartość $p$\\
         \hline
-         Godziny snu poprzedniej nocy & \\
+         Ilość godzin snu & \\
          Samookreślony poziom zmęczenia &  \\
          Czas spędzany przy komputerze & \\
          Substancje psychoaktywne  & \\
@@ -442,14 +446,15 @@ W celu opracowania algorytmu wykrywania stanu skupienia przetestowano szereg ró
     \label{fig:mlstm}
 \end{figure}
 
-Bez wzgledu na inne kroki przygotowania danych, dane zebrane od trzech osob oddzielane sa od reszty i sluza jako zstaw danych uzywanych do walidacji przygotowany algorytmów. W celu oceny jakośći modelu stosowana jest standardowa dla problemow klasyfikacji binarnej miara F1 (obliczana za pomocą wzoru \ref{eq:calculation-f1}).
+
+Zestaw danych walidacyjnych przygotowany został poprzez oddzielenie pomiarów wykonanych na trzech osobach i niewykorzystywanie go podczas trenowania algorytmów. Do oceny jakości modelu stosowana jest standardowa dla problemów klasyfikacji binarnej miara F1 (obliczana za pomocą wzoru \ref{eq:calculation-f1}).
 
 \begin{equation}\label{eq:calculation-f1}
     F_1 = \frac{2*\text{prawdziwie pozytywne}}{2*\text{prawdziwie pozytywne}+\text{fałszywie pozytywne}+\text{fałszywie negatywne}}
 \end{equation}
 
 
-W celu dobrania odpowiednich metod przygotowania danych oraz wartości hiperparametrów przygotowywanych modeli przeprowadzono eksperymenty mające na celu ich ustalenie. Wpływ rozmiaru okna czasowego na uczenie modelu sprawdzony został poprzez trenowanie lasu losowego na tym samym zbiorze danych z różnym rozmiarem okna czasowego jako wejśćia do modelu (\autoref{fig:window-size}). Natomiast głebokość lasu losowego dostosowana została przez jej sukcesywne zwiększanie aż do osiągnięcia stabilizacji (\autoref{fig:rf-num-nodes}).
+W celu dobrania odpowiednich metod przygotowania danych oraz wartości hiperparametrów przygotowywanych modeli przeprowadzono eksperymenty mające na celu ich ustalenie. Wpływ rozmiaru okna czasowego na uczenie modelu sprawdzony został poprzez trenowanie lasu losowego na tym samym zbiorze danych z różnym rozmiarem okna czasowego jako wejścia do modelu (\autoref{fig:window-size}). Natomiast głębokość lasu losowego dostosowana została przez jej sukcesywne zwiększanie aż do osiągnięcia stabilizacji (\autoref{fig:rf-num-nodes}).
 
 \begin{figure}[h!]
     \centering
@@ -486,7 +491,7 @@ W celu dobrania odpowiednich metod przygotowania danych oraz wartości hiperpara
         Sieć MLSTM & & \\
         \hline
     \end{tabular}
-    \caption{Najlepsze wyniki miary F1 na zbiorze walidacyjnym z podziałem na rodzaj modelu i rodzaj danych wejśćiowych}
+    \caption{Najlepsze wyniki miary F1 na zbiorze walidacyjnym z podziałem na rodzaj modelu i rodzaj danych wejściowych}
     \label{tab:high-level-results}
 \end{table}
 
