@@ -101,7 +101,7 @@ Pacjent, leżąc na plecach w stanie równowagi, poddawany zostawał dzianiu bod
 
 Mimo końcowego niepowodzenia, fascynująca jest ilość podobieństw pomiędzy eksperymentami przeprowadzonymi przez Mosso a badaniami prowadzonymi przez współczesnych naukowców. Od metodologii badania aktywności mózgu, opierającej się na tym samym fenomenie zwiększonego ciśnienia krwi co PET (ang. \textit{positron emission tomography}) czy fMRI (ang. \textit{functional magnetic resonance imaging}), po uwagę zwróconą na eliminowanie zmiennych zakłócających takich jak bicie serca podczas elektroencefalografii czy wdechy i wydechy podczas badania Mossa.
 
-Aktualnie stosowane metody pomiaru aktywności mózgu podzielić można ze względu na wykorzystywany fenomen – badanie przebiegu krwi lub pól elektromagnetycznych generowanych przez oddziaływania neuronów. Do pierwszej kategorii należą badania takie jak PET (przepływ krwi mierzony jest za pomocą obserwowania promieniowania wydzielanego przez radioaktywny izotop podany dożylnie) i fMRI wykorzystujące różnice we właściwościach magnetycznych hemoglobiny związane z jej utlenieniem. Największą zaletą tych metod jest wysoka dokładność przestrzenna, pozwalająca na tworzenie trójwymiarowych obrazów mózgu z dokładnością poniżej $1mm$. Po drugiej stronie  spektrum znajdują się natomiast badania wykorzystujące zjawiska elektromagnetyczne występujące w mózgu. Najpopularniejsze z nich to magnetoencefalografia (MEG) – badająca zmiany w polu magnetycznym i elektroencefalografia (EEG) – badanie zmian napięcia. 
+Aktualnie stosowane metody pomiaru aktywności mózgu, podzielić można ze względu na wykorzystywany fenomen – badanie przebiegu krwi lub pól elektromagnetycznych generowanych przez oddziaływania neuronów. Do pierwszej kategorii należą badania takie jak PET (przepływ krwi mierzony jest za pomocą obserwowania promieniowania wydzielanego przez radioaktywny izotop podany dożylnie) i fMRI wykorzystujące różnice we właściwościach magnetycznych hemoglobiny związane z jej utlenieniem. Największą zaletą tych metod jest wysoka dokładność przestrzenna, pozwalająca na tworzenie trójwymiarowych obrazów mózgu z dokładnością poniżej $1mm$. Po drugiej stronie  spektrum znajdują się natomiast badania wykorzystujące zjawiska elektromagnetyczne występujące w mózgu. Najpopularniejsze z nich to magnetoencefalografia (MEG) – badająca zmiany w polu magnetycznym i elektroencefalografia (EEG) – badanie zmian napięcia. 
 
 \begin{figure}[h]
     \centering
@@ -129,7 +129,7 @@ Najbardziej popularnymi standardami pozycjonowania elektrod są tzw. międzynaro
     \label{fig:10-20-system}
 \end{figure}
 
-Alternatywne metody rozmieszczenia elektrod stosowane są czasami w produktach komercjalnych z kategorii BCI (ang. \textit{brain computer interface}). Skupiają one najczęściej dostępne elektrody na korze przedczołowej w celu optymalizacji stosunku kosztów do jakości zebranych danych. Przykładem urządzenia stosującego ten zabieg jak wykorzystany na potrzeby pracy zestaw Emotiv EPOC X \cite{emotiv_inc_epoc_nodate}. 
+Alternatywne metody rozmieszczenia elektrod stosowane są czasami w produktach komercjalnych z kategorii BCI (ang. \textit{brain computer interface}). Narzędzia te często ignorują standardy rozmieszczenia elektrod, i skupiają je na korze przedczołowej w celu optymalizacji stosunku kosztów do jakości zebranych danych. Przykładem urządzenia stosującego ten zabieg jest wykorzystany na potrzeby pracy zestaw Emotiv EPOC X \cite{emotiv_inc_epoc_nodate}. 
 
 
 \subsubsection{Rodzaj elektrod}
@@ -190,9 +190,9 @@ Aplikacja stworzona na potrzeby badania składa się z dwóch komponentów: form
     \label{fig:app-flow}
 \end{figure}
 
-Do wykonania oprogramowania serwerowego wykorzystano język programowania \textit{Python}\cite{python_developers_python_2024} w wersji 3.9, używając biblioteki \textit{Flask}\cite{flask_developers_flask_nodate} do implementacji REST API, a komunikacja z urządzeniem pomiarowym odbywała się za pomocą protokołu WebSocket z wykorzystaniem biblioteki \textit{websocket-client}\cite{liris_websocket-client_nodate}. Interfejs graficzny przygotowano z wykorzystaniem biblioteki \textit{htmx}\cite{htmx_developers_htmx_nodate}.
+Całość oprogramowania serwerowego napisano w języku programowania \textit{Python}\cite{python_developers_python_2024} w wersji 3.9, używając biblioteki \textit{Flask}\cite{flask_developers_flask_nodate} do implementacji REST API, a komunikacja z urządzeniem pomiarowym odbywała się za pomocą protokołu WebSocket z wykorzystaniem \textit{websocket-client}\cite{liris_websocket-client_nodate}. Interfejs graficzny przygotowano z użyciem biblioteki \textit{htmx}\cite{htmx_developers_htmx_nodate}.
 
-Oprogramowanie serwerowe jest niezależne od interfejsu graficznego aplikacji pozwalając na wykorzystanie przygotowanego REST API (dokumentacja znajduje się w załączniku \ref{api}) do implementacji innych eksperymentów wykorzystujących badanie EEG (w tym badań wykorzystujących  wiele urządzeń jednocześnie).
+Oprogramowanie serwerowe jest niezależne od interfejsu graficznego aplikacji, pozwala to na wykorzystanie przygotowanego REST API (dokumentacja znajduje się w załączniku \ref{api}) do implementacji innych eksperymentów wykorzystujących badanie EEG (w tym badań wykorzystujących wiele urządzeń jednocześnie).
 
 Załącznik \ref{instrukcja} zawiera wymagania systemowe, opis pliku konfiguracyjnego oraz instrukcję instalacji i obsługi oprogramowania do zbierania danych.
 
@@ -231,42 +231,49 @@ Badanie polega na wyświetlaniu na ekranie  serii 10 zadań arytmetycznych. Ocho
 \chapter{Wyniki}
 % - publiczny dostep do zestawu dancyh
 \section{Demografia}
-Badaniu poddanych zostało XXXX ochotników, spośród których zdecydowana większość uczestników klasowała się w przedziale od 50 do 60 ($XX\%$) lub od 20 do 30 ($XX\%$) lat. W zbiorze zachowano balans pomiędzy ilością mężczyzn ($XX\%$) i kobiet ($XX\%$). Większość osób badanych posiada wykształcenie wyższe ($XX\%$) oraz wykonuje pracę biurową ($XX\%$). Tylko jedna z badanych osób cierpi na schorzenie neurologiczne (epilepsje) w związku z czym wykonane na niej pomiary  wyeliminowane zostały z zbioru danych
+Badaniu poddanych zostało XXXX ochotników, spośród których zdecydowana większość uczestników klasowała się w przedziale od 50 do 60 ($XX\%$) lub od 20 do 30 ($XX\%$) lat (\autoref{fig:age}). W zbiorze zachowano balans pomiędzy ilością mężczyzn ($XX\%$) i kobiet ($XX\%$) (\autoref{fig:gender}). Większość osób badanych posiada wykształcenie wyższe ($XX\%$ – rysunek \ref{fig:education}) oraz wykonuje pracę biurową ($XX\%$ – rysunek \ref{fig:jobs}). Tylko jedna z badanych osób cierpi na schorzenie neurologiczne (epilepsje) w związku z czym wykonane na niej pomiary  wyeliminowane zostały z zbioru danych
 
 \begin{figure}[h!]
+\begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=0.5\columnwidth]{}
-    \caption{Histogram wieku zbadanych osób}
+    \includegraphics[width=\columnwidth]{thesis/assets/age_histogram.png}
+    \caption{Wiek badanych osób}
     \label{fig:age}
-\end{figure}
-
-\begin{figure}[h!]
+\end{subfigure}   
+\hfill
+\begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=0.5\columnwidth]{}
-    \caption{Stosunek ilości kobiet do mężczyzn}
+    \includegraphics[width=\columnwidth]{thesis/assets/gender.png}
+    \caption{Płeć badanych osób}
     \label{fig:gender}
+\end{subfigure}
+\caption{Wiek i płeć badanych osób}
 \end{figure}
 
 \begin{figure}[h!]
+\begin{subfigure}[b]{0.4\textwidth}
     \centering
-    \includegraphics[width=0.5\columnwidth]{}
-    \caption{Wykształcenie badanych osób}
+    \includegraphics[width=\columnwidth]{thesis/assets/education.png}
+    \caption{Wykształcenie}
     \label{fig:education}
-\end{figure}
-
-\begin{figure}[h!]
+\end{subfigure}   
+\hfill
+\begin{subfigure}[b]{0.5\textwidth}
     \centering
-    \includegraphics[width=0.5\columnwidth]{}
-    \caption{Wykonywany zawód badanych osób}
+    \includegraphics[width=\columnwidth]{thesis/assets/jobs.png}
+    \caption{Sektor zatrudnienia}
     \label{fig:jobs}
+\end{subfigure}
+\caption{Wykształcenie i sektor zatrudnienia}
 \end{figure}
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.5\columnwidth]{}
-    \caption{Choroby neurologiczne badanych osób}
-    \label{fig:neurological-diseses}
-\end{figure}
+
+% \begin{figure}[h!]
+%     \centering
+%     \includegraphics[width=0.5\columnwidth]{thesis/assets/neurological_disease.png}
+%     \caption{Choroby neurologiczne badanych osób}
+%     \label{fig:neurological-diseses}
+% \end{figure}
 
 % Sprawdzanie tezy ze kazda z tych zmiennych opisuje wyniki
 % - Wiek
@@ -277,7 +284,7 @@ Badaniu poddanych zostało XXXX ochotników, spośród których zdecydowana wię
 % - Stopien zaznajomienia z komputerami
 
 \section{Analiza statystyczna}\label{analiza-klasyczna}
-W celu eliminacji obserwacji odstających wykorzystano tzw. standaryzację Z zaaplikowaną do średniego potencjału zmierzonego na każdej z elektrod (\autoref{lst:z-score-calculation} zawiera implementację tej operacji z wykorzystaniem bibliotek NumPy \cite{harris_array_2020} i SciPy \cite{virtanen_scipy_2020}), ustalając poziom odrzucenia na $3\sigma$. Dzięki temu odrzucono jedną z zbadanych osób.
+W celu eliminacji obserwacji odstających wykorzystano tzw. standaryzację Z zaaplikowaną do średniego potencjału zmierzonego na każdej z elektrod (\autoref{lst:z-score-calculation} zawiera implementację tej operacji z wykorzystaniem bibliotek NumPy \cite{harris_array_2020} i SciPy \cite{virtanen_scipy_2020}), ustalając poziom odrzucenia na $3\sigma$. Dzięki temu odrzucono jedną ze zbadanych osób (\autoref{fig:zscore}).
 
 \begin{lstlisting}[caption={Obliczanie standardyzacji Z},label={lst:z-score-calculation}]
 import numpy as np
@@ -288,7 +295,15 @@ from scipy.stats import zscore
 zscores = np.abs(zscore(X)).max(axis=1)
 \end{lstlisting}
 
-Standardową metodą analizy danych zebranych za pomocą zestawu EEG jest aplikacja dyskretnej transformaty Fouriera w celu względnej siły poszczególnych pasm częstotliwości (\autoref{tab:freqs}). W celu udowodnienia różnicy pomiędzy aktywnością mózgu w czasie skupienia (okres od wyświetlenia pytania do udzielenia odpowiedzi), a aktywnością w czasie spoczynku (okres po udzieleniu odpowiedzi) cały czas spędzony w danym stanie połączony zostaje a następnie poddany analizie fourierowskiej w oknach o rozmiarze $128$ próbek urządzenia ($1$ sekundy), implementacja tej operacji przedstawiona została na listingu \ref{lst:moving-to-freq-domain}. Tak przygotowane próbki porównane zostają następnie za pomocą testu Kruskala, wartości P przedstawiono na rysunku XX. Przy założeniu istotności statystycznej na poziomie $0,05$ średnie wartości zmierzone na części kanałów są różne w czasie skupienia.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\columnwidth]{thesis/assets/zscore.png}
+    \caption{Wartości metryki $Z$}
+    \label{fig:zscore}
+\end{figure}
+
+
+Standardową metodą analizy danych zebranych za pomocą zestawu EEG jest aplikacja dyskretnej transformaty Fouriera w celu względnej siły poszczególnych pasm częstotliwości (\autoref{tab:freqs}). W celu udowodnienia różnicy pomiędzy aktywnością mózgu w czasie skupienia (okres od wyświetlenia pytania do udzielenia odpowiedzi – \autoref{fig:thinking}), a aktywnością w czasie spoczynku (okres po udzieleniu odpowiedzi – \autoref{fig:waiting}) cały czas spędzony w danym stanie połączony zostaje a następnie poddany analizie fourierowskiej w oknach o rozmiarze $128$ próbek urządzenia ($1$ sekundy), implementacja tej operacji przedstawiona została na listingu \ref{lst:moving-to-freq-domain}. Tak przygotowane próbki porównane zostają następnie za pomocą testu Kruskala, wartości $p$ przedstawiono na rysunku \ref{fig:thinking-vs-waiting-pvalue}. Przy założeniu istotności statystycznej na poziomie $0,05$ średnie wartości zmierzone na części kanałów są różne w czasie skupienia.
 
 
 \begin{lstlisting}[caption={Przejście do domeny częstotliwościowej},label={lst:moving-to-freq-domain}]
@@ -306,63 +321,95 @@ alphas = np.sum(freq_domain[:, :, 8:13], axis=-1)
 betas = np.sum(freq_domain[:, :, 14:25], axis=-1)
 \end{lstlisting}
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\columnwidth]{thesis/assets/thinking_vs_waiting_pvalue.png}
+    \caption{Wartośći $p$}
+    \label{fig:thinking-vs-waiting-pvalue}
+\end{figure}
 
 \begin{figure}[h!]
     \centering
+    \begin{subfigure}[b]{\textwidth}
+    \centering
+    \includegraphics[width=\columnwidth]{thesis/assets/waiting.png}
+    \caption{Aktywność mózgu w czasie oczekiwania}
+    \label{fig:waiting}
+\end{subfigure}
+\begin{subfigure}[b]{\textwidth}
+    \centering
+    \includegraphics[width=\columnwidth]{thesis/assets/thinking.png}
+    \caption{Aktywność mózgu w czasie myślenia}
+    \label{fig:thinking}
+\end{subfigure}
+\begin{subfigure}[b]{\textwidth}
+    \centering
+    \includegraphics[width=\columnwidth]{thesis/assets/diff.png}
+    \caption{Różnica pomiędzy aktywnością mózgu w czasie myślenia i w czasie oczekiwania}
+    \label{fig:diff}
+\end{subfigure}
     \includegraphics[width=0.5\columnwidth]{}
     \caption{Porównanie siły poszczególnych częstotliwości w różnych punktach na czaszce}
     \label{fig:brain-heatmaps}
 \end{figure}
 
 \section{Zmienne zakłócające}\label{zmiennne-zaklucajace}
-Ankieta wstępna wypełniania przez pacjentów zawierała pytania mające na celu ocenę czynników które mogły by wpłynąć na wyniki badania, takich jak ilosc czasu spedzonego przy komuterze (\autoref{fig:computer-time}) godziny snu poprzedniej nocy i poziom zmęczenia (\autoref{fig:sleep-time-and-tired}), przyjmowane substacnje psychoaktywne (\autoref{fig:psychoactive-substances} oraz czestosc wykonywania mentalnych obliczeń arytmetycznych (\autoref{fig:arithmetic}).
+Ankieta wstępna wypełniania przez pacjentów zawierała pytania mające na celu ocenę czynników które mogły by wpłynąć na wyniki badania, takich jak ilosc czasu spedzonego przy komuterze (\autoref{fig:computer-time}) godziny snu poprzedniej nocy (\autoref{fig:sleep-time}) i poziom zmęczenia (\autoref{fig:tired}), przyjmowane substacnje psychoaktywne (\autoref{fig:psychoactive-substances} oraz czestosc wykonywania mentalnych obliczeń arytmetycznych (\autoref{fig:arithmetic}).
 
 \begin{figure}[h!]
+\begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=0.5\columnwidth]{}
-    \caption{Histogram czasu spędzonego przy komputerze w ciągu dnia}
+    \includegraphics[width=\columnwidth]{thesis/assets/sleep_histogram.png}
+    \caption{Godziny snu poprzedniej nocy}
+    \label{fig:sleep-time}
+\end{subfigure}   
+\hfill
+\begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\columnwidth]{thesis/assets/exhaustion_level.png}
+    \caption{Samookreślony poziom zmęczenia}
+    \label{fig:tired}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\columnwidth]{thesis/assets/computer_time.png}
+    \caption{Czas spędzony przy komputerze w ciągu dnia}
     \label{fig:computer-time}
-\end{figure}
-
-\begin{figure}[h!]
+\end{subfigure}   
+\hfill
+\begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=0.5\columnwidth]{}
-    \caption{Histogram snu poprzedniej nocy (lewo) oraz samookreślony poziom zmęczenia (prawo) }
-    \label{fig:sleep-time-and-tired}
-\end{figure}
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.5\columnwidth]{}
-    \caption{Histogram substancji psychoaktywnych przyjętych w ciągu 6 godzin przed rozpoczęciem badania}
+    \includegraphics[width=\columnwidth]{thesis/assets/psychoactive_substance.png}
+    \caption{Substancje psychoaktywne przyjętę w ciągu 6 godzin przed rozpoczęciem badania}
     \label{fig:psychoactive-substances}
-\end{figure}
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.5\columnwidth]{}
-    \caption{Histogram samookreślonej ilości wykonywanych obliczeń arytmetycznych}
+\end{subfigure}
+\begin{subfigure}[b]{\textwidth}
+\centering
+    \includegraphics[width=0.75\columnwidth]{thesis/assets/mental_math.png}
+    \caption{Histogram samookreślonej częstotliwości wykonywania mentalnych obliczeń arytmetycznych}
     \label{fig:arithmetic}
+\end{subfigure}
+\caption{Histogramy dla zmiennych zakłócających}
 \end{figure}
 
 Po aplikacji transformacji opisanej na listingu \ref{lst:moving-to-freq-domain}, w celu określenia czy któraś z badanych zmiennych zakłócających ma wpływ na wykonywane pomiary (przyjęto poziom istotności wysokości $0,5$) zastosowano jednoczynnikową analizę wariacji (ang \textit{one-way ANOVA}), a wyniki przedstawiono w tabeli \ref{tab:confunding-variables-statistical-tests} 
+
 \begin{table}[h!]
     \centering
     \begin{tabular}{|c|c|c|}
         \hline
-        A & B & C  \\
+          Zmienna zakłócająca & Wartośc $p$\\
         \hline
-         &  &  \\
-         &  & \\
-         & & \\
-         & & \\
+         Godziny snu poprzedniej nocy & \\
+         Samookreślony poziom zmęczenia &  \\
+         Czas spędzany przy komputerze & \\
+         Substancje psychoaktywne  & \\
+         Częstotliwość wykonywania mentalnych obliczeń & \\
         \hline
     \end{tabular}
     \caption{Wyniki testów statystycznych na różnice w sygnale pomiędzy różnymi wartościami zmiennych zakłócających}
     \label{tab:confunding-variables-statistical-tests}
 \end{table}
-
-
 
 % \subsection{Outlier detection}
 % \subsection{ANOVA}
@@ -395,12 +442,37 @@ W celu opracowania algorytmu wykrywania stanu skupienia przetestowano szereg ró
     \label{fig:mlstm}
 \end{figure}
 
-Bez wzgledu na inne kroki przygotowania danych, dane zebrane od trzech osob oddzielane sa od reszty i sluza jako zstaw danych uzywanych do walidacji przygotowany algorytmów. W celu oceny jakośći modelu stosowana jest standardowa dla problemow klasyfikacji binarnej miara F1 (obliczana za pomocą wzoru \ref{eq:calculation-f1}) najwyższe otrzymane wartości tej miary przedstawiono w tabeli \ref{tab:high-level-results}
+Bez wzgledu na inne kroki przygotowania danych, dane zebrane od trzech osob oddzielane sa od reszty i sluza jako zstaw danych uzywanych do walidacji przygotowany algorytmów. W celu oceny jakośći modelu stosowana jest standardowa dla problemow klasyfikacji binarnej miara F1 (obliczana za pomocą wzoru \ref{eq:calculation-f1}).
 
 \begin{equation}\label{eq:calculation-f1}
     F_1 = \frac{2*\text{prawdziwie pozytywne}}{2*\text{prawdziwie pozytywne}+\text{fałszywie pozytywne}+\text{fałszywie negatywne}}
 \end{equation}
 
+
+W celu dobrania odpowiednich metod przygotowania danych oraz wartości hiperparametrów przygotowywanych modeli przeprowadzono eksperymenty mające na celu ich ustalenie. Wpływ rozmiaru okna czasowego na uczenie modelu sprawdzony został poprzez trenowanie lasu losowego na tym samym zbiorze danych z różnym rozmiarem okna czasowego jako wejśćia do modelu (\autoref{fig:window-size}). Natomiast głebokość lasu losowego dostosowana została przez jej sukcesywne zwiększanie aż do osiągnięcia stabilizacji (\autoref{fig:rf-num-nodes}).
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\columnwidth]{thesis/assets/window_size_vs_f1.png}
+    \caption{Porównanie miary F1 na zbiorze walidacyjnym ze względu na wielkość okna}
+    \label{fig:window-size}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\columnwidth]{thesis/assets/forest_depth_vs_f1.png}
+    \caption{Porównanie miary F1 na zbiorze walidacyjnym z względu na ilość warstw lasu losowego}
+    \label{fig:rf-num-nodes}
+\end{figure}
+
+ Najwyższe otrzymane wartości tej miary przedstawiono w tabeli \ref{tab:high-level-results}
+
+% \begin{figure}[h!]
+%     \centering
+%     \includegraphics[width=0.5\columnwidth]{}
+%     \caption{Porównanie miary F1 na zbiorze walidacyjnym z rozmiar okna średniej ruchomej}
+%     \label{fig:rolling-average-window-size}
+% \end{figure}
 
 \begin{table}[h]
     \centering
@@ -418,34 +490,63 @@ Bez wzgledu na inne kroki przygotowania danych, dane zebrane od trzech osob oddz
     \label{tab:high-level-results}
 \end{table}
 
-W celu dobrania odpowiednich metod przygotowania danych oraz wartości hiperparametrów przygotowywanych modeli przeprowadzono eksperymenty mające na celu ich ustalenie. Wpływ rozmiaru okna czasowego na uczenie modelu sprawdzony został poprzez trenowanie lasu losowego na tym samym zbiorze danych z różnym rozmiarem okna czasowego jako wejśćia do modelu (\autoref{fig:window-size})
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.5\columnwidth]{thesis/assets/window_size_vs_f1.png}
-    \caption{Porównanie miary F1 na zbiorze walidacyjnym ze względu na wielkość okna}
-    \label{fig:window-size}
-\end{figure}
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.5\columnwidth]{thesis/assets/forest_depth_vs_f1.png}
-    \caption{Porównanie miary F1 na zbiorze walidacyjnym z względu na ilośc warstw lasu losowego}
-    \label{fig:rf-num-nodes}
-\end{figure}
-
-% \begin{figure}[h!]
-%     \centering
-%     \includegraphics[width=0.5\columnwidth]{}
-%     \caption{Porównanie miary F1 na zbiorze walidacyjnym z rozmiar okna średniej ruchomej}
-%     \label{fig:rolling-average-window-size}
-% \end{figure}
 
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.5\columnwidth]{}
-    \caption{confusion matrices}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\columnwidth]{thesis/assets/confusion_matrix_placeholder.png}
+        \caption{Las losowy – Napięcia}
+        \label{fig:computer-time}
+    \end{subfigure}   
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\columnwidth]{thesis/assets/confusion_matrix_placeholder.png}
+        \caption{Las losowy – Częstotliwości}
+        \label{fig:psychoactive-substances}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\columnwidth]{thesis/assets/confusion_matrix_placeholder.png}
+        \caption{Sieć gęsta – Napięcia}
+        \label{fig:computer-time}
+    \end{subfigure}   
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\columnwidth]{thesis/assets/confusion_matrix_placeholder.png}
+        \caption{Sieć gęsta – Częstotliwości}
+        \label{fig:psychoactive-substances}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\columnwidth]{thesis/assets/confusion_matrix_placeholder.png}
+        \caption{Sieć konwolucyjna – Napięcia}
+        \label{fig:computer-time}
+    \end{subfigure}   
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\columnwidth]{thesis/assets/confusion_matrix_placeholder.png}
+        \caption{Sieć konwolucyjna – Częstotliwości}
+        \label{fig:psychoactive-substances}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\columnwidth]{thesis/assets/confusion_matrix_placeholder.png}
+        \caption{MLSTM – Częstotliwości}
+        \label{fig:computer-time}
+    \end{subfigure}   
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\columnwidth]{thesis/assets/confusion_matrix_placeholder.png}
+        \caption{MLSTM – Napięcia}
+        \label{fig:psychoactive-substances}
+    \end{subfigure}
+    \caption{Macierze błędów}
     \label{fig:confusion-matricies}
 \end{figure}
 
@@ -465,8 +566,6 @@ W celu dobrania odpowiednich metod przygotowania danych oraz wartości hiperpara
 \listoffigures
 \clearpage
 \listoftables
-\clearpage
-\listoflistings
 \clearpage
 
 \appendix
