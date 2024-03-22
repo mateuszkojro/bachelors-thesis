@@ -72,7 +72,7 @@ W ramach projektu przygotowano układ eksperymentalny (sekcja \ref{aparatura-pom
 \section{Motywacja}
 Uczenie maszynowe pozwala rozwiązywać problemy, w których relacja pomiędzy wejściami i wyjściami algorytmu jest zbyt skomplikowana, aby w praktyczny sposób przedstawić ją jako serie klasycznych warunków “if, else”. Nie dziwnym jest więc, że znajdują one coraz większe zastosowanie w dziedzinach medycyny, biologii i chemii, pozwalając na tak niesamowite osiągnięcia jak np. diagnozowanie raka płuc \cite{li_machine_2022} czy zwijanie białek (ang. \textit{protein folding}) \cite{jumper_highly_2021}. Jednocześnie mimo wczesnych sukcesów \cite{some comparasion}, próby diagnozy chorób psychologicznych za pomocą badań obrazowych są na stosunkowo niskim poziomie rozwoju \cite{badania adhd i podobne}. Jako krok w drodze do opracowania tego typu metod, niniejsza praca zawiera porównanie skuteczności wybranych metod badawczych na prostszym problemie oceny uwagi człowieka. Decyzja o wykorzystaniu elektroencefalografii podyktowana została łatwym dostępem do aparatury pomiarowej, możliwością stosunkowo prostego zbierania znaczących ilości danych oraz brakiem konieczności wykonywania badań w środowisku laboratoryjnym.
 
-\section{Other Work}
+\section{Przegląd literatury}
 Możliwość wykorzystania badania EEG w celu analizy stanu mentalnego pacjenta zaprezentowana została między innymi przez Kaushika i in. \cite{kaushik_decoding_2022}, dodatkowo Guo i in. \cite{guo_detection_2018} pokazali, że możliwe jest klasyfikowanie stanu skupienia kierowcy w symulowanych warunkach. Wysoką skuteczność algorytmów uczenia maszynowego takich jak maszyny wektorów nośnych czy uczenie głębokie do analizy wyników elektroencefalografii udowodnili de Taillez i in. \cite{de_taillez_machine_2020}. Rozpoczęto również prace nad zastosowaniem algorytmów uczenia maszynowego w celu diagnozy innych jednostek chorobowych takich jak ADHD, dysleksja czy schizofrenia \cite{ahire_comprehensive_2022, joshi_review_2021, clarke_eeg_2002}.
 
 
@@ -80,7 +80,7 @@ Możliwość wykorzystania badania EEG w celu analizy stanu mentalnego pacjenta 
 % \section{Model działania mózgu}
 % Pierwsze modele pracy mozgu stworzone zostaly juz w ... jednak dopiero
 
-Informacje w mózgu przekazywane i przetwarzane są za pomocą tzw. potencjałów czynnościowych – chwilowych impulsów, podczas których napięcie wewnątrz komórki stanowczo wzrasta (xxxx). Impuls taki zostaje wygenerowany gdy czasowo skalowana suma napiec na ,,wejściach'' komórki (dendrytach) przekroczy pewien poziom (xxxx). W takiej sytuacji generowane jest napięcie, które następnie przekazywane jest za pomocą aksonu do kolejnych komórek (xxxxx). W dużym uproszczeniu potencjał komórki można więc zapisać równaniem \ref{eq:napiecie-komorki}.
+Informacje w mózgu przekazywane i przetwarzane są za pomocą tzw. potencjałów czynnościowych – chwilowych impulsów, podczas których napięcie wewnątrz komórki stanowczo wzrasta (xxxx). Impuls taki zostaje wygenerowany gdy czasowo skalowana suma napiec na ,,wejściach'' komórki (dendrytach) przekroczy pewien poziom (xxxx). W takiej sytuacji generowane jest napięcie, które następnie przekazywane jest za pomocą aksonu do kolejnych komórek (xxxxx). W dużym uproszczeniu potencjał komórki można więc zapisać równaniem \ref{eq:napiecie-komorki}, gdzie $d_i(t)$ to napięcie na dendrycie $i$ w czasie $t$.
 \begin{equation}\label{eq:napiecie-komorki}
     \text{Potencjał komórki} \approx 
     \begin{cases} 
@@ -88,7 +88,6 @@ Informacje w mózgu przekazywane i przetwarzane są za pomocą tzw. potencjałó
       -30mV &  \text{inaczej}
    \end{cases}
 \end{equation}
-gdzie $d_i(t)$ to napięcie na dendrycie $i$ w czasie $t$
 
 % - wspomniec huxley model
 % - bilions of those interactions form a working brain
@@ -197,7 +196,7 @@ Oprogramowanie serwerowe jest niezależne od interfejsu graficznego aplikacji, p
 Załącznik \ref{instrukcja} zawiera wymagania systemowe, opis pliku konfiguracyjnego oraz instrukcję instalacji i obsługi oprogramowania do zbierania danych.
 
 \subsection{Urządzenie pomiarowe}\label{emotiv}
-Do wykonania badań zdecydowano się na wykorzystanie 14 kanałowego (14 elektrod gąbkowych w konfiguracji przedstawionej na rysunku \ref{fig:emotiv-electrode-locations}) zestawu, produkowanego przez firmę Emotiv (model EpocX\cite{emotiv_inc_epoc_nodate}). Wybór urządzenia podyktowany został dostępnością bibliotek pozwalających na interakcję z urządzeniem w czasie rzeczywistym\cite{emotiv_inc_emotiv_nodate-1} (funkcjonalność wymagana w celu oznaczenia momentu wyświetlenia pytania oraz udzielenia na nie odpowiedzi) oraz obecnością wbudowanych czujników położenia i przyspieszenia (wymaganych w celu wyeliminowania zakłóceń związanych z ruchami głowy osoby badanej). Dodatkowo dołączone oprogramowanie pozwala na kalibrację przed, oraz monitorowanie w trakcie badania, jakości połączenia pomiędzy elektrodami a skórą pacjenta co pozwala na zmniejszenie ilości pomiarów zakończonych niepowodzeniem ze względów technicznych.
+Do wykonania badań zdecydowano się na wykorzystanie 14 kanałowego (14 elektrod gąbkowych w konfiguracji przedstawionej na rysunku \ref{fig:emotiv-electrode-locations}) zestawu, produkowanego przez firmę Emotiv (model EpocX \cite{emotiv_inc_epoc_nodate}). Wybór urządzenia podyktowany został dostępnością bibliotek pozwalających na interakcję z urządzeniem w czasie rzeczywistym \cite{emotiv_inc_emotiv_nodate-1} (funkcjonalność wymagana w celu oznaczenia momentu wyświetlenia pytania oraz udzielenia na nie odpowiedzi), obecnością wbudowanych czujników położenia i przyspieszenia (wymaganych w celu wyeliminowania zakłóceń związanych z ruchami głowy osoby badanej), możliwością działania bez konieczności aplikacji specjalistycznego żelu przewodzącego (konieczność jego stosowania stanowczo utrudnia prowadzenie badań) oraz możliwością działania w trybie bezprzewodowym (poprzez bluetooth) umożliwiając ewentualne zastosowania w środowiskach pozamedycznych. Dodatkowo dołączone oprogramowanie pozwala na kalibrację przed, oraz monitorowanie w trakcie badania, jakości połączenia pomiędzy elektrodami a skórą pacjenta co pozwala na zmniejszenie ilości pomiarów zakończonych niepowodzeniem ze względów technicznych. Jednocześnie rozszerzona łatwość użycia wiąże się z koniecznością kompromisu jakości zbieranych danych. 
 
 \begin{figure}[h!]
     \centering
@@ -423,7 +422,7 @@ Po aplikacji transformacji opisanej na listingu \ref{lst:moving-to-freq-domain},
 % - porownac czestotliwosci na poczatku badania i na koncu
 % - interesujace korelacje z innymi zmiennymi (maybe macierz korelacji)
 \section{Uczenie maszynowe}\label{uczenie-maszynowe}
-W celu opracowania algorytmu wykrywania stanu skupienia przetestowano szereg różnego rodzaju algorytmów \footnote{Zebrany zbiór danych oraz implementacje modeli znaleźć można pod adresem \url{https://github.com/mateuszkojro/bachelors-thesis/}} (lasy losowe, proste sieci neuronowe – \autoref{fig:simple-nn}, konwolucyjne sieci neuronowe - \autoref{fig:conv-nn} oraz specjalistyczne sieci do klasyfikacji szeregów czasowych – architektura MLSTM-FCN \cite{karim_multivariate_2019} przedstawiona na rysunku \ref{fig:mlstm}) i metod przygotowania danych wejściowych (wejścia w postaci zmierzonych napięc oraz wyników transformaty Fouriera).
+W celu opracowania algorytmu wykrywania stanu skupienia przetestowano szereg różnego rodzaju algorytmów \footnote{Zebrany zbiór danych oraz implementacje modeli znaleźć można pod adresem \url{https://github.com/mateuszkojro/bachelors-thesis/}} między innymi lasy losowe, proste sieci neuronowe – \autoref{fig:simple-nn}, konwolucyjne sieci neuronowe - \autoref{fig:conv-nn} oraz specjalistyczne sieci do klasyfikacji szeregów czasowych – architektura MLSTM-FCN \cite{karim_multivariate_2019} przedstawiona na rysunku \ref{fig:mlstm} i metod przygotowania danych wejściowych – wejścia w postaci różnej długości czasowych wycinków zmierzonych napięć lub transformaty wyników transformaty Fouriera.
 
 \begin{figure}[h!]
     \centering
@@ -564,6 +563,7 @@ W celu dobrania odpowiednich metod przygotowania danych oraz wartości hiperpara
 % W celu analizy ewentualnych uprzedzen algorytmicznych 
 
 \chapter{Dyskusja}\label{dyskusja}
+Pomimo statystycznie istotnej różnicy pomiędzy sygnałami odczytywanymi w czasie skupienia i spoczynku, zastosowane modele uczenia maszynowego nie wykazały zdolności do wykrycia tej zależności na oddzielonej populacji kontrolnej. Wyniki te mimo zastosowania architektur \cite{} i metod trenowania modeli \cite{} o potwierdzonej skuteczności i zgodnych z najnowszymi osiągnięciami w dziedzinie uczenia maszynowego sugerują niewystarczającą wielkość zbioru badawczego (hipoteza niepoprawnego wykonania pomiarów odrzucona została ze względu na wykrywalną statystycznie różnice pomiędzy badanymi stanami), niespodziewanie wysokie wariacje wprowadzone przez zbadane zmienne zakłócające wydają się wspierać te wnioski. Jednocześnie badania zaprezentowane przez \cite{} przy zachowaniu podobnej ilości uczestników osiągają stanowczo lepsze rezultaty efekt, który spowodowany mógł być wykorzystaniem urządzeń pomiarowych przeznaczonych do użytku medycznego, a przez to osiągnięcie wyższego efektywnego stosunku sygnału do szumu. W celu jednoznacznego zweryfikowania tezy badawczej wymagane jest zebranie większej ilości danych przez przeprowadzenie dodatkowej kampanii badawczej.
 
 \printbibliography
 
@@ -575,10 +575,51 @@ W celu dobrania odpowiednich metod przygotowania danych oraz wartości hiperpara
 
 \appendix
 \chapter{Formularze dla osób badanych}\label{formularz-dla-osoby-badanej}
-\section{Opis badania}\label{opis-badania}
-\section{Zgoda na przetwarzanie danych}\label{zgoda-na-przetwarzanie-danych}
-\section{Pytania ankiety wejściowej}\label{pytania-ankiety-wejsciowej}
-\section{Pytania zawarte w badaniu}\label{pytania-badania}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\columnwidth]{thesis/assets/description_2.png}
+    \caption{Opis badania prezentowany ochotnikowi cz.1}
+    \label{formularz-dla-osoby-badanej}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\columnwidth]{thesis/assets/description_1.png}
+    \caption{Opis badania prezentowany ochotnikowi cz.2}
+    \label{zgoda-na-przetwarzanie-danych}
+\end{figure}
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\columnwidth]{thesis/assets/ankieta_wejsciowa.png}
+    \caption{Ankieta wstępna prezentowana przed rozpoczęciem badania}
+    \label{pytania-ankiety-wejsciowej}
+\end{figure}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Pytanie \\
+        \hline
+        $(12*13)-11=145$ \\
+        $7*8*3=177$ \\
+        $\frac{121}{11}+39=50$ \\
+        $17+18+15+34=85$ \\
+        $8*6*5=240$ \\
+        $15*16*7=1680$ \\
+        $(17*17)+2=290$ \\
+        $173+(288*2)=750$ \\
+        $(89*3)+13=280$ \\
+        $7*7*7=343$ \\
+        \hline
+    \end{tabular}
+    \caption{Pytania zadawane podczas badania}
+    \label{pytania-badania}
+\end{table}
+
 \chapter{Instrukcja uruchomienia i obsługi oprogramowania}\label{instrukcja}
 \section{Wymagania systemowe}
 \section{Instalacja}
