@@ -27,17 +27,19 @@
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
 
-\lstset{frame=tb,
-  language=Python,
-  aboveskip=3mm,
-  belowskip=3mm,
+\lstset{
+    frame=tb,
+  language=Python
+  captionpos=b,                    % sets the caption-position to bottom,
+  % aboveskip=3mm,
+  % belowskip=3mm,
   showstringspaces=false,
   columns=flexible,
-  basicstyle={\small\ttfamily},
+  basicstyle={\small\ttfamily},  
   % numbers=none,
   numbers=left,
   numberstyle=\tiny\color{gray},
-  keywordstyle=\bfseries\extrabold,
+  keywordstyle=\bfseries,
   commentstyle=\color{gray},
   stringstyle=\color{mauve},
   breaklines=true,
@@ -45,6 +47,12 @@
   tabsize=3
 }
 % END CODE
+
+\newtcolorbox{boxA}{
+    fontupper = \bf,
+    boxrule = 1.5pt,
+    colframe = black % frame color
+}
 
 \begin{document}
 
@@ -67,14 +75,13 @@
 \chapter{Wstęp}
 Ludzki układ nerwowy składa się z miliardów komórek nerwowych, połączonych w gęstą siatkę pokrywającą całą powierzchnię ludzkiego ciała tworząc niezwykle skomplikowany system odpowiadający za różnorodne aspekty naszego życia: od tak prostych jak poruszanie pojedynczymi mięśniami, przez dekodowanie rzeczywistości z nieskończonego strumienia impulsów dochodzących z wszystkich zmysłów, aż po kontrolowanie uczuć tak skomplikowanych jak ciekawość. Na czele tego niezwykłego wynalazku ewolucji stoi mózg, zagadka, której naukowcy i filozofowie poświęcali swoje życia od czasów sławnego eksperymentu myślowego Decartesa. Dopiero niedawno, opierając się na pracy wielu osób w niezliczonych dziedzinach współczesnej nauki, możliwe stało się rozwikłanie części tej niesamowitej tajemnicy. Kontynuując tę ścieżkę, poniższa praca przedstawia opracowanie oraz ewaluacje modelu klasyfikującego stan skupienia, za pomocą badania reakcji na bodziec z użyciem elektroencefalografii. 
 
-W ramach projektu przygotowano układ eksperymentalny (sekcja \ref{aparatura-pomiarowa}), przeprowadzono kampanię badawczą na próbce 19 osób (sekcja \ref{procedura-badan}), której wyniki zostały następnie poddane analizie tradycyjnymi metodami statystycznymi (sekcja \ref{analiza-klasyczna}), uwzględniając zmienne zakłócające (sekcja \ref{zmiennne-zaklucajace}) oraz algorytmami uczenia maszynowego (sekcja \ref{uczenie-maszynowe}) kontrolując stronniczość (ang. bias) opracowanych modeli (sekcja \ref{bias}). Dyskusję wyników zaprezentowano w rozdziale \ref{dyskusja}.
+W ramach projektu przygotowano układ eksperymentalny (sekcja \ref{aparatura-pomiarowa}), przeprowadzono kampanię badawczą na próbce 19 osób (sekcja \ref{procedura-badan}), której wyniki zostały następnie poddane analizie tradycyjnymi metodami statystycznymi (sekcja \ref{analiza-klasyczna}), uwzględniając zmienne zakłócające (sekcja \ref{zmiennne-zaklucajace}) oraz algorytmami uczenia maszynowego (sekcja \ref{uczenie-maszynowe}) kontrolując stronniczość (ang. \textit{bias}) opracowanych modeli (sekcja \ref{bias}). Dyskusję wyników zaprezentowano w rozdziale \ref{dyskusja}.
 
 \section{Motywacja}
 Uczenie maszynowe pozwala rozwiązywać problemy, w których relacja pomiędzy wejściami i wyjściami algorytmu jest zbyt skomplikowana, aby w praktyczny sposób przedstawić ją jako serie klasycznych warunków “if, else”. Nie dziwnym jest więc, że znajdują one coraz większe zastosowanie w dziedzinach medycyny, biologii i chemii, pozwalając na tak niesamowite osiągnięcia jak np. diagnozowanie raka płuc \cite{li_machine_2022} czy zwijanie białek (ang. \textit{protein folding}) \cite{jumper_highly_2021}. Jednocześnie mimo wczesnych sukcesów \cite{some comparasion}, próby diagnozy chorób psychologicznych za pomocą badań obrazowych są na stosunkowo niskim poziomie rozwoju \cite{badania adhd i podobne}. Jako krok w drodze do opracowania tego typu metod, niniejsza praca zawiera porównanie skuteczności wybranych metod badawczych na prostszym problemie oceny uwagi człowieka. Decyzja o wykorzystaniu elektroencefalografii podyktowana została łatwym dostępem do aparatury pomiarowej, możliwością stosunkowo prostego zbierania znaczących ilości danych oraz brakiem konieczności wykonywania badań w środowisku laboratoryjnym.
 
 \section{Przegląd literatury}
 Możliwość wykorzystania badania EEG w celu analizy stanu mentalnego pacjenta zaprezentowana została między innymi przez Kaushika i in. \cite{kaushik_decoding_2022}, dodatkowo Guo i in. \cite{guo_detection_2018} pokazali, że możliwe jest klasyfikowanie stanu skupienia kierowcy w symulowanych warunkach. Wysoką skuteczność algorytmów uczenia maszynowego takich jak maszyny wektorów nośnych czy uczenie głębokie do analizy wyników elektroencefalografii udowodnili de Taillez i in. \cite{de_taillez_machine_2020}. Rozpoczęto również prace nad zastosowaniem algorytmów uczenia maszynowego w celu diagnozy innych jednostek chorobowych takich jak ADHD, dysleksja czy schizofrenia \cite{ahire_comprehensive_2022, joshi_review_2021, clarke_eeg_2002}.
-
 
 \chapter{Podstawy teoretyczne}
 % \section{Model działania mózgu}
@@ -93,7 +100,7 @@ Informacje w mózgu przekazywane i przetwarzane są za pomocą tzw. potencjałó
 % - bilions of those interactions form a working brain
 % - i want the plot of the cell potential
 
-\section{Metody badania mózgu}
+\section{Metody badania aktywności mózgu}
 W 1884 włoski psycholog Angelo Mosso wygłosił wykład \cite{sandrone_weighing_2014} w którym przedstawił swój nowy wynalazek, stół pozwalający na balansowanie dorosłego mężczyzny na pojedynczym punkcie podparcia w celu obserwacji przepływu krwi w ludzkim ciele. 
 
 Pacjent, leżąc na plecach w stanie równowagi, poddawany zostawał dzianiu bodźca mającego na celu pobudzenie działania mózgu (z początku był to dźwięk, później tekst gazety czy podręcznika do matematyki\cite{sandrone_weighing_2014}), co miało spowodować napływ większej ilości krwi do mózgu, a przez to pochylenie urządzenia w stronę głowy badanego. Była to pierwsza udokumentowana próba naukowego mierzenia aktywności mózgu\footnote{Wyniki jego badan zostały poddane poważnej wątpliwości w pracy opublikowanej przez M. F. Lowe \cite{lowe_application_1936} w 1936 roku – według niego wykrywane zmiany fizjologiczne nie mogą być jednoznacznie powiązane z aktywnością mózgu}.
@@ -104,12 +111,12 @@ Aktualnie stosowane metody pomiaru aktywności mózgu, podzielić można ze wzgl
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\columnwidth]{thesis/assets/brain_imaging_comparasion.png}
+    \includegraphics[width=0.5\columnwidth]{assets/brain_imaging_comparasion.png}
     \caption{Porównanie metod badania mózgu ze względu na dokładność czasową i przestrzenną}
     \label{fig:brain-imaging-comparasion}
 \end{figure}
 
-\section{EEG}
+\section{Elektroencefalografia}
 Elektroencefalografia to badanie polegające na pomiarze potencjałów elektrycznych w różnych punktach na powierzchni czaszki pacjenta. Zebrane w ten sposób informacje pozwalają na określenie względnej aktywności różnych obszarów mózgu. Tradycyjnie wykorzystywana jest do diagnozowania schorzeń neurologicznych takich jak epilepsja, nowotwory mózgu czy zaburzenia snu.
 
 \subsection{Mechanizm Działania}
@@ -124,9 +131,15 @@ Najbardziej popularnymi standardami pozycjonowania elektrod są tzw. międzynaro
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\columnwidth]{thesis/assets/10-20_system_electrodes.png}
-    \caption{Rozmieszczenie elektrod w międzynarodowym systemie $10$-$20$}
+    \caption[Rozmieszczenie elektrod w międzynarodowym systemie $10$-$20$]{Rozmieszczenie elektrod w międzynarodowym systemie $10$-$20$\footnotemark}
     \label{fig:10-20-system}
 \end{figure}
+\footnotetext{\href{https://commons.wikimedia.org/wiki/File:21_electrodes_of_International_10-20_system_for_EEG.svg}{
+\begin{CJK}{UTF8}{}
+\begin{Japanese}
+トマトン
+\end{Japanese}  
+\end{CJK}124, Public domain, via Wikimedia Commons}}
 
 Alternatywne metody rozmieszczenia elektrod stosowane są czasami w produktach komercjalnych z kategorii BCI (ang. \textit{brain computer interface}). Narzędzia te często ignorują standardy pozycjonowania elektrod i skupiają je na korze przedczołowej w celu optymalizacji stosunku kosztów do jakości zebranych danych. Przykładem urządzenia stosującego ten zabieg jest wykorzystany na potrzeby pracy zestaw Emotiv EPOC X \cite{emotiv_inc_epoc_nodate}. 
 
@@ -152,6 +165,8 @@ Podczas badania EEG montażem nazywa się konfigurację punktów odniesienia dla
 
 \subsubsection{Badane częstotliwości}
 
+W medycynie, ze względu na wysoki poziom złożoności bezpośrednia analiza przebiegów czasowych potencjałów stosowana jest niezwykle rzadko – standardową metodą jest porównywanie aktywności mózgu na określonych przedziałach częstotliwości (\autoref{tab:freqs}), tak na przykład aktywność w zakresie $\alpha$ wzrasta po zamknięciu oczu, a przedziale $\beta$ w trakcie ruchu \cite{britton_electroencephalography_2016}. 
+
 \begin{table}[h]
     \centering
     \begin{tabular}{|c|c|c|}
@@ -168,39 +183,45 @@ Podczas badania EEG montażem nazywa się konfigurację punktów odniesienia dla
     \caption{Typowe oznaczenia częstotliwości podczas badania EEG}
     \label{tab:freqs}
 \end{table}
+
 \chapter{Metody}
 
 \section{Aparatura Pomiarowa}\label{aparatura-pomiarowa}
 % - w projekekcie napisalem ze to bedzie sterownik so i should make that clear
-
 W celu przeprowadzenia badań opracowano aplikację webową pozwalającą na wyświetlanie bodźców na ekranie komputera (np. zadań matematycznych) oraz oprogramowanie serwerowe odpowiedzialne za sterowanie urządzeniem pomiarowym (Emotiv EPOCX), zbieranie informacji na temat odpowiedzi użytkownika, oraz korelowanie ich w czasie ze mierzonym sygnałem EEG.
 
 \subsection{Oprogramowanie}
 % - this should probably be pretty precise zeby nie bylo pytan czy to napewno jest praca inżynierska
 % - info o tym gdzie i jak zapisujemy wyniki
 % - info o konifguracji
- 
 Aplikacja stworzona na potrzeby badania składa się z dwóch komponentów: formularza zbierającego informacje na temat uczestnika i okoliczności, w jakich był on badany (\autoref{formularz-dla-osoby-badanej}) oraz modułu pozwalającego na wyświetlanie pytań w określonym interwale i zbieraniu na nie odpowiedzi. Na rysunku \ref{fig:app-flow} przedstawiono diagram typowego procesu działania aplikacji.
-
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\columnwidth]{thesis/assets/app_flow.png}
+    \includegraphics[width=1\columnwidth]{thesis/assets/app_flow.png}
     \caption{Typowy proces działania aplikacji}
     \label{fig:app-flow}
 \end{figure}
-
 Całość oprogramowania serwerowego napisano w języku programowania \textit{Python}\cite{python_developers_python_2024} w wersji 3.9, używając biblioteki \textit{Flask}\cite{flask_developers_flask_nodate} do implementacji REST API, a komunikacja z urządzeniem pomiarowym odbywała się za pomocą protokołu WebSocket z wykorzystaniem \textit{websocket-client}\cite{liris_websocket-client_nodate}. Interfejs graficzny przygotowano z użyciem biblioteki \textit{htmx}\cite{htmx_developers_htmx_nodate}.
 
 Oprogramowanie serwerowe jest niezależne od interfejsu graficznego aplikacji, pozwala to na wykorzystanie przygotowanego REST API (dokumentacja znajduje się w załączniku \ref{api}) do implementacji innych eksperymentów wykorzystujących badanie EEG (w tym badań wykorzystujących wiele urządzeń jednocześnie).
 
 Załącznik \ref{instrukcja} zawiera wymagania systemowe, opis pliku konfiguracyjnego oraz instrukcję instalacji i obsługi oprogramowania do zbierania danych.
+\clearpage
 
 \subsection{Urządzenie pomiarowe}\label{emotiv}
-Do wykonania badań zdecydowano się na wykorzystanie 14 kanałowego (14 elektrod gąbkowych w konfiguracji przedstawionej na rysunku \ref{fig:emotiv-electrode-locations}) zestawu, produkowanego przez firmę Emotiv (model EpocX \cite{emotiv_inc_epoc_nodate}). Wybór urządzenia podyktowany został dostępnością bibliotek pozwalających na interakcję z urządzeniem w czasie rzeczywistym \cite{emotiv_inc_emotiv_nodate-1} (funkcjonalność wymagana w celu oznaczenia momentu wyświetlenia pytania oraz udzielenia na nie odpowiedzi), obecnością wbudowanych czujników położenia i przyspieszenia (wymaganych w celu wyeliminowania zakłóceń związanych z ruchami głowy osoby badanej), możliwością działania bez konieczności aplikacji specjalistycznego żelu przewodzącego (konieczność jego stosowania stanowczo utrudnia prowadzenie badań) oraz możliwością działania w trybie bezprzewodowym (poprzez bluetooth) umożliwiając ewentualne zastosowania w środowiskach pozamedycznych. Dodatkowo dołączone oprogramowanie pozwala na kalibrację przed, oraz monitorowanie w trakcie badania, jakości połączenia pomiędzy elektrodami a skórą pacjenta co pozwala na zmniejszenie ilości pomiarów zakończonych niepowodzeniem ze względów technicznych. Jednocześnie rozszerzona łatwość użycia wiąże się z koniecznością kompromisu jakości zbieranych danych. 
+Do wykonania badań zdecydowano się na wykorzystanie 14 kanałowego (18 elektrod gąbkowych w tym 4 elektrody odniesieniowe w konfiguracji przedstawionej na rysunku \ref{fig:emotiv-electrode-locations}) zestawu, produkowanego przez firmę Emotiv (model EpocX \cite{emotiv_inc_epoc_nodate}). Wybór urządzenia podyktowany został dostępnością bibliotek pozwalających na interakcję z urządzeniem w czasie rzeczywistym \cite{emotiv_inc_emotiv_nodate-1} (funkcjonalność wymagana w celu oznaczenia momentu wyświetlenia pytania oraz udzielenia na nie odpowiedzi), obecnością wbudowanych czujników położenia i przyspieszenia (wymaganych w celu wyeliminowania zakłóceń związanych z ruchami głowy osoby badanej), możliwością działania bez konieczności aplikacji specjalistycznego żelu przewodzącego (konieczność jego stosowania stanowczo utrudnia prowadzenie badań) oraz możliwością działania w trybie bezprzewodowym (poprzez bluetooth) umożliwiając ewentualne zastosowania w środowiskach pozamedycznych. Dodatkowo dołączone oprogramowanie pozwala na kalibrację przed, oraz monitorowanie w trakcie badania, jakości połączenia pomiędzy elektrodami a skórą pacjenta co pozwala na zmniejszenie ilości pomiarów zakończonych niepowodzeniem ze względów technicznych. Jednocześnie rozszerzona łatwość użycia wiąże się z koniecznością kompromisu jakości zbieranych danych. 
+
+% \begin{figure}[h!]
+%     \centering
+%     \includegraphics[angle=90,trim={14cm 0 0 0},origin=c,width=0.5\columnwidth]{./assets/yas5.pdf}
+%     \caption{Położenia elektrod dla urządzenia Emotiv EPOC X}
+%     \label{fig:emotiv-electrode-locations}
+% \end{figure}
+
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.5\columnwidth]{thesis/emotiv_electrode_locations.png}
+    \includegraphics[angle=90,trim={35cm 0 8cm 0},origin=c,width=\columnwidth]{./assets/yas6.pdf}
     \caption{Położenia elektrod dla urządzenia Emotiv EPOC X}
     \label{fig:emotiv-electrode-locations}
 \end{figure}
@@ -212,7 +233,7 @@ Do wykonania badań zdecydowano się na wykorzystanie 14 kanałowego (14 elektro
 Przed rozpoczęciem badania uczestnikowi prezentowana jest ankieta wejściowa. Zawiera ona informacje na temat badania (\autoref{opis-badania}), pytania na temat okoliczności, w których ono przebiega i informacji demograficznych (\autoref{pytania-ankiety-wejsciowej}) oraz zgodę na przetwarzanie danych (\autoref{zgoda-na-przetwarzanie-danych}). Do momentu wyrażenia zgody, żadne informacje nie są zapisywane.
 
 \subsection{Przygotowanie zestawu}
-Przed przystąpieniem do badania, gąbki montowane na zakończeniach elektrod zamaczane są w roztworze soli fizjologicznej, a urządzenie umieszczone zostaje na głowie badanej osoby. Następnie w celu potwierdzenia jego poprawnego działania jakość połączenia sprawdzana jest za pomocą oprogramowania Emotiv Pro\cite{emotiv_inc_epoc_nodate}. Po uzyskaniu zadowalającego poziomu pacjent proszony jest o zamknięcie oczu na czas około 30 sekund w celu potwierdzenia poprawnej biokalibracji (przez weryfikację występowania wzrostu aktywności w zakresie częstotliwości $\alpha$ \cite{britton_electroencephalography_2016}).
+Przed przystąpieniem do badania, gąbki montowane na zakończeniach elektrod zamaczane są w roztworze soli fizjologicznej, a urządzenie umieszczone zostaje na głowie badanej osoby. Następnie w celu potwierdzenia jego poprawnego działania jakość połączenia sprawdzana jest za pomocą oprogramowania Emotiv Pro \cite{emotiv_inc_epoc_nodate}. Po uzyskaniu zadowalającego poziomu pacjent proszony jest o zamknięcie oczu na czas około 30 sekund w celu potwierdzenia poprawnej biokalibracji (przez weryfikację występowania wzrostu aktywności w zakresie częstotliwości $\alpha$ \cite{britton_electroencephalography_2016}).
 
 \subsection{Badanie}
 Po potwierdzeniu poprawnego działania urządzenia, ochotnik zostaje zapoznany z interfejsem używanym do przeprowadzenia badania. Na ekranie komputera lub tabletu prezentowane są trzy przykładowe pytania. Po upewnieniu się, że cała procedura jest zrozumiała dla pacjenta, operator opuszcza pomieszczenie, a ochotnik rozpoczyna udzielanie odpowiedzi.
@@ -228,6 +249,8 @@ Badanie polega na wyświetlaniu na ekranie  serii 10 zadań arytmetycznych. Ocho
 % - svm - inni ludzie
 
 \chapter{Wyniki}
+\section{Dostępność danych}
+Dane zebrane podczas kampanii badawczej dostępne są w repozytorium projektu w surowej (po anonimizacji) i przetworzonej postaci, wraz z oprogramowaniem przygotowanym w celu ich analizy  \cite{mateusz_kojro_mateuszkojrobachelors-thesis_nodate}. 
 % - publiczny dostep do zestawu dancyh
 \section{Demografia}
 Badaniu poddanych zostało 19 ochotników, spośród których zdecydowana większość uczestników klasowała się w przedziale od 50 do 60 ($47\%$) lub od 20 do 30 ($21\%$) lat (\autoref{fig:age}). W zbiorze zachowano balans pomiędzy ilością mężczyzn i kobiet (odpowiednio $47\%$ i $53\%$) (\autoref{fig:gender}). Większość osób badanych posiada wykształcenie wyższe ($73\%$ – rysunek \ref{fig:education}) oraz wykonuje pracę biurową ($63\%$ – rysunek \ref{fig:jobs}). Tylko jedna z badanych osób cierpi na schorzenie neurologiczne (epilepsje) w związku z czym wykonane na niej pomiary  wyeliminowane zostały ze zbioru danych.
@@ -235,14 +258,14 @@ Badaniu poddanych zostało 19 ochotników, spośród których zdecydowana więks
 \begin{figure}[h!]
 \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=\columnwidth]{thesis/assets/age_histogram.png}
+    \includegraphics[width=\columnwidth]{plots/age.pdf}
     \caption{Wiek badanych osób}
     \label{fig:age}
 \end{subfigure}   
 \hfill
 \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=\columnwidth]{thesis/assets/gender.png}
+    \includegraphics[width=\columnwidth]{plots/gender.pdf}
     \caption{Płeć badanych osób}
     \label{fig:gender}
 \end{subfigure}
@@ -252,14 +275,14 @@ Badaniu poddanych zostało 19 ochotników, spośród których zdecydowana więks
 \begin{figure}[h!]
 \begin{subfigure}[b]{0.4\textwidth}
     \centering
-    \includegraphics[width=\columnwidth]{thesis/assets/education.png}
+    \includegraphics[width=\columnwidth]{plots/education.pdf}
     \caption{Wykształcenie}
     \label{fig:education}
 \end{subfigure}   
 \hfill
 \begin{subfigure}[b]{0.5\textwidth}
     \centering
-    \includegraphics[width=\columnwidth]{thesis/assets/jobs.png}
+    \includegraphics[width=\columnwidth]{plots/job.pdf}
     \caption{Sektor zatrudnienia}
     \label{fig:jobs}
 \end{subfigure}
@@ -281,9 +304,16 @@ Badaniu poddanych zostało 19 ochotników, spośród których zdecydowana więks
 % - Zawód
 % - Choroby neurologiczne/psychologiczne
 % - Stopien zaznajomienia z komputerami
+\section{Przygotowanie zbioru danych}\label{data-preparation}
 
-\section{Analiza statystyczna}\label{analiza-klasyczna}
-W celu eliminacji obserwacji odstających wykorzystano tzw. ,,standaryzację $Z$'' zaaplikowaną do średniego potencjału zmierzonego na każdej z elektrod, (\autoref{lst:z-score-calculation} zawiera implementację tej operacji z wykorzystaniem bibliotek NumPy \cite{harris_array_2020} i SciPy \cite{virtanen_scipy_2020}), ustalając poziom odrzucenia na $3\sigma$. Dzięki temu wyeliminowano jeden z wykonanych pomiarów – Osoba Q(\autoref{fig:zscore}).
+
+
+W pierwszym kroku zebrane dane poddane zostały procesowi anonimizacji, imiona, nazwiska i adresy email zostały usunięte, a
+daty urodzenia zamieniono na przedziały wieku. Następnie w celu eliminacji obserwacji odstających wykorzystano tzw. ,,metrykę $Z$'' (ang. \textit{zscore}) \cite{noauthor_scipystatszscore_nodate}, obliczaną z pomocą równania \ref{eq:zscore} w którym $x$ oznacza wartość zmiennej, $\mu$ średnią populacji, a $\sigma$ jej odchylenie standardowe. Poziom odrzucenia ustalono na $z=3$. Metryka ta zaaplikowana została do średniego potencjału zmierzonego na każdej z elektrod (listing \ref{lst:z-score-calculation} zawiera implementację tej operacji z wykorzystaniem bibliotek NumPy \cite{harris_array_2020} i SciPy \cite{virtanen_scipy_2020}). Spośród wykonanych pomiarów tylko jeden (osoba Q) przekroczył poziom odrzucenia, w związku z czym został wyeliminowany z dalszej analizy. Rysunek \ref{fig:zscore} prezentuje wyniki obliczeń.
+
+\begin{equation}
+    z = \frac{x - \mu}{\sigma}
+\end{equation}\label{eq:zscore}
 
 \begin{lstlisting}[caption={Obliczanie standardyzacji Z},label={lst:z-score-calculation}]
 import numpy as np
@@ -296,36 +326,13 @@ zscores = np.abs(zscore(X)).max(axis=1)
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.75\columnwidth]{thesis/assets/zscore.png}
+    \includegraphics[width=0.75\columnwidth]{plots/zscore.pdf}
     \caption{Wartości metryki $Z$}
     \label{fig:zscore}
 \end{figure}
 
-
-Standardową metodą analizy danych zebranych za pomocą zestawu EEG jest aplikacja dyskretnej transformaty Fouriera w celu względnej siły poszczególnych pasm częstotliwości (\autoref{tab:freqs}). W celu udowodnienia różnicy pomiędzy aktywnością mózgu w czasie skupienia (okres od wyświetlenia pytania do udzielenia odpowiedzi – \autoref{fig:thinking}), a aktywnością w czasie spoczynku (okres po udzieleniu odpowiedzi – \autoref{fig:waiting}) cały czas spędzony w danym stanie zostaje zgrupowany, a następnie poddany analizie fourierowskiej w oknach o rozmiarze $128$ próbek urządzenia ($1$ sekundy), implementacja tej operacji przedstawiona została na listingu \ref{lst:moving-to-freq-domain}. Tak przygotowane próbki porównane zostają następnie za pomocą testu Kruskala, wartości $p$ przedstawiono na rysunku \ref{fig:thinking-vs-waiting-pvalue}. Przy założeniu istotności statystycznej na poziomie $0,05$ średnie wartości zmierzone na części kanałów są różne w czasie skupienia.
-
-
-\begin{lstlisting}[caption={Przejście do domeny częstotliwościowej},label={lst:moving-to-freq-domain}]
-import numpy as np
-from scipy.fft import fft
-
-# X zawiera wszystkie probki zebrane na wszystkich kanalach
-# X.shape = (liczba probek, liczba kanalow)
-X = X.reshape(-1, num_channels, window_size)
-
-freq_domain = np.abs(fft(X, axis=-1))
-deltas = np.sum(freq_domain[:, :, 1:3], axis=-1)
-thetas = np.sum(freq_domain[:, :, 4:7], axis=-1)
-alphas = np.sum(freq_domain[:, :, 8:13], axis=-1)
-betas = np.sum(freq_domain[:, :, 14:25], axis=-1)
-\end{lstlisting}
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.75\columnwidth]{thesis/assets/thinking_vs_waiting_pvalue.png}
-    \caption{Wartośći $p$}
-    \label{fig:thinking-vs-waiting-pvalue}
-\end{figure}
+Pozostałe dane zostały pogrupowane ze względu na wykonywaną aktywność – czas od wyświetlenia pytania do udzielenia odpowiedzi zakwalifikowany został jako stan skupienia ($t_f$), a czas pozostały do wyświetlenia kolejnego zadania przyjęto jako stan spoczynku – $t_r$ (czas kalibracji, $t_c$, został oddzielony od poprzednich grup). 
+Przygotowano również pochodny zbiór danych stworzony poprzez aplikację do zebranych pomiarów dyskretnej transformaty Fouriera (rozmiar okna wybrano na $128$ próbek – jedną sekundę pomiaru).  Średnie wartości dla częstotliwości najczęściej badanych w środowisku medycznym przedstawiono na rysunkach \ref{fig:waiting}, \ref{fig:thinking} (odpowiednio czas spoczynku i skupienia). Rysunek \ref{fig:diff} przedstawia różnicę pomiędzy poprzednimi dwoma.
 
 \begin{figure}[h!]
     \centering
@@ -340,7 +347,7 @@ betas = np.sum(freq_domain[:, :, 14:25], axis=-1)
 \begin{subfigure}[b]{\textwidth}
     \centering
     \includegraphics[width=\columnwidth]{thesis/assets/thinking.png}
-    \caption{Aktywność mózgu w czasie myślenia}
+    \caption{Aktywność mózgu w czasie wykonywania zadania}
     \label{fig:thinking}
 \end{subfigure}
 
@@ -356,33 +363,59 @@ betas = np.sum(freq_domain[:, :, 14:25], axis=-1)
     \label{fig:brain-heatmaps}
 \end{figure}
 
-\section{Zmienne zakłócające}\label{zmiennne-zaklucajace}
+\section{Analiza statystyczna}\label{analiza-klasyczna}
+W celu udowodnienia różnicy pomiędzy zmierzoną aktywnością mózgu w czasie skupienia i w czasie spoczynku średnie częstotliwości zmierzone na każdej z elektrod porównane zostaną za pomocą testu Kruskala. Poziom istotności statystycznej przyjęto na $\alpha=0,95$. Rysunek \ref{fig:thinking-vs-waiting-pvalue} przedstawia obliczone wartości $p$, sugerujące statystycznie znaczące różnice dla niektórych kombinacji kanałów i zakresów częstotliwości (przedziały zgodne z podanymi w tabeli \ref{tab:freqs}).
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\columnwidth]{thesis/assets/thinking_vs_waiting_pvalue.png}
+    \caption{Porównanie wartośći $p$ dla różnych zakresów częstotliwości i kanałów}
+    \label{fig:thinking-vs-waiting-pvalue}
+\end{figure}
+
+% \begin{lstlisting}[caption={Przejście do domeny częstotliwościowej},label={lst:moving-to-freq-domain}]
+% import numpy as np
+% from scipy.fft import fft
+
+% # X zawiera wszystkie probki zebrane na wszystkich kanalach
+% # X.shape = (liczba probek, liczba kanalow)
+% X = X.reshape(-1, num_channels, window_size)
+
+% freq_domain = np.abs(fft(X, axis=-1))
+% deltas = np.sum(freq_domain[:, :, 1:3], axis=-1)
+% thetas = np.sum(freq_domain[:, :, 4:7], axis=-1)
+% alphas = np.sum(freq_domain[:, :, 8:13], axis=-1)
+% betas = np.sum(freq_domain[:, :, 14:25], axis=-1)
+% \end{lstlisting}
+
+
+\subsection{Zmienne zakłócające}\label{zmiennne-zaklucajace}
 Ankieta wstępna wypełniania przez pacjentów zawierała pytania mające na celu ocenę czynników, które mogłyby wpłynąć na wyniki badania, takich jak ilość czasu spędzonego przy komputerze (\autoref{fig:computer-time}), godziny snu poprzedniej nocy (\autoref{fig:sleep-time}), poziom zmęczenia (\autoref{fig:tired}), przyjmowane substancje psychoaktywne (\autoref{fig:psychoactive-substances} oraz częstotliwość wykonywania mentalnych obliczeń arytmetycznych (\autoref{fig:arithmetic}).
 
 \begin{figure}[h!]
 \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=\columnwidth]{thesis/assets/sleep_histogram.png}
+    \includegraphics[width=\columnwidth]{thesis/plots/sleep.pdf}
     \caption{Godziny snu poprzedniej nocy}
     \label{fig:sleep-time}
 \end{subfigure}   
 \hfill
 \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=\columnwidth]{thesis/assets/exhaustion_level.png}
+    \includegraphics[width=\columnwidth]{thesis/plots/exhaustion_level.pdf}
     \caption{Samookreślony poziom zmęczenia}
     \label{fig:tired}
 \end{subfigure}
 \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=\columnwidth]{thesis/assets/computer_time.png}
+    \includegraphics[width=\columnwidth]{thesis/plots/computer_hours.pdf}
     \caption{Czas spędzany przy komputerze w ciągu dnia}
     \label{fig:computer-time}
 \end{subfigure}   
 \hfill
 \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=\columnwidth]{thesis/assets/psychoactive_substance.png}
+    \includegraphics[width=\columnwidth]{thesis/plots/psychoactive_substances.pdf}
     \caption{Substancje psychoaktywne przyjętę w ciągu 6 godzin przed rozpoczęciem badania}
     \label{fig:psychoactive-substances}
 \end{subfigure}
@@ -395,7 +428,7 @@ Ankieta wstępna wypełniania przez pacjentów zawierała pytania mające na cel
 \caption{Histogramy dla zmiennych zakłócających}
 \end{figure}
 
-Po aplikacji transformacji opisanej na listingu \ref{lst:moving-to-freq-domain}, w celu określenia wpływu  badanych zmiennych zakłócających ma na wykonywane pomiary (przyjęto poziom istotności wysokości $0,5$) zastosowano jednoczynnikową analizę wariacji (ang \textit{one-way ANOVA}), a wyniki przedstawiono w tabeli \ref{tab:confunding-variables-statistical-tests} 
+W celu określenia wpływu  badanych zmiennych zakłócających ma na wykonywane pomiary (przyjęto poziom istotności wysokości $0,5$) zastosowano jednoczynnikową analizę wariacji (ang \textit{one-way ANOVA}), a wyniki przedstawiono w tabeli \ref{tab:confunding-variables-statistical-tests} 
 
 \begin{table}[h!]
     \centering
@@ -422,54 +455,49 @@ Po aplikacji transformacji opisanej na listingu \ref{lst:moving-to-freq-domain},
 % - porownac czestotliwosci na poczatku badania i na koncu
 % - interesujace korelacje z innymi zmiennymi (maybe macierz korelacji)
 \section{Uczenie maszynowe}\label{uczenie-maszynowe}
-W celu opracowania algorytmu wykrywania stanu skupienia przetestowano szereg różnego rodzaju algorytmów \footnote{Zebrany zbiór danych oraz implementacje modeli znaleźć można pod adresem \url{https://github.com/mateuszkojro/bachelors-thesis/}} między innymi lasy losowe, proste sieci neuronowe – \autoref{fig:simple-nn}, konwolucyjne sieci neuronowe - \autoref{fig:conv-nn} oraz specjalistyczne sieci do klasyfikacji szeregów czasowych – architektura MLSTM-FCN \cite{karim_multivariate_2019} przedstawiona na rysunku \ref{fig:mlstm} i metod przygotowania danych wejściowych – wejścia w postaci różnej długości czasowych wycinków zmierzonych napięć lub transformaty wyników transformaty Fouriera.
+\subsection{Transformacje danych i architektura sieci}
+W celu opracowania algorytmu wykrywania stanu skupienia przetestowano szereg różnego rodzaju algorytmów uczenia maszynowego, między innymi lasy losowe, gęste i konwolucyjne sieci neuronowe oraz specjalistyczne sieci do klasyfikacji szeregów czasowych (wykorzystujące architekturę MLSTM-FCN \cite{karim_multivariate_2019}). Na rysunku \ref{fig:arch} przedstawiono architekturę zaimplementowanych modeli. Wymiary warstw umieszczone zostały w nawiasach, gdzie pierwsza wartość oznacza rozmiar wejścia, druga rozmiar wyjścia a opcjonalna trzecia wymiary filtra (przy splotach dwuwymiarowych stosowano filtry kwadratowe), symbolem $X$ oznaczono wymiary zależne od kształtu wejścia.
 
-\begin{figure}[h!]
+Zestawy danych przygotowane w sekcji \ref{data-preparation} znormalizowane zostały przez usunięcie średniej i przeskalowanie do odchylenia standardowego, a następnie podzielone na próbki czasowe o rozmiarach od $1$ do $256$ kroków czasowych.
+
+Wpływ rozmiaru okna na uczenie modelu sprawdzony został, poprzez trenowanie lasu losowego na tym samym zbiorze pomiarów z różnym rozmiarem okna czasowego jako wejścia (\autoref{fig:window-size}).
+
+\begin{figure}
     \centering
-    \includegraphics[width=0.5\columnwidth]{}
-    \caption{Architektura zaimplementowanej prostej sieci neuronowej}
-    \label{fig:simple-nn}
+    \includegraphics[width=\columnwidth]{thesis/assets/archs.png}
+    \caption[Schematy architektury zaimplementowanych sieci neuronowych]{Schematy architektury zaimplementowanych sieci neuronowych – sieć gęsta (lewo), konwolucyjna (środek) oraz MLSTM (prawo)}
+    \label{fig:arch}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.5\columnwidth]{}
-    \caption{Architektura zaimplementowanej konwolucyjnej sieci neuronowej}
-    \label{fig:conv-nn}
+    \includegraphics[width=0.5\columnwidth]{thesis/assets/window_size_vs_f1.png}
+    \caption{Porównanie miary $F_1$ dla lasu losowego, na zbiorze walidacyjnym ze względu na wielkość okna}
+    \label{fig:window-size}
 \end{figure}
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.5\columnwidth]{}
-    \caption{Architektura sieci MLSTM-FCN}
-    \label{fig:mlstm}
-\end{figure}
-
-
-Zestaw danych walidacyjnych przygotowany został poprzez oddzielenie pomiarów wykonanych na trzech osobach i niewykorzystywanie go podczas trenowania algorytmów. Do oceny jakości modelu stosowana jest standardowa dla problemów klasyfikacji binarnej miara F1 (obliczana za pomocą wzoru \ref{eq:calculation-f1}).
+Zestaw danych walidacyjnych przygotowany został poprzez oddzielenie pomiarów wykonanych na trzech osobach i niewykorzystywanie go podczas trenowania algorytmów. Do oceny jakości modelu stosowana jest standardowa dla problemów klasyfikacji binarnej miara F1 (obliczana za pomocą wzoru \ref{eq:calculation-f1}) oraz dokładność (wzór \ref{eq:accuracy}).
 
 \begin{equation}\label{eq:calculation-f1}
     F_1 = \frac{2*\text{prawdziwie pozytywne}}{2*\text{prawdziwie pozytywne}+\text{fałszywie pozytywne}+\text{fałszywie negatywne}}
 \end{equation}
 
+\begin{equation}\label{eq:accuracy}
+    A_{cc} = \frac{\text{prawdziwie pozytywne} + \text{prawdziwie negatywne}}{\text{wszystkie próbki}}
+\end{equation}
 
-W celu dobrania odpowiednich metod przygotowania danych oraz wartości hiperparametrów przygotowywanych modeli przeprowadzono eksperymenty mające na celu ich ustalenie. Wpływ rozmiaru okna czasowego na uczenie modelu sprawdzony został poprzez trenowanie lasu losowego na tym samym zbiorze danych z różnym rozmiarem okna czasowego jako wejścia do modelu (\autoref{fig:window-size}). Natomiast głębokość lasu losowego dostosowana została przez jej sukcesywne zwiększanie aż do osiągnięcia stabilizacji (\autoref{fig:rf-num-nodes}).
+\subsection{Przeprowadzone eksperymenty i rezultaty}
+W celu dobrania odpowiednich metod opracowania danych oraz wartości hiperparametrów przygotowywanych modeli przeprowadzono eksperymenty mające na celu ich ustalenie. Wartości metryk $F_1$ oraz $A_{cc}$ najlepszych uzyskanych modeli przedstawiono w tabeli \ref{tab:high-level-results} jednoznacznie pokazując brak zdolności predykcyjnej uzyskanych algorytmów.
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.5\columnwidth]{thesis/assets/window_size_vs_f1.png}
-    \caption{Porównanie miary F1 na zbiorze walidacyjnym ze względu na wielkość okna}
-    \label{fig:window-size}
-\end{figure}
+% Natomiast głębokość lasu losowego dostosowana została przez jej sukcesywne zwiększanie aż do osiągnięcia stabilizacji (\autoref{fig:rf-num-nodes}).
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.5\columnwidth]{thesis/assets/forest_depth_vs_f1.png}
-    \caption{Porównanie miary F1 na zbiorze walidacyjnym z względu na ilość warstw lasu losowego}
-    \label{fig:rf-num-nodes}
-\end{figure}
 
- Najwyższe otrzymane wartości tej miary przedstawiono w tabeli \ref{tab:high-level-results}
+% \begin{figure}[h!]
+%     \centering
+%     \includegraphics[width=0.5\columnwidth]{thesis/assets/forest_depth_vs_f1.png}
+%     \caption{Porównanie miary $F_1$ na zbiorze walidacyjnym z względu na ilość warstw lasu losowego}
+%     \label{fig:rf-num-nodes}
+% \end{figure}
 
 % \begin{figure}[h!]
 %     \centering
@@ -490,7 +518,7 @@ W celu dobrania odpowiednich metod przygotowania danych oraz wartości hiperpara
         Sieć MLSTM & & \\
         \hline
     \end{tabular}
-    \caption{Najlepsze wyniki miary F1 na zbiorze walidacyjnym z podziałem na rodzaj modelu i rodzaj danych wejściowych}
+    \caption{Najlepsze wyniki miary $F_1$ oraz $A_{cc}$ na zbiorze walidacyjnym z podziałem na rodzaj modelu i rodzaj danych wejściowych}
     \label{tab:high-level-results}
 \end{table}
 
@@ -563,7 +591,7 @@ W celu dobrania odpowiednich metod przygotowania danych oraz wartości hiperpara
 % W celu analizy ewentualnych uprzedzen algorytmicznych 
 
 \chapter{Dyskusja}\label{dyskusja}
-Pomimo statystycznie istotnej różnicy pomiędzy sygnałami odczytywanymi w czasie skupienia i spoczynku, zastosowane modele uczenia maszynowego nie wykazały zdolności do wykrycia tej zależności na oddzielonej populacji kontrolnej. Wyniki te mimo zastosowania architektur \cite{} i metod trenowania modeli \cite{} o potwierdzonej skuteczności i zgodnych z najnowszymi osiągnięciami w dziedzinie uczenia maszynowego sugerują niewystarczającą wielkość zbioru badawczego (hipoteza niepoprawnego wykonania pomiarów odrzucona została ze względu na wykrywalną statystycznie różnice pomiędzy badanymi stanami), niespodziewanie wysokie wariacje wprowadzone przez zbadane zmienne zakłócające wydają się wspierać te wnioski. Jednocześnie badania zaprezentowane przez \cite{} przy zachowaniu podobnej ilości uczestników osiągają stanowczo lepsze rezultaty efekt, który spowodowany mógł być wykorzystaniem urządzeń pomiarowych przeznaczonych do użytku medycznego, a przez to osiągnięcie wyższego efektywnego stosunku sygnału do szumu. W celu jednoznacznego zweryfikowania tezy badawczej wymagane jest zebranie większej ilości danych przez przeprowadzenie dodatkowej kampanii badawczej.
+Pomimo statystycznie istotnej różnicy pomiędzy sygnałami odczytywanymi w czasie skupienia i spoczynku, zastosowane modele uczenia maszynowego nie wykazały zdolności do wykrycia tej zależności na oddzielonej populacji kontrolnej. Wyniki te mimo zastosowania architektur \cite{} i metod trenowania modeli \cite{} o potwierdzonej skuteczności i zgodnych z najnowszymi osiągnięciami w dziedzinie uczenia maszynowego sugerują niewystarczającą wielkość zbioru badawczego (hipoteza niepoprawnego wykonania pomiarów odrzucona została ze względu na wykrywalną statystycznie różnice pomiędzy badanymi stanami), niespodziewanie wysokie wariacje wprowadzone przez zbadane zmienne zakłócające wydają się wspierać te wnioski. Jednocześnie badania zaprezentowane w \cite{} przy zachowaniu podobnej ilości uczestników osiągają stanowczo lepsze rezultaty, spowodowane mogło to być wykorzystaniem urządzeń pomiarowych przeznaczonych do użytku medycznego, a w związku z tym osiągnięcie wyższego efektywnego stosunku sygnału do szumu. W celu jednoznacznego zweryfikowania tezy badawczej wymagane jest zebranie większej ilości danych przez przeprowadzenie dodatkowej kampanii badawczej.
 
 \printbibliography
 
@@ -572,20 +600,22 @@ Pomimo statystycznie istotnej różnicy pomiędzy sygnałami odczytywanymi w cza
 \clearpage
 \listoftables
 \clearpage
+\lstlistoflisting
+\clearpage
 
 \appendix
 \chapter{Formularze dla osób badanych}\label{formularz-dla-osoby-badanej}
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\columnwidth]{thesis/assets/description_2.png}
+    \fbox{\includegraphics[width=\columnwidth]{thesis/assets/description_2.png}}
     \caption{Opis badania prezentowany ochotnikowi cz.1}
-    \label{formularz-dla-osoby-badanej}
+    \label{opis-badania}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\columnwidth]{thesis/assets/description_1.png}
+    \fbox{\includegraphics[width=\columnwidth]{thesis/assets/description_1.png}}
     \caption{Opis badania prezentowany ochotnikowi cz.2}
     \label{zgoda-na-przetwarzanie-danych}
 \end{figure}
@@ -593,7 +623,7 @@ Pomimo statystycznie istotnej różnicy pomiędzy sygnałami odczytywanymi w cza
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\columnwidth]{thesis/assets/ankieta_wejsciowa.png}
+    \fbox{\includegraphics[width=\columnwidth]{thesis/assets/ankieta_wejsciowa.png}}
     \caption{Ankieta wstępna prezentowana przed rozpoczęciem badania}
     \label{pytania-ankiety-wejsciowej}
 \end{figure}
@@ -620,12 +650,19 @@ Pomimo statystycznie istotnej różnicy pomiędzy sygnałami odczytywanymi w cza
     \label{pytania-badania}
 \end{table}
 
-\chapter{Instrukcja uruchomienia i obsługi oprogramowania}\label{instrukcja}
+\chapter{Instrukcja obsługi}\label{instrukcja}
 \section{Wymagania systemowe}
 \section{Instalacja}
 \section{Obsługa}
 \section{Konfiguracja}
 \chapter{Dokumentacja API}\label{api}
+
+\begin{boxA}
+\textbf{\texttt{GET /api/cos}}
+
+It is just a frame surrounded by a slightly thick line. A simple monochrome design might be fine, but when you want a gorgeous look, it's a bit unsatisfactory.
+\end{boxA}
+
 % - register questions endpoint
 % - register answer
 % - mark point
