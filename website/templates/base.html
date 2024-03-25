@@ -11,6 +11,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://unpkg.com/htmx.org@1.9.9" crossorigin="anonymous"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -35,10 +38,7 @@
     <!-- Navbar -->
     <div class="w3-top">
         <div class="w3-bar w3-white">
-            <a href="{{ url_for('.home') }}" class="w3-bar-item">EEG</a>
-            <div class="w3-bar-item w3-right"><a href="">Username</a>
-                <img height="20em" referrerpolicy="no-referrer" src="{{ user_photo }}">
-            </div>
+            <a href="{{ url_for('.home') }}" class="w3-bar-item">Home</a>
         </div>
     </div>
     <!-- Main body -->

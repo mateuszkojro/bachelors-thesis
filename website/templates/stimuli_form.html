@@ -1,0 +1,54 @@
+<h1 id="question" style="text-align: center;">
+    {{ question }}
+</h1>
+{% if answerable == True %}
+<script>
+    MathJax.typeset()
+    function showBanner(parent, title, message) {
+        let answers = document.getElementById(parent)
+        let containerTag = document.createElement('div')
+        containerTag.classList.add('w3-panel')
+        containerTag.classList.add('w3-red')
+        let titleTag = document.createElement('h3')
+        titleTag.innerText = title
+        let descriptionTag = document.createElement('p')
+        descriptionTag.innerText = message
+        answers.appendChild(containerTag)
+    }
+    async function reportChange(value) {
+        let url = "/inject_marker"
+        try {
+            console.log(value.target.id)
+            let result = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({value: value.target.id, label: "answer_changed"})
+            })
+            console.log(result)
+        } catch(error) {
+            showBanner('answers', 'Wysyłanie informacji o zmianie odpowiedzi nie powiodło się', error)
+        }
+    }
+    document.getElementById('answers').addEventListener('change', reportChange)
+</script>
+<fieldset id="answers" onchange="reportChange">
+    <legend>Czy powyzsze zdanie jest prawdziwe?</legend>
+    <div>
+        <input type="radio" id="no_answer" name="answer" value="no_answer" onchange="reportChange" checked />
+        <label for="no_answer">Brak odpowiedzi</label>
+    </div>
+    <div>
+        <input type="radio" id="yes" name="answer" onchange="reportChange" value="yes" />
+        <label for="yes">Tak</label>
+    </div>
+    <div>
+        <input type="radio" id="no" name="answer" onchange="reportChange" value="no" />
+        <label for="no">Nie</label>
+    </div>
+</fieldset>
+{% endif %}
+<a class="w3-button w3-black" href="{{ url_for('.end') }}">
+    Przerwij Badanie
+</a>

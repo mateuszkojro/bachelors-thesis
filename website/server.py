@@ -9,6 +9,7 @@ from uuid import uuid4
 from threading import Thread
 from collections import defaultdict
 import json
+import markdown
 load_dotenv()
 
 EMOTIV_CLIENT_ID = str(os.getenv("EMOTIV_CLIENT_ID"))
@@ -22,6 +23,13 @@ app = Flask(__name__,
 current_device = None
 worker_thread = None
 question_counters = defaultdict(lambda: -1)
+# questions = [
+#             {"question": "Siedz w bezruchu", "answerable": False},
+#             {"question": "2+2=4", "answerable": True}, 
+#             {"question": "3+3=12", "answerable": True},
+#             {"question": "Siedz w bezruchu", "answerable": False},
+#         ]
+questions = None # json.load(open("questions.json"))
 
 def save_results(path):
     df = pd.read_csv("/Users/mkojro/Documents/bachelors-thesis/emotiv-connection/results/Record title_EPOCX_211020_2024.02.14T13.56.26+01.00.md.pm.bp.csv", skiprows=1)
@@ -34,7 +42,9 @@ def inject_marker():
     print("inject_marker_called")
     global current_device
     info = request.json
+    print(info, info["value"], type(info["value"]))
     App.injcect_marker(current_device.c, info["label"], info["value"])
+    return "ok", 200
 
 @app.post('/answers/<id>')
 def create_answer(id):
@@ -42,13 +52,7 @@ def create_answer(id):
     print(request.form)
     global question_counters
     global current_device
-    questions = [
-            {"question": "Siedz w bezruchu", "answerable": False},
-            {"question": "2+2=4", "answerable": True}, 
-            {"question": "3+3=12", "answerable": True},
-            {"question": "Siedz w bezruchu", "answerable": False},
-        ]
-
+    global questions
     if current_device is None:
         return render_template('error.html', error_title="Nie mozna nawiązac polaczenia z zestawem EEG", error_text="Zestaw nie jest połączony"), 286
 
@@ -86,6 +90,9 @@ def stimuli():
     form_values = request.args.to_dict()
     global current_device
     global worker_thread
+    global questions
+    with open(form_values["question_set"]) as f:
+        questions = json.load(f)
     del worker_thread
     export_folder = RESULTS_FOLDER + str(recording_id)
     os.makedirs(export_folder, exist_ok=True)
@@ -96,8 +103,10 @@ def stimuli():
             client_id=EMOTIV_CLIENT_ID,
             client_secret=EMOTIV_CLIENT_SECRET,
             debug_mode=False,
+            recording_id=recording_id,
             url=request.args.get("emotiv_adress")
         ),
+        recording_id=recording_id,
         export_folder=export_folder
     )
     worker_thread = Thread(target=current_device.start)

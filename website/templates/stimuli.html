@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<from hx-post="/answers/{{ id }}" hx-trigger="every 60s" hx-swap="innerHTML">
+    <h1>
+        Przygotuj się, pytanie pojawi się za 60 sekund
+    </h1>
+</from>
+{% endblock %}

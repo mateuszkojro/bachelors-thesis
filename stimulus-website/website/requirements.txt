@@ -1,5 +1,0 @@
-dash
-pandas
-dash-latex
-pymongo
-python-dotenv

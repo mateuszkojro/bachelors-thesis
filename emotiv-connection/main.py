@@ -3,9 +3,9 @@ import time
 import threading
 import json
 
-RECORD_TITLE = ""
-RECORD_DESCRIPTION = ""
-EXPORT_FOLDER = ""
+RECORD_TITLE = "Record title"
+RECORD_DESCRIPTION = "Record description"
+EXPORT_FOLDER = '/Users/mkojro/Documents/bachelors-thesis/emotiv-connection/results/'
 EXPORT_DATA = [
         # 'EEG', # Requires PRO license
         'MOTION', 

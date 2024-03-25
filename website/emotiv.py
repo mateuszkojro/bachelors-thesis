@@ -25,9 +25,10 @@ class App():
     def stop_recording(c: cortex.Cortex):
         c.stop_record()
 
-    def __init__(self, device: cortex.Cortex, export_folder=EXPORT_FOLDER, on_export_done=None, **kwargs):
+    def __init__(self, device: cortex.Cortex, recording_id="no id", export_folder=EXPORT_FOLDER, on_export_done=None, **kwargs):
         self.c = device
         self.record_id = None
+        self.recording_id = recording_id
         self.markers = []
         self.export_folder = os.path.abspath(export_folder)
         self.on_export_done = on_export_done
@@ -51,7 +52,7 @@ class App():
 
     # callbacks functions
     def on_create_session_done(self, *args, **kwargs):
-        self.c.create_record(RECORD_TITLE, description=RECORD_DESCRIPTION)
+        self.c.create_record(self.recording_id, description=self.recording_id)
 
     def on_create_record_done(self, *args, **kwargs):
         # inject markers

@@ -1,0 +1,15 @@
+[
+ 
+    {
+        "question": "$$2+2=4$$",
+        "answerable": true
+    },
+    {
+        "question": "$$2+2=5$$",
+        "answerable": true
+    },
+    {
+        "question": "Trwa kalibracja nie ruszaj się",
+        "answerable": false
+    }
+]

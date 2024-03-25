@@ -11,7 +11,7 @@
         </p>
         <p>
             Twoim zadaniem jest zaznaczenie czy przedstawione zdania są prawdziwe czy nie. Pytania zmieniać bedą się
-            automatycznie po upływie 30s. Test składa sie z 30 pytań (łączny czas około 20 minut).
+            automatycznie po upływie 30s. Test składa sie z 10 pytań (łączny czas około 20 minut).
         </p>
         <p>
             Poniżej znajduje się ankieta mająca na celu zebranie danych pozwalających na minimalizację czynników
@@ -210,7 +210,7 @@
             <p>
                 <label class="question">
                     Ciśnienie
-                    <input type="number" name="blood_preassure">
+                    <input type="text" name="blood_preassure">
                 </label>
             </p>
             <p>
@@ -230,19 +230,20 @@
                     <input type="url" name="emotiv_adress" value="wss://localhost:6868" required>
                 </label>
             </p>
-            <p>`
-                <label class="question">
+            <p>
+            <label class="question">
                     Zestaw pytań
                     <select name="question_set" id="cars">
                         <option value="test_questions.json">Pytania Próbne</option>
                         <option value="standard_question_set_1.json">Standardowy Zestaw 1</option>
-                      </select>
+                        <option value="standard_question_set_2.json">Standardowy Zestaw 2</option>
+                    </select>
                 </label>
             </p>
         </fieldset>
         <p>
-            Twoim zadaniem jest zaznaczenie czy przedstawione zdania są prawdziwe czy nie. Pytania zmieniać bedą się
-            Po naciśnięciu przycisku <i>Start</i> rozpocznie się badanie. Pierwsze 30 sekund to czas na przygotowanie się. W czasie trwania całego badania proszę o wykonywanie możliwie minimalnej ilości ruchów.
+            Twoim zadaniem jest zaznaczenie czy przedstawione zdania są prawdziwe. Pytania zmieniać bedą się automatycznie.
+            Po naciśnięciu przycisku <i>Start</i> rozpocznie się badanie. Pierwsze 60 sekund to czas na przygotowanie się. W czasie trwania całego badania proszę o wykonywanie możliwie minimalnej ilości ruchów.
         </p>
         <div style="padding-bottom: 1em;">
             <label>

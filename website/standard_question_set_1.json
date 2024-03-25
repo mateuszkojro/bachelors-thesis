@@ -1,0 +1,50 @@
+[
+    {
+        "question": "Trwa kalibracja nie ruszaj się",
+        "answerable": false
+    },
+    {
+        "question": "$$(12*13)-11=145$$",
+        "answerable": true
+    },
+    {
+        "question": "$$7*8*3=177$$",
+        "answerable": true
+    },
+    {
+        "question": "$$\\frac{121}{11}+39=50$$",
+        "answerable": true
+    },
+    {
+        "question": "$$17+18+15+34=85$$",
+        "answerable": true
+    },
+    {
+        "question": "$$8*6*5=240$$",
+        "answerable": true
+    },
+    {
+        "question": "$$15*16*7=1680$$",
+        "answerable": true
+    },
+    {
+        "question": "$$(17*17)+2=290$$",
+        "answerable": true
+    },
+    {
+        "question": "$$173+(288*2)=750$$",
+        "answerable": true
+    },
+    {
+        "question": "$$(89*3)+13=280$$",
+        "answerable": true
+    },
+    {
+        "question": "$$7*7*7=343$$",
+        "answerable": true
+    },
+    {
+        "question": "Trwa kalibracja nie ruszaj się",
+        "answerable": false
+    }
+]

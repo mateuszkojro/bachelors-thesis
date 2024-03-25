@@ -474,15 +474,24 @@ Zestawy danych przygotowane w sekcji \ref{data-preparation} znormalizowane zosta
     \label{fig:window-size}
 \end{figure}
 
-Zestaw danych walidacyjnych przygotowany został poprzez oddzielenie pomiarów wykonanych na trzech osobach i niewykorzystywanie go podczas trenowania algorytmów. Do oceny jakości modelu stosowana jest standardowa dla problemów klasyfikacji binarnej miara F1 (obliczana za pomocą wzoru \ref{eq:calculation-f1}) oraz dokładność (wzór \ref{eq:accuracy}).
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\columnwidth]{}
+    \caption{Architektura sieci MLSTM-FCN}
+    \label{fig:mlstm}
+\end{figure}
+
+
+Zestaw danych walidacyjnych przygotowany został poprzez oddzielenie pomiarów wykonanych na trzech osobach i niewykorzystywanie go podczas trenowania algorytmów. Do oceny jakości modelu stosowana jest standardowa dla problemów klasyfikacji binarnej miara F1 (obliczana za pomocą wzoru \ref{eq:calculation-f1}) oraz dokładność (\autoref{}).
 
 \begin{equation}\label{eq:calculation-f1}
     F_1 = \frac{2*\text{prawdziwie pozytywne}}{2*\text{prawdziwie pozytywne}+\text{fałszywie pozytywne}+\text{fałszywie negatywne}}
 \end{equation}
 
-\begin{equation}\label{eq:accuracy}
-    A_{cc} = \frac{\text{prawdziwie pozytywne} + \text{prawdziwie negatywne}}{\text{wszystkie próbki}}
+\begin{equation}
+    A = \frac{\text{prawdziwie pozytywne} + \text{prawdziwie negatywne}}{\text{prawdziwie pozytywne} + \text{prawdziwie negatywne} + \text{fałszywe pozytywne} + \text{fałszywe negatywne}}
 \end{equation}
+
 
 \subsection{Przeprowadzone eksperymenty i rezultaty}
 W celu dobrania odpowiednich metod opracowania danych oraz wartości hiperparametrów przygotowywanych modeli przeprowadzono eksperymenty mające na celu ich ustalenie. Modele trenowane były wykorzystując strategię optymalizacji Adam \cite{kingma_adam_2017} przez minimum 500 epok. Metryki $F_1$ oraz $A_{cc}$ obliczane były na zbiorze walidacyjnym po ukończeniu każdej z nich, a najlepsze uzyskane wartości przedstawiono w tabeli \ref{tab:high-level-results} jednoznacznie pokazując brak zdolności predykcyjnej uzyskanych algorytmów.
@@ -617,7 +626,6 @@ Pomimo statystycznie istotnej różnicy pomiędzy sygnałami odczytywanymi w cza
     \caption{Opis badania prezentowany ochotnikowi cz.2}
     \label{zgoda-na-przetwarzanie-danych}
 \end{figure}
-
 
 \begin{figure}[h!]
     \centering
