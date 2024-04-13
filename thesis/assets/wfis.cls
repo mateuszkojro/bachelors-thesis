@@ -31,7 +31,7 @@
 \RequirePackage{csquotes}
 % \RequirePackage{cite}
 \RequirePackage[all,defaultlines=2]{nowidow} % Kontrola  wdów - działa lepiej
-\RequirePackage[polish]{babel}
+\RequirePackage[polish,english]{babel}
 % włączenie polskich znaków
 \usepackage{lmodern}
 
@@ -154,7 +154,7 @@ Numer albumu: \@nralbumu \\
 
 \vspace*{0.6cm}
 \begin{center}
-{\Large \bfseries \@tytul }\\[0.4cm]
+{\Huge \bfseries \@tytul }\\[0.4cm]
 \end{center}
 
 \vspace*{1cm}

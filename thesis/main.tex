@@ -71,26 +71,28 @@
 
 \stronatytulowa
 
+\selectlanguage{english}
 \begin{abstract}
-Praca prezentuje proces opracowania oraz ewaluacji modelu pozwalającego na wykrywanie stopnia skupienia człowieka za pomocą elektroencefalografii (EEG). W tym celu przygotowano dedykowane oprogramowanie pozwalające na nagrywanie sygnału EEG podczas wykonywania prezentowanych zadań matematycznych. Następnie przeprowadzono kampanię badawczą na próbce ochotników, analizując zebrane dane oraz testując wydajność lasów losowych, oraz głębokich, konwolucyjnych i rekurencyjnych sieci neuronowych.
+Praca prezentuje proces opracowania oraz ewaluacji modelu pozwalającego na wykrywanie stopnia skupienia człowieka za pomocą elektroencefalografii (EEG). W tym celu przygotowano dedykowane oprogramowanie pozwalające na nagrywanie sygnału EEG podczas wykonywania prezentowanych zadań matematycznych. Następnie przeprowadzono kampanię badawczą na próbce ochotników. Zebrane dane zostały poddane analizie statystycznej oraz wykorzystane do przygotowania modeli uczenia mszynowego - lasów losowych oraz głębokich, konwolucyjnych i rekurencyjnych sieci neuronowych.
 \end{abstract}
+\selectlanguage{polish}
 
 \chapter{Wstęp}
-Ludzki układ nerwowy składa się z miliardów komórek nerwowych, połączonych w gęstą siatkę pokrywającą całą powierzchnię ludzkiego ciała tworząc niezwykle skomplikowany system odpowiadający za różnorodne aspekty naszego życia: od tak prostych jak poruszanie pojedynczymi mięśniami, przez dekodowanie rzeczywistości z nieskończonego strumienia impulsów dochodzących z wszystkich zmysłów, aż po kontrolowanie uczuć tak skomplikowanych jak ciekawość. Na czele tego niezwykłego wynalazku ewolucji stoi mózg, zagadka, której naukowcy i filozofowie poświęcali swoje życia od czasów sławnego eksperymentu myślowego Decartesa. Dopiero niedawno, opierając się na pracy wielu osób w niezliczonych dziedzinach współczesnej nauki, możliwe stało się rozwikłanie części tej niesamowitej tajemnicy. Kontynuując tę ścieżkę, poniższa praca przedstawia opracowanie oraz ewaluacje modelu klasyfikującego stan skupienia, za pomocą badania reakcji na bodziec z użyciem elektroencefalografii. 
+Ludzki układ nerwowy składa się z miliardów komórek nerwowych, połączonych w gęstą siatkę pokrywającą całą powierzchnię ludzkiego ciała tworząc niezwykle skomplikowany system odpowiadający za różnorodne aspekty naszego życia: od tak prostych jak poruszanie pojedynczymi mięśniami, przez dekodowanie rzeczywistości z nieskończonego strumienia impulsów dochodzących z wszystkich zmysłów, aż po kontrolowanie uczuć tak skomplikowanych jak ciekawość. Na czele tego niezwykłego wynalazku ewolucji stoi mózg, zagadka, której naukowcy i filozofowie poświęcali swoje życia od czasów sławnego eksperymentu myślowego Decartesa. Dopiero niedawno, opierając się na pracy wielu osób w niezliczonych dziedzinach współczesnej nauki, możliwe stało się rozwikłanie części tej niesamowitej tajemnicy. Kontynuując tę ścieżkę, poniższa praca przedstawia próbę opracowania oraz ewaluacji modelu klasyfikującego stan skupienia, za pomocą badania reakcji na bodziec z użyciem elektroencefalografii. 
 
 W ramach projektu przygotowano układ eksperymentalny (sekcja \ref{aparatura-pomiarowa}), przeprowadzono kampanię badawczą na próbce 19 osób (sekcja \ref{procedura-badan}), której wyniki zostały następnie poddane analizie tradycyjnymi metodami statystycznymi (sekcja \ref{analiza-klasyczna}), uwzględniając zmienne zakłócające (sekcja \ref{zmiennne-zaklucajace}) oraz algorytmami uczenia maszynowego (sekcja \ref{uczenie-maszynowe}). Dyskusję wyników zaprezentowano w sekcji \ref{dyskusja}.
 
 \section{Motywacja}
-Uczenie maszynowe pozwala rozwiązywać problemy, w których relacja pomiędzy wejściami i wyjściami algorytmu jest zbyt skomplikowana, aby w praktyczny sposób przedstawić ją jako serie warunków. Nie dziwnym jest więc, że znajdują one coraz większe zastosowanie w dziedzinach medycyny, biologii i chemii, pozwalając na tak niesamowite osiągnięcia jak np. diagnozowanie raka płuc \cite{li_machine_2022} czy zwijanie białek (ang. \textit{protein folding}) \cite{jumper_highly_2021}. Jednocześnie mimo wczesnych sukcesów \cite{some comparasion}, próby diagnozy chorób psychologicznych za pomocą badań obrazowych są na stosunkowo niskim poziomie rozwoju \cite{badania adhd i podobne}. Jako krok w drodze do opracowania tego typu metod, niniejsza praca zawiera porównanie skuteczności wybranych metod badawczych na prostszym problemie oceny uwagi człowieka. Decyzja o wykorzystaniu elektroencefalografii podyktowana została łatwym dostępem do aparatury pomiarowej, możliwością stosunkowo prostego zbierania znaczących ilości danych oraz brakiem konieczności wykonywania badań w środowisku laboratoryjnym.
+Uczenie maszynowe pozwala rozwiązywać problemy, w których relacja pomiędzy wejściami i wyjściami algorytmu jest zbyt skomplikowana, aby w praktyczny sposób przedstawić ją jako serie warunków. Nie dziwnym jest więc, że znajdują one coraz większe zastosowanie w dziedzinach medycyny, biologii i chemii, pozwalając na tak niesamowite osiągnięcia jak np. diagnozowanie raka płuc \cite{li_machine_2022} czy zwijanie białek (ang. \textit{protein folding}) \cite{jumper_highly_2021}. Jednocześnie mimo wczesnych sukcesów, próby diagnozy chorób psychologicznych za pomocą badań obrazowych są na stosunkowo niskim poziomie rozwoju \cite{joshi_review_2021}. Jako krok w drodze do opracowania tego typu metod, niniejsza praca zawiera porównanie skuteczności wybranych metod badawczych na prostszym problemie oceny uwagi człowieka. Decyzja o wykorzystaniu elektroencefalografii podyktowana została łatwym dostępem do aparatury pomiarowej, możliwością stosunkowo prostego zbierania znaczących ilości danych oraz brakiem konieczności wykonywania badań w środowisku laboratoryjnym.
 
-\section{Przegląd literatury}
+\section{Przegląd literatury}\label{literatura}
 Możliwość wykorzystania badania EEG w celu analizy stanu mentalnego pacjenta zaprezentowana została między innymi przez Kaushika i in. \cite{kaushik_decoding_2022}. Dodatkowo Guo i in. \cite{guo_detection_2018} pokazali, że możliwe jest klasyfikowanie stanu skupienia kierowcy w symulowanych warunkach. Wysoką skuteczność algorytmów uczenia maszynowego takich jak maszyny wektorów nośnych czy uczenie głębokie do analizy wyników elektroencefalografii udowodnili de Taillez i in. \cite{de_taillez_machine_2020}. Rozpoczęto również prace nad zastosowaniem algorytmów uczenia maszynowego w celu diagnozy innych jednostek chorobowych takich jak ADHD, dysleksja czy schizofrenia \cite{ahire_comprehensive_2022, joshi_review_2021, clarke_eeg_2002}.
 
 \chapter{Podstawy teoretyczne}
 % \section{Model działania mózgu}
 % Pierwsze modele pracy mozgu stworzone zostaly juz w ... jednak dopiero
 
-Informacje w mózgu przekazywane i przetwarzane są za pomocą tzw. potencjałów czynnościowych – chwilowych impulsów, podczas których napięcie wewnątrz komórki stanowczo wzrasta (xxxx). Impuls taki zostaje wygenerowany, gdy czasowo skalowana suma napieć na ,,wejściach'' komórki (dendrytach) przekroczy pewien poziom (xxxx). W takiej sytuacji generowane jest napięcie, które następnie przekazywane jest za pomocą aksonu do kolejnych komórek (xxxxx). W dużym uproszczeniu potencjał komórki można więc zapisać równaniem \ref{eq:napiecie-komorki}, gdzie $d_i(t)$ to napięcie na dendrycie $i$ w czasie $t$.
+Informacje w mózgu przekazywane i przetwarzane są za pomocą tzw. potencjałów czynnościowych – chwilowych impulsów, podczas których napięcie wewnątrz komórki stanowczo wzrasta. Impuls taki zostaje wygenerowany, gdy czasowo skalowana suma napieć na ,,wejściach'' komórki (dendrytach) przekroczy pewien poziom. W takiej sytuacji generowane jest napięcie, które następnie przekazywane jest za pomocą aksonu do kolejnych komórek. W dużym uproszczeniu potencjał komórki można więc zapisać równaniem \ref{eq:napiecie-komorki}, gdzie $d_i(t)$ to napięcie na dendrycie $i$ w czasie $t$.
 \begin{equation}\label{eq:napiecie-komorki}
     \text{Potencjał komórki} \approx 
     \begin{cases} 
@@ -126,7 +128,7 @@ Elektroencefalografia to badanie polegające na pomiarze potencjałów elektrycz
 Układ nerwowy człowieka przekazuje oraz przetwarza informacje za pomocą impulsów elektrycznych (potencjałów czynnościowych) wytwarzanych w komórkach nerwowych (neuronach), z pomocą tzw. pompy sodowo-potasowej. Ze względu na dużą liczbę neuronów w ludzkim mózgu ($\approx10^9$\cite{herculano-houzel_human_2009}), ich niewielkie rozmiary, małe napięcie impulsu potencjału czynnościowego ($\approx100mV$\cite{biga_anatomy_2019}) oraz krótki czas jego trwania ($\approx2ms$\cite{biga_anatomy_2019}) niemożliwe jest badanie pracy pojedynczych neuronów, a jedynie średnich wartości milionów zsynchronizowanych impulsów na przestrzeni centymetrów. Ograniczenia te powodują, że różne obszary mózgu mogą być badane z różną dokładnością (najlepszą sprawność otrzymuje się w rejonach mózgu znajdujących się blisko powierzchni skóry zawierających dużą liczbę tzw. neuronów piramidowych – np. kora przedczołowa).
 
 \subsection{Metodyka badania}
-W zależności od specyfiki badania ważny jest dobór następujących parametrów bdadania 
+W zależności od specyfiki badania ważny jest dobór następujących parametrów badania 
 
 \subsubsection{Rozmieszczenie oraz liczba elektrod}
 Najbardziej popularnymi standardami pozycjonowania elektrod są tzw. międzynarodowe systemy $10$–$10$ i $10$–$20$\footnote{Wartości liczbowe w nazwie wywodzą się  z procentowego podziału czaszki – elektroda znajduje się co $10\%$ obwodu czaszki na osi przód – tył i co $20\%$ na osi prawo – lewo} \cite{herbert_h_jasper_report_1958} (przedstawiony na rysunku \ref{fig:10-20-system}). Stosowanie tych metod pozwala na stosunkowo łatwe powielanie i porównywanie wyników badań przeprowadzonych w różnych placówkach. Układy te najczęściej stosowane są w środowisku medycznym. 
@@ -207,9 +209,9 @@ Aplikacja stworzona na potrzeby badania składa się z dwóch komponentów. Form
 Całość oprogramowania serwerowego napisano w języku programowania \textit{Python} \cite{python_developers_python_2024} w wersji 3.9, używając biblioteki \textit{Flask} \cite{flask_developers_flask_nodate} do implementacji REST API. Komunikacja z urządzeniem pomiarowym odbywa się za pomocą protokołu WebSocket z wykorzystaniem pakietu \textit{websocket-client} \cite{liris_websocket-client_nodate}. Interfejs graficzny przygotowano z użyciem biblioteki \textit{htmx} \cite{htmx_developers_htmx_nodate}, a do renderowania działań matematycznych wykorzystano bibliotekę \textit{MathJax} \cite{consortium_mathjax_nodate}.
 
 Oprogramowanie serwerowe jest niezależne od interfejsu graficznego aplikacji, umożliwia to wykorzystanie komputera Raspbery PI do zbierania danych oraz wyświetlanie pytań na tablecie lub urządzeniu badanego.
-Ponadto pozwala to na wykorzystanie przygotowanego REST API (dokumentacja znajduje się w załączniku \ref{api}) do implementacji innych eksperymentów wykorzystujących badanie EEG (w tym badań wykorzystujących wiele urządzeń jednocześnie). 
+Ponadto pozwala to na wykorzystanie przygotowanego REST API (dokumentacja znajduje się w  \cite{mateusz_kojro_mateuszkojrobachelors-thesis_nodate}) do implementacji innych eksperymentów wykorzystujących badanie EEG (w tym badań wykorzystujących wiele urządzeń jednocześnie). 
 
-Załącznik \ref{instrukcja} zawiera wymagania systemowe, opis pliku konfiguracyjnego oraz instrukcję instalacji i obsługi oprogramowania do zbierania danych.
+Repozytorium \cite{mateusz_kojro_mateuszkojrobachelors-thesis_nodate} zawiera wymagania systemowe, opis pliku konfiguracyjnego oraz instrukcję instalacji i obsługi oprogramowania do zbierania danych.
 \clearpage
 
 \subsection{Urządzenie pomiarowe}\label{emotiv}
@@ -510,13 +512,13 @@ W celu dobrania odpowiednich metod opracowania danych oraz wartości hiperparame
         \hline
                  & Napięcia na elektordach & Częstotliwośći na elektrodach  \\
         \hline
-        Las losowy &  &  \\
-        Sieć gęsta &  & $0,74$ ($0,64$) \\
-        Sieć konwolucyjna & & $0,70$ ($0,60$) \\
-        Sieć MLSTM & & \\
+        Las losowy & $0,40$ ($0,42$) & $0,44$ ($0,5$) \\
+        Sieć gęsta  &$0,41$ ($0,51$)  & $0,74$ ($0,64$) \\
+        Sieć konwolucyjna & $0,58$ ($0,52$) & $0,70$ ($0,60$) \\
+        Sieć MLSTM & $0,57$ ($0,53$) & $0,65$ ($0,50$) \\
         \hline
     \end{tabular}
-    \caption{Najlepsze wyniki miary $F_1$ oraz $A_{cc}$ na zbiorze walidacyjnym z podziałem na rodzaj modelu i rodzaj danych wejściowych}
+    \caption{Najlepsze wyniki miary $F_1$ ($A_{cc}$) na zbiorze walidacyjnym z podziałem na rodzaj modelu i rodzaj danych wejściowych}
     \label{tab:high-level-results}
 \end{table}
 
@@ -588,8 +590,8 @@ W celu dobrania odpowiednich metod opracowania danych oraz wartości hiperparame
 
 % W celu analizy ewentualnych uprzedzen algorytmicznych 
 
-\section{Dyskusja}\label{dyskusja}
-Pomimo statystycznie istotnej różnicy pomiędzy sygnałami odczytywanymi w czasie skupienia i spoczynku, zastosowane modele uczenia maszynowego nie wykazały zdolności do wykrycia tej zależności na oddzielonej populacji kontrolnej. Wyniki te, mimo zastosowania architektur \cite{} i metod trenowania modeli \cite{} o potwierdzonej skuteczności i zgodnych z najnowszymi osiągnięciami w dziedzinie uczenia maszynowego, sugerują niewystarczającą wielkość zbioru badawczego. Hipoteza niepoprawnego wykonania pomiarów odrzucona została ze względu na wykrywalną statystycznie różnice pomiędzy badanymi stanami. Niespodziewanie wysokie wariacje wprowadzone przez zbadane zmienne zakłócające wydają się wspierać niewystarczającą wielkość zbioru. Jednocześnie badania zaprezentowane w \cite{} przy zachowaniu podobnej ilości uczestników osiągają stanowczo lepsze rezultaty. Spowodowane mogło to być wykorzystaniem urządzeń pomiarowych przeznaczonych do użytku medycznego, a w związku z tym osiągnięcie wyższego efektywnego stosunku sygnału do szumu. W celu jednoznacznego zweryfikowania tezy badawczej wymagane jest zebranie większej ilości danych przez przeprowadzenie dodatkowej kampanii badawczej.
+\section{Wyniki}\label{dyskusja}
+Pomimo statystycznie istotnej różnicy pomiędzy sygnałami odczytywanymi w czasie skupienia i spoczynku, zastosowane modele uczenia maszynowego nie wykazały zdolności do wykrycia tej zależności na oddzielonej populacji kontrolnej. Wyniki te, mimo zastosowania architektur i metod trenowania modeli o potwierdzonej skuteczności i zgodnych z najnowszymi osiągnięciami w dziedzinie uczenia maszynowego, sugerują niewystarczającą wielkość zbioru badawczego. Hipoteza niepoprawnego wykonania pomiarów odrzucona została ze względu na wykrywalną statystycznie różnice pomiędzy badanymi stanami. Niespodziewanie wysokie wariacje wprowadzone przez zbadane zmienne zakłócające wydają się wspierać niewystarczającą wielkość zbioru. Jednocześnie badania zaprezentowane w sekcji \ref{literatura} przy zachowaniu podobnej ilości uczestników osiągają stanowczo lepsze rezultaty. Spowodowane mogło to być wykorzystaniem urządzeń pomiarowych przeznaczonych do użytku medycznego, a w związku z tym osiągnięcie wyższego efektywnego stosunku sygnału do szumu. W celu jednoznacznego zweryfikowania tezy badawczej wymagane jest zebranie większej ilości danych przez przeprowadzenie dodatkowej kampanii badawczej, podczas której większa waga położona powinna zostać na liczbę wykonanych pomiarów.
 
 \printbibliography
 
@@ -667,19 +669,18 @@ Pomimo statystycznie istotnej różnicy pomiędzy sygnałami odczytywanymi w cza
 ]
 \end{lstlisting}
 
+% \chapter{Instrukcja obsługi}\label{instrukcja}
+% \section{Wymagania systemowe}
+% \section{Instalacja}
+% \section{Obsługa}
+% \section{Konfiguracja}
+% \chapter{Dokumentacja API}\label{api}
 
-\chapter{Instrukcja obsługi}\label{instrukcja}
-\section{Wymagania systemowe}
-\section{Instalacja}
-\section{Obsługa}
-\section{Konfiguracja}
-\chapter{Dokumentacja API}\label{api}
+% \begin{boxA}
+% \textbf{\texttt{GET /api/cos}}
 
-\begin{boxA}
-\textbf{\texttt{GET /api/cos}}
-
-It is just a frame surrounded by a slightly thick line. A simple monochrome design might be fine, but when you want a gorgeous look, it's a bit unsatisfactory.
-\end{boxA}
+% It is just a frame surrounded by a slightly thick line. A simple monochrome design might be fine, but when you want a gorgeous look, it's a bit unsatisfactory.
+% \end{boxA}
 
 % - register questions endpoint
 % - register answer
